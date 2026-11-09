@@ -5,9 +5,7 @@ const url = require('url');
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const ROOT_DIR = __dirname;
-const FETHO_DIR = fs.existsSync(path.join(ROOT_DIR, 'fetho'))
-  ? path.join(ROOT_DIR, 'fetho')
-  : ROOT_DIR;
+const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -74,21 +72,23 @@ function resolveFilePath(reqPath) {
   const cleanPath = decodeURIComponent(reqPath.split('?')[0]);
   
   if (cleanPath === '/' || cleanPath === '/index.html') {
-    return { filePath: path.join(FETHO_DIR, 'index.html'), isHtml: true };
+    const pubIdx = path.join(PUBLIC_DIR, 'index.html');
+    if (fs.existsSync(pubIdx)) return { filePath: pubIdx, isHtml: true };
+    return { filePath: path.join(ROOT_DIR, 'index.html'), isHtml: true };
   }
   
-  // Check in fetho folder (if exists) or root
-  const inFetho = path.join(FETHO_DIR, cleanPath.slice(1));
-  if (fs.existsSync(inFetho)) {
-    const stat = fs.statSync(inFetho);
+  // Check in public/
+  const inPublic = path.join(PUBLIC_DIR, cleanPath.slice(1));
+  if (fs.existsSync(inPublic)) {
+    const stat = fs.statSync(inPublic);
     if (stat.isDirectory()) {
-      const idx = path.join(inFetho, 'index.html');
+      const idx = path.join(inPublic, 'index.html');
       if (fs.existsSync(idx)) return { filePath: idx, isHtml: true };
     } else {
-      return { filePath: inFetho, isHtml: inFetho.endsWith('.html') };
+      return { filePath: inPublic, isHtml: inPublic.endsWith('.html') };
     }
   }
-  
+
   // Check in root dir
   const inRoot = path.join(ROOT_DIR, cleanPath.slice(1));
   if (fs.existsSync(inRoot)) {
@@ -118,7 +118,9 @@ const server = http.createServer((req, res) => {
   const resolved = resolveFilePath(reqPath);
   if (!resolved) {
     if (!path.extname(reqPath)) {
-      const homeHtml = path.join(FETHO_DIR, 'index.html');
+      const homeHtml = fs.existsSync(path.join(PUBLIC_DIR, 'index.html'))
+        ? path.join(PUBLIC_DIR, 'index.html')
+        : path.join(ROOT_DIR, 'index.html');
       if (fs.existsSync(homeHtml)) {
         const content = fs.readFileSync(homeHtml, 'utf8');
         res.writeHead(200, { 'Content-Type': MIME_TYPES['.html'] });

@@ -1,0 +1,2099 @@
+﻿<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1628F5">
+    <style>
+        body { visibility: hidden; }
+    </style>
+    <noscript><style>body{visibility:inherit;}</style></noscript>
+    <title>FETHO Career &amp; Life | Vertical 02 | Graduate Readiness &amp; Professional Excellence</title>
+    <meta name="description" content="From Academic Knowledge to Unshakeable Career Presence. FETHO Career & Life bridges the gap between education and professional excellence." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FETHO Career &amp; Life | Vertical 02" />
+    <meta property="og:description" content="From Academic Knowledge to Unshakeable Career Presence." />
+    <meta property="og:url" content="https://fetho.edu.in/career-life" />
+
+    <link rel="icon" href="https://edge.studio/wp-content/uploads/2025/12/favicon-fetho-150x150.webp" sizes="32x32" />
+    <link rel="icon" href="https://edge.studio/wp-content/uploads/2025/12/favicon-fetho-300x300.webp" sizes="192x192" />
+
+    <!-- Fonts: same as homepage -->
+    <style>
+        @font-face {
+            font-family: 'Archivo';
+            src: url('https://edge.studio/wp-content/themes/fetho/public/fonts/Archivo-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Anton';
+            src: url('https://edge.studio/wp-content/themes/fetho/public/fonts/Anton-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+
+    <!-- Brand Tokens & All Styles -->
+    <link rel="stylesheet" href="/fetho-tokens.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/vendor/GLTFLoader.js"></script>
+
+    <style>
+        /* ================================================================
+           PAGE-LEVEL OVERRIDES FOR CAREER & LIFE
+           ================================================================ */
+        :root {
+            --fetho-accent: #1628F5;
+            --fetho-dark: #0A0A12;
+            --fetho-white: #FFFFFF;
+            --fetho-off: #F4F6FC;
+            --fetho-mid: #767888;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: #FFFFFF;
+            color: #0A0A12;
+            font-family: 'Aeonik', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* PAGE ENTER ANIMATION */
+        body.page-entered .cl-hero-eyebrow,
+        body.page-entered .cl-hero-h1,
+        body.page-entered .cl-hero-lead,
+        body.page-entered .cl-hero-cta {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* ---- 3-STAGE FETHO SCROLL HERO ---- */
+        .lh-hero-track {
+            position: relative;
+            width: 100%;
+            height: 350vh;
+            background: #050508;
+        }
+
+        .lh-hero-stage {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: #050508;
+            z-index: 2;
+        }
+
+        #lhCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: block;
+        }
+
+        /* 5 HORIZONTAL CROSSHAIRS (+) */
+        .lh-crosshairs {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4.5vw;
+            pointer-events: none;
+            z-index: 4;
+            color: rgba(255, 255, 255, 0.45);
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 15px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        /* Atmospheric subtle ambient back-glow behind cloud */
+        .lh-ambient-glow {
+            position: absolute;
+            top: 42%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+            width: 75vw;
+            height: 75vh;
+            background: radial-gradient(ellipse at center, rgba(180, 195, 230, 0.08) 0%, rgba(30, 35, 55, 0.04) 45%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* FRAME 1: HUGE BOTTOM WORDMARK */
+        .lh-frame1-bottom {
+            position: absolute;
+            bottom: -1vw;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 0 4vw 0 4vw;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 1;
+            will-change: opacity, transform;
+        }
+
+        .lh-wordmark {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: clamp(100px, 20vw, 360px);
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            line-height: 0.82;
+            color: #FFFFFF !important;
+            text-transform: uppercase;
+            user-select: none;
+            margin: 0;
+            padding: 0;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .lh-explore-hint {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: clamp(10px, 0.8vw, 13px);
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #FFFFFF !important;
+            margin-bottom: 3.2vw;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        /* FRAME 2 & 3: SPLIT TYPOGRAPHY */
+        .lh-split-typo {
+            position: absolute;
+            bottom: 8vh;
+            left: 0;
+            width: 100%;
+            padding: 0 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 7;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(30px);
+            will-change: opacity, transform;
+        }
+
+        .lh-split-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(24px, 2.7vw, 48px);
+            line-height: 1.08;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        .lh-split-left .lh-italic,
+        .lh-split-right .lh-italic {
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .lh-split-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(24px, 2.7vw, 48px);
+            line-height: 1.08;
+            letter-spacing: -0.025em;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        /* Vertical indicator */
+        .cl-vertical-badge {
+            position: absolute;
+            top: 50%;
+            right: 5vw;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: rgba(22,40,245,0.4);
+            text-transform: uppercase;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cl-vertical-badge::before {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: rgba(22,40,245,0.3);
+        }
+
+        /* ---- SECTION SHARED ---- */
+        .cl-section {
+            padding: 120px 5vw;
+        }
+
+        .cl-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .cl-section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: #1628F5;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .cl-section-badge-dot {
+            width: 5px;
+            height: 5px;
+            background: #1628F5;
+            border-radius: 50%;
+        }
+
+        .cl-section-h2 {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(36px, 4.5vw, 72px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: #0A0A12;
+            margin-bottom: 24px;
+        }
+
+        .cl-section-lead {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #4A4C5A;
+            max-width: 620px;
+            margin-bottom: 60px;
+        }
+
+        /* ---- 5 TRACKS GRID ---- */
+        .cl-tracks-section {
+            background: #F4F6FC;
+            padding: 120px 5vw;
+        }
+
+        .cl-tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .cl-track-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(22,40,245,0.08);
+            border-radius: 24px;
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+        }
+
+        .cl-track-card:hover {
+            border-color: rgba(22,40,245,0.22);
+            box-shadow: 0 20px 50px rgba(22,40,245,0.1);
+            transform: translateY(-6px);
+        }
+
+        .cl-track-num {
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: #1628F5;
+        }
+
+        .cl-track-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(22,40,245,0.08);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .cl-track-title {
+            font-family: 'Aeonik', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #0A0A12;
+            letter-spacing: -0.02em;
+        }
+
+        .cl-track-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #767888;
+            flex: 1;
+        }
+
+        .cl-track-outcome {
+            padding-top: 16px;
+            border-top: 1px solid rgba(22,40,245,0.07);
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #1628F5;
+            letter-spacing: 0.08em;
+        }
+
+        /* ---- OPERATING MODEL ---- */
+        .cl-model-section {
+            background: #0A0A12;
+            padding: 120px 5vw;
+        }
+
+        .cl-model-section .cl-section-h2 {
+            color: #FFFFFF;
+        }
+
+        .cl-model-section .cl-section-lead {
+            color: rgba(255,255,255,0.55);
+        }
+
+        .cl-stages {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .cl-stage {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 32px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        .cl-stage:hover .cl-stage-num {
+            color: #1628F5;
+        }
+
+        .cl-stage-num {
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.3);
+            transition: color 0.3s ease;
+            padding-top: 4px;
+        }
+
+        .cl-stage-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cl-stage-title {
+            font-family: 'Aeonik', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+        }
+
+        .cl-stage-desc {
+            font-size: 15px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.5);
+            max-width: 680px;
+        }
+
+        .cl-stage-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: #1628F5;
+            background: rgba(22,40,245,0.1);
+            border: 1px solid rgba(22,40,245,0.2);
+            border-radius: 999px;
+            padding: 5px 12px;
+            margin-top: 4px;
+            align-self: flex-start;
+        }
+
+        /* ---- CTA / INQUIRY SECTION ---- */
+        .cl-inquiry-section {
+            padding: 120px 5vw;
+            background: #FFFFFF;
+        }
+
+        .cl-inquiry-inner {
+            background: #0A0A12;
+            border-radius: 32px;
+            padding: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cl-inquiry-inner::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(22,40,245,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cl-inquiry-heading {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(32px, 3.5vw, 56px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: #FFFFFF;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .cl-inquiry-heading em {
+            font-style: normal;
+            color: #1628F5;
+        }
+
+        .cl-inquiry-sub {
+            font-size: 15px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .cl-inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cl-form-input {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 16px 20px;
+            font-family: 'Aeonik', sans-serif;
+            font-size: 15px;
+            color: #FFFFFF;
+            outline: none;
+            transition: border-color 0.25s ease;
+        }
+
+        .cl-form-input::placeholder { color: rgba(255,255,255,0.3); }
+
+        .cl-form-input:focus {
+            border-color: rgba(22,40,245,0.6);
+            background: rgba(22,40,245,0.08);
+        }
+
+        .cl-form-btn {
+            background: #1628F5;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
+            padding: 18px 32px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(22,40,245,0.4);
+        }
+
+        .cl-form-btn:hover {
+            background: #0D1DCF;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(22,40,245,0.55);
+        }
+
+        /* ---- FOOTER (shared with index) ---- */
+        .lusion-white-footer,
+        .lusion-next-page-bar {
+            /* inherited from fetho-tokens.css */
+        }
+
+        /* Ensure header matches exact clean Fetho layout (drawer holds menu links) */
+        .lusion-header-nav {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .cl-inquiry-inner {
+                grid-template-columns: 1fr;
+                padding: 48px 32px;
+            }
+            .cl-stage {
+                grid-template-columns: 60px 1fr;
+                gap: 20px;
+            }
+            .cl-vertical-badge { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     FETHO PREV-PAGE BAR (Scroll UP at top 3x to go back to Pillar 1)
+     ============================================================ -->
+<div id="lusionPrevPageBar">
+    <div class="lusion-prev-left">
+        <span class="lusion-prev-arrow">&rarr;</span>
+        <div class="lusion-prev-label">
+            <span class="lusion-prev-kicker">SCROLL UP 5&times; TO RETURN</span>
+            <span class="lusion-prev-title">FETHO YOUNG MINDS</span>
+        </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="lusion-prev-dots">
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+        </div>
+        <div class="lusion-prev-track">
+            <div class="lusion-prev-bar" id="lusionPrevBar"></div>
+        </div>
+        <span class="lusion-prev-hint">PREV VERTICAL</span>
+    </div>
+</div>
+
+<!-- ============================================================
+     UNIFIED GLOBAL HEADER
+     ============================================================ -->
+<header class="lusion-header" id="globalHeader">
+    <div class="lusion-header-left">
+        <a href="/" class="lusion-wordmark">FETHO</a>
+    </div>
+
+    <div class="lusion-header-right">
+        <div class="fetho-nav-verticals-dropdown">
+            <button class="fetho-nav-verticals-btn" id="fethoVerticalsBtn" aria-expanded="false" type="button">
+                <span class="verticals-dot"></span>
+                <span>VERTICALS</span>
+                <span class="verticals-chevron">&#9662;</span>
+            </button>
+            <div class="fetho-nav-verticals-menu" id="fethoVerticalsMenu">
+                <a href="/" class="verticals-menu-item">
+                    <span class="menu-item-tag">VERTICAL 01 // SCHOOL SCHOLARS</span>
+                    <span class="menu-item-title">FETHO Young Minds</span>
+                    <span class="menu-item-desc">5 Synchronized Pillars &middot; Academic Rigor</span>
+                </a>
+                <a href="/career-life.html" class="verticals-menu-item active">
+                    <span class="menu-item-tag">VERTICAL 02 // GRADUATES</span>
+                    <span class="menu-item-title">FETHO Career &amp; Life</span>
+                    <span class="menu-item-desc">Professional Readiness &middot; Industry Sprints</span>
+                </a>
+                <a href="/venture-lab.html" class="verticals-menu-item">
+                    <span class="menu-item-tag">VERTICAL 03 // FOUNDERS</span>
+                    <span class="menu-item-title">FETHO Venture Lab</span>
+                    <span class="menu-item-desc">Evidence-Based Startup Validation</span>
+                </a>
+            </div>
+        </div>
+        <a href="#inquiry" class="lusion-pill-btn lusion-pill-dark">
+            LET'S TALK <span class="lusion-btn-dot"></span>
+        </a>
+        <button class="lusion-pill-btn lusion-pill-light" id="lusionMenuBtn" aria-label="Menu">
+            MENU <span class="lusion-btn-dots"><span></span><span></span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Slide Menu Overlay -->
+<div class="lusion-nav-overlay" id="lusionNavOverlay">
+    <div class="lusion-nav-overlay-backdrop"></div>
+    <div class="lusion-nav-overlay-panel">
+        <div class="lusion-nav-overlay-top">
+            <span class="lusion-wordmark" style="color:#ffffff;">FETHO</span>
+            <button class="lusion-nav-close" id="lusionNavClose" aria-label="Close Menu">âœ•</button>
+        </div>
+        <nav class="lusion-overlay-menu">
+            <a href="/" class="lusion-overlay-link"><span class="overlay-num">01</span> Young Minds</a>
+            <a href="/career-life.html" class="lusion-overlay-link"><span class="overlay-num">02</span> Career &amp; Life</a>
+            <a href="/venture-lab.html" class="lusion-overlay-link"><span class="overlay-num">03</span> Venture Lab</a>
+            <a href="#tracks" class="lusion-overlay-link"><span class="overlay-num">04</span> 5 Tracks</a>
+            <a href="#model" class="lusion-overlay-link"><span class="overlay-num">05</span> Operating Model</a>
+            <a href="#inquiry" class="lusion-overlay-link"><span class="overlay-num">06</span> Enrol</a>
+        </nav>
+        <div class="lusion-overlay-footer">
+            <p class="overlay-contact-label">ADMISSIONS &amp; COUNSELLING</p>
+            <a href="tel:+919876543210" class="overlay-contact-link">+91 98765 43210</a>
+            <a href="mailto:admissions@fetho.edu.in" class="overlay-contact-link">admissions@fetho.edu.in</a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     3-STAGE FETHO SCROLL HERO (Pillars / Volumetric Nebula -> Craggy Crater & Ribbon -> Astronaut)
+     ============================================================ -->
+<div class="lh-hero-track" id="heroTrack">
+    <div class="lh-hero-stage" id="heroStage">
+        <div class="lh-ambient-glow"></div>
+        <canvas id="lhCanvas"></canvas>
+
+        <!-- 5 Horizontal Crosshairs -->
+        <div class="lh-crosshairs">
+            <span>+</span>
+            <span>+</span>
+            <span>+</span>
+            <span>+</span>
+            <span>+</span>
+        </div>
+
+        <!-- Vertical Badge Indicator -->
+        <div class="cl-vertical-badge" style="position: absolute; right: 4vw; top: 110px; z-index: 5;">VERTICAL 02 &middot; GRADUATES</div>
+
+        <!-- FRAME 1: Huge Wordmark + Scroll Explore -->
+        <div class="lh-frame1-bottom" id="frame1Bottom">
+            <h1 class="lh-wordmark">FETHO</h1>
+            <div class="lh-explore-hint">
+                <span>SCROLL TO EXPLORE</span>
+            </div>
+        </div>
+
+        <!-- FRAME 2 & 3: Split Typography -->
+        <div class="lh-split-typo" id="splitTypo">
+            <div class="lh-split-left">
+                <div>WE ARE</div>
+                <div>FETHO</div>
+                <div>A CREATIVE</div>
+                <div class="lh-italic">PRODUCTION STUDIO</div>
+            </div>
+            <div class="lh-split-right">
+                <div class="lh-italic">CRAFTING UNIQUE</div>
+                <div class="lh-italic">DIGITAL EXPERIENCES</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     5 FOUNDATIONAL TRACKS
+     ============================================================ -->
+<section class="cl-tracks-section" id="tracks">
+    <div class="cl-container">
+        <div class="cl-section-badge">
+            <span class="cl-section-badge-dot"></span>
+            FOUNDATIONAL TRACKS
+        </div>
+        <h2 class="cl-section-h2">Five Tracks.<br>One Complete Professional.</h2>
+        <p class="cl-section-lead">Each track targets a specific dimension of career-readiness, designed to work in concert â€” not in isolation.</p>
+
+        <div class="cl-tracks-grid">
+            <div class="cl-track-card">
+                <div class="cl-track-num">TRACK 01</div>
+                <div class="cl-track-icon">ðŸ’¼</div>
+                <div class="cl-track-title">Career Readiness</div>
+                <p class="cl-track-desc">CV architecture, interview strategy, LinkedIn positioning, salary negotiation, and workplace etiquette for first-role success.</p>
+                <div class="cl-track-outcome">â†³ OUTCOME: HIRED WITH CLARITY</div>
+            </div>
+            <div class="cl-track-card">
+                <div class="cl-track-num">TRACK 02</div>
+                <div class="cl-track-icon">ðŸŽ™ï¸</div>
+                <div class="cl-track-title">Communication &amp; Presence</div>
+                <p class="cl-track-desc">Executive communication, public speaking, persuasive writing, active listening, and cross-cultural professional fluency.</p>
+                <div class="cl-track-outcome">â†³ OUTCOME: COMMANDING PRESENCE</div>
+            </div>
+            <div class="cl-track-card">
+                <div class="cl-track-num">TRACK 03</div>
+                <div class="cl-track-icon">âš™ï¸</div>
+                <div class="cl-track-title">Industry Workflows</div>
+                <p class="cl-track-desc">Real-world sprint simulations across finance, tech, consulting, and creative industries â€” from brief to boardroom delivery.</p>
+                <div class="cl-track-outcome">â†³ OUTCOME: INDUSTRY-DAY-ONE READY</div>
+            </div>
+            <div class="cl-track-card">
+                <div class="cl-track-num">TRACK 04</div>
+                <div class="cl-track-icon">ðŸ§ </div>
+                <div class="cl-track-title">Entrepreneurial Fluency</div>
+                <p class="cl-track-desc">Business model fundamentals, risk literacy, opportunity identification, and product-thinking for the modern workplace.</p>
+                <div class="cl-track-outcome">â†³ OUTCOME: BUILDER MINDSET</div>
+            </div>
+            <div class="cl-track-card">
+                <div class="cl-track-num">TRACK 05</div>
+                <div class="cl-track-icon">ðŸ“ˆ</div>
+                <div class="cl-track-title">Professional Growth</div>
+                <p class="cl-track-desc">Mentorship mapping, continuous learning systems, networking strategy, and 90-day performance acceleration frameworks.</p>
+                <div class="cl-track-outcome">â†³ OUTCOME: SUSTAINED ASCENSION</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     5-STAGE OPERATING MODEL
+     ============================================================ -->
+<section class="cl-model-section" id="model">
+    <div class="cl-container">
+        <div class="cl-section-badge" style="color:#6888FF;">
+            <span class="cl-section-badge-dot" style="background:#1628F5;"></span>
+            OPERATING MODEL
+        </div>
+        <h2 class="cl-section-h2">Five Stages.<br>Zero Ambiguity.</h2>
+        <p class="cl-section-lead" style="color:rgba(255,255,255,0.5);">Our model is diagnostic, not prescriptive. Each participant moves through five evidence-driven stages calibrated to their starting position.</p>
+
+        <div class="cl-stages">
+            <div class="cl-stage">
+                <div class="cl-stage-num">01</div>
+                <div class="cl-stage-content">
+                    <div class="cl-stage-title">Discover</div>
+                    <p class="cl-stage-desc">Deep-dive profiling session to map existing skills, identify gaps, and define the target professional identity. No assumptions â€” only evidence.</p>
+                    <span class="cl-stage-tag">DIAGNOSTIC INTAKE</span>
+                </div>
+            </div>
+            <div class="cl-stage">
+                <div class="cl-stage-num">02</div>
+                <div class="cl-stage-content">
+                    <div class="cl-stage-title">Assess</div>
+                    <p class="cl-stage-desc">Structured competency benchmarking across all five tracks. Each participant receives a Readiness Index â€” a precise readout of career-fitness.</p>
+                    <span class="cl-stage-tag">READINESS INDEX</span>
+                </div>
+            </div>
+            <div class="cl-stage">
+                <div class="cl-stage-num">03</div>
+                <div class="cl-stage-content">
+                    <div class="cl-stage-title">Plan</div>
+                    <p class="cl-stage-desc">Co-creation of a bespoke 12-week roadmap aligning track priorities, mentorship sessions, and industry sprint selections to the participant's target role.</p>
+                    <span class="cl-stage-tag">BESPOKE 12-WEEK ROADMAP</span>
+                </div>
+            </div>
+            <div class="cl-stage">
+                <div class="cl-stage-num">04</div>
+                <div class="cl-stage-content">
+                    <div class="cl-stage-title">Execute</div>
+                    <p class="cl-stage-desc">Intensive synchronized delivery across all five tracks â€” weekly live workshops, industry sprint challenges, and 1-on-1 mentor reviews every fortnight.</p>
+                    <span class="cl-stage-tag">SYNCHRONIZED DELIVERY</span>
+                </div>
+            </div>
+            <div class="cl-stage">
+                <div class="cl-stage-num">05</div>
+                <div class="cl-stage-content">
+                    <div class="cl-stage-title">Review</div>
+                    <p class="cl-stage-desc">Post-programme placement support: portfolio review, interview rehearsal, alumni network access, and 60-day check-in to validate continued trajectory.</p>
+                    <span class="cl-stage-tag">PLACEMENT &amp; ALUMNI SUPPORT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     INQUIRY / PILOT COHORT
+     ============================================================ -->
+<section class="cl-inquiry-section" id="inquiry">
+    <div class="cl-container">
+        <div class="cl-inquiry-inner">
+            <div>
+                <div class="cl-section-badge" style="color:#6888FF; margin-bottom:16px;">
+                    <span class="cl-section-badge-dot" style="background:#1628F5;"></span>
+                    PILOT COHORT â€” LIMITED SEATS
+                </div>
+                <h2 class="cl-inquiry-heading">Ready to <em>close</em><br>the gap?</h2>
+                <p class="cl-inquiry-sub">Our inaugural cohort is capped at 24 participants to ensure the highest quality of mentorship and industry engagement. Applications are now open.</p>
+            </div>
+            <form class="cl-inquiry-form" onsubmit="return false;">
+                <input type="text" class="cl-form-input" placeholder="Your full name" autocomplete="name">
+                <input type="email" class="cl-form-input" placeholder="Email address" autocomplete="email">
+                <input type="text" class="cl-form-input" placeholder="Current qualification / year">
+                <input type="text" class="cl-form-input" placeholder="Target industry or role">
+                <button type="submit" class="cl-form-btn">Submit Application &rarr;</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FRAME 2: FETHO WHITE FOOTER
+     ============================================================ -->
+<footer class="lusion-white-footer" id="lusionWhiteFooter">
+    <div class="lw-footer-topbar">
+        <a href="/" class="lw-footer-brand">FETHO</a>
+    </div>
+
+    <div class="lusion-white-footer-grid">
+        <!-- Col 1: Campus Headquarters -->
+        <div class="lw-address-block">
+            <p>FETHO Innovation Campus</p>
+            <p>Academic Enclave, Sector 14</p>
+            <p>Knowledge City, Gurugram</p>
+            <p>NCR 122002, India</p>
+        </div>
+
+        <!-- Col 2: Social & Community + Enquiries -->
+        <div>
+            <ul class="lw-links-list">
+                <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener">Linkedin</a></li>
+                <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            </ul>
+
+            <div class="lw-enquiries-block">
+                <div class="lw-enquiry-group">
+                    <div class="lw-enquiry-label">General enquires</div>
+                    <a href="mailto:hello@fetho.edu.in" class="lw-enquiry-val">hello@fetho.edu.in</a>
+                </div>
+                <div class="lw-enquiry-group">
+                    <div class="lw-enquiry-label">Admissions helpline</div>
+                    <a href="tel:+919876543210" class="lw-enquiry-val">+91 98765 43210</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Col 3: Newsletter & Application -->
+        <div class="lw-newsletter-col">
+            <h3 class="lw-newsletter-title">Subscribe to<br>our newsletter</h3>
+            <form class="lw-newsletter-form" id="lusionNewsletterForm">
+                <input type="email" class="lw-newsletter-input" placeholder="Your email" required>
+                <button type="submit" class="lw-newsletter-submit" aria-label="Subscribe">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="lw-footer-bottom">
+        <div>&copy; 2026 FETHO Educational Ecosystem</div>
+        <div class="lw-bottom-center">
+            <a href="#pillars">Development Pillars</a>
+            <span>&middot;</span>
+            <a href="#admissions">Student Welfare Code</a>
+            <span>&middot;</span>
+            <a href="#admissions">Admissions Guidelines</a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px;">
+            <span>Built by FETHO with &hearts;</span>
+            <button class="lw-scroll-top-btn" id="lusionScrollTopBtn" type="button" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+</footer>
+
+<!-- FRAME 3: FETHO NEXT PAGE BAR -->
+<div class="lusion-next-page-bar" id="lusionNextPageBar" data-next-href="/venture-lab.html" data-prev-href="/">
+    <div class="lusion-next-page-inner">
+        <div class="lusion-next-left">
+            <div class="lusion-next-kicker">SCROLL DOWN 5&times; OR CLICK TO DISCOVER NEXT VERTICAL</div>
+            <h3 class="lusion-next-title">FETHO VENTURE LAB</h3>
+        </div>
+        <a href="/venture-lab.html" class="lusion-next-right" id="lusionNextPageLink">
+            <span class="lusion-next-tag">NEXT PAGE</span>
+            <div class="lusion-next-dots">
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+            </div>
+            <div class="lusion-next-track">
+                <div class="lusion-next-bar" id="lusionNextBar"></div>
+            </div>
+            <span class="lusion-next-arrow">&rarr;</span>
+        </a>
+    </div>
+    <div class="lusion-np-crosshairs">
+        <span>+</span><span>+</span><span>+</span><span>+</span><span>+</span>
+    </div>
+</div>
+
+<!-- Scripts (minimal â€” only what this page needs) -->
+<script>
+(function() {
+    // Page enter animation
+    window.addEventListener('load', function() {
+        document.body.style.visibility = 'visible';
+        setTimeout(function() {
+            document.body.classList.add('page-entered');
+        }, 80);
+    });
+
+    // Header scroll behaviour
+    var header = document.getElementById('globalHeader');
+    var lastY = 0;
+    window.addEventListener('scroll', function() {
+        var y = window.scrollY;
+        if (y > 80) {
+            header.style.background = 'rgba(255,255,255,0.97)';
+            header.style.backdropFilter = 'blur(16px)';
+            header.style.boxShadow = '0 1px 0 rgba(22,40,245,0.08)';
+            // Switch wordmark and nav to dark for white bg
+            var wordmark = header.querySelector('.lusion-wordmark');
+            if (wordmark) wordmark.style.color = '#0A0A12';
+            var navLinks = header.querySelectorAll('.lusion-nav-link');
+            navLinks.forEach(function(l) { l.style.color = 'rgba(10,10,18,0.65)'; l.onmouseover = function() { l.style.color = '#0A0A12'; }; l.onmouseout = function() { l.style.color = 'rgba(10,10,18,0.65)'; }; });
+        } else {
+            header.style.background = '';
+            header.style.backdropFilter = '';
+            header.style.boxShadow = '';
+            var wordmark = header.querySelector('.lusion-wordmark');
+            if (wordmark) wordmark.style.color = '';
+            var navLinks = header.querySelectorAll('.lusion-nav-link');
+            navLinks.forEach(function(l) { l.style.color = ''; l.onmouseover = null; l.onmouseout = null; });
+        }
+        lastY = y;
+    }, { passive: true });
+
+    // Menu overlay toggle
+    var menuBtn = document.getElementById('lusionMenuBtn');
+    var overlay = document.getElementById('lusionNavOverlay');
+    var closeBtn = document.getElementById('lusionNavClose');
+    if (menuBtn && overlay) {
+        menuBtn.addEventListener('click', function() { overlay.classList.add('active'); });
+        if (closeBtn) closeBtn.addEventListener('click', function() { overlay.classList.remove('active'); });
+        overlay.querySelector('.lusion-nav-overlay-backdrop').addEventListener('click', function() { overlay.classList.remove('active'); });
+    }
+
+    // Verticals dropdown
+    var dropdown = document.querySelector('.fetho-nav-verticals-dropdown');
+    var vBtn = document.getElementById('fethoVerticalsBtn');
+    if (dropdown && vBtn) {
+        vBtn.addEventListener('click', function() {
+            var open = dropdown.classList.toggle('open');
+            vBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                vBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+        // Smooth nav
+        dropdown.querySelectorAll('.verticals-menu-item:not(.active)').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                var href = item.getAttribute('href');
+                if (href) {
+                    document.body.classList.add('page-transitioning');
+                    setTimeout(function() { window.location.href = href; }, 420);
+                }
+            });
+        });
+    }
+
+    // 5-SCROLL INTENT-BASED TRANSITION (Next & Prev)
+    var bar = document.getElementById('lusionNextPageBar');
+    var nextHref = bar ? bar.dataset.nextHref : null;
+    var prevHref = bar ? bar.dataset.prevHref : null;
+    var progressBar = document.getElementById('lusionNextBar');
+    var nextLink = document.getElementById('lusionNextPageLink');
+    var prevBar = document.getElementById('lusionPrevPageBar');
+    var prevProgress = document.getElementById('lusionPrevBar');
+
+    var THRESHOLD = 65;
+    var downCount = 0;
+    var upCount = 0;
+    var navigating = false;
+    var cooldown = false;
+
+    function isAtBottom() {
+        var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        return window.scrollY >= (maxScroll - 10);
+    }
+    function isAtTop() {
+        return window.scrollY <= 15;
+    }
+    function setProgress(barEl, pct) {
+        if (barEl) barEl.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    }
+    function updateNextDots(count) {
+        var activeDots = Math.floor((count / THRESHOLD) * 5);
+        var dots = document.querySelectorAll('.lusion-next-dots .lusion-next-dot');
+        for (var i = 0; i < dots.length; i++) {
+            if (i < activeDots) {
+                dots[i].classList.add('filled');
+            } else {
+                dots[i].classList.remove('filled');
+            }
+        }
+    }
+    function updatePrevDots(count) {
+        var activeDots = Math.floor((count / THRESHOLD) * 5);
+        var dots = document.querySelectorAll('.lusion-prev-dots .lusion-prev-dot');
+        for (var i = 0; i < dots.length; i++) {
+            if (i < activeDots) {
+                dots[i].classList.add('filled');
+            } else {
+                dots[i].classList.remove('filled');
+            }
+        }
+    }
+    function navigate(href) {
+        if (navigating || !href) return;
+        navigating = true;
+        document.body.classList.add('page-transitioning');
+        setTimeout(function() { window.location.href = href; }, 440);
+    }
+    function showPrevBar(show) {
+        if (!prevBar) return;
+        prevBar.style.opacity = show ? '1' : '0';
+        prevBar.style.transform = show ? 'translateY(0)' : 'translateY(-100%)';
+        prevBar.style.pointerEvents = show ? 'auto' : 'none';
+    }
+
+    if (nextLink) {
+        nextLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigate(nextHref);
+        });
+    }
+    if (prevBar) {
+        prevBar.addEventListener('click', function() {
+            navigate(prevHref);
+        });
+    }
+
+    var lastWheelTime = 0;
+    window.addEventListener('wheel', function(e) {
+        if (navigating) return;
+        var goingDown = e.deltaY > 0;
+        var goingUp = e.deltaY < 0;
+        var now = performance.now();
+
+        if (goingDown && isAtBottom() && nextHref) {
+            if (now - lastWheelTime < 40) return;
+            lastWheelTime = now;
+
+            upCount = 0;
+            updatePrevDots(0);
+            showPrevBar(false);
+
+            downCount = Math.min(downCount + 1, THRESHOLD);
+            setProgress(progressBar, (downCount / THRESHOLD) * 100);
+            updateNextDots(downCount);
+            if (downCount >= THRESHOLD) navigate(nextHref);
+            return;
+        }
+
+        if (goingUp && isAtTop() && prevHref) {
+            if (now - lastWheelTime < 40) return;
+            lastWheelTime = now;
+
+            downCount = 0;
+            setProgress(progressBar, 0);
+            updateNextDots(0);
+
+            upCount = Math.min(upCount + 1, THRESHOLD);
+            setProgress(prevProgress, (upCount / THRESHOLD) * 100);
+            updatePrevDots(upCount);
+            showPrevBar(true);
+            if (upCount >= THRESHOLD) navigate(prevHref);
+            return;
+        }
+    }, { passive: true });
+
+    window.addEventListener('scroll', function() {
+        var barRect = bar ? bar.getBoundingClientRect() : null;
+        var nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 250);
+        var barVisible = barRect && barRect.top <= (window.innerHeight + 100);
+        if (!nearBottom && !barVisible && downCount > 0) {
+            downCount = 0;
+            setProgress(progressBar, 0);
+            updateNextDots(0);
+        }
+        if (window.scrollY > 80 && upCount > 0) {
+            upCount = 0;
+            setProgress(prevProgress, 0);
+            updatePrevDots(0);
+            showPrevBar(false);
+        }
+    }, { passive: true });
+
+    // ================================================================
+    // 3-STAGE FETHO SCROLL HERO (Nebula Swarm -> Crater & Ribbon -> Astronaut)
+    // ================================================================
+    function initFethoHeroScene() {
+        const canvas = document.getElementById('lhCanvas');
+        const track = document.getElementById('heroTrack');
+        if (!canvas || !track || typeof THREE === 'undefined') return;
+
+        const frame1Bottom = document.getElementById('frame1Bottom');
+        const splitTypo = document.getElementById('splitTypo');
+
+        // --- THREE.JS SCENE SETUP ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x060608);
+        scene.fog = new THREE.FogExp2(0x060608, 0.015);
+
+        const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 300);
+        camera.position.set(0, 0, 16);
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.35;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // --- LIGHTING ---
+        const ambientLight = new THREE.AmbientLight(0x282c3c, 0.9);
+        scene.add(ambientLight);
+
+        // Core internal radiant light (illuminates the plume from within!)
+        const coreLight = new THREE.PointLight(0xffffff, 6.0, 10);
+        coreLight.position.set(-0.2, 1.2, 0.4);
+        scene.add(coreLight);
+
+        // Key light from top right (illuminates landscape with natural soft highlights)
+        const skyLight = new THREE.DirectionalLight(0xf0f4ff, 2.5);
+        skyLight.position.set(12, 18, 14);
+        skyLight.castShadow = true;
+        skyLight.shadow.mapSize.width = 2048;
+        skyLight.shadow.mapSize.height = 2048;
+        skyLight.shadow.bias = -0.0005;
+        scene.add(skyLight);
+
+        // Soft fill light from bottom-left
+        const fillLight = new THREE.DirectionalLight(0x404860, 1.4);
+        fillLight.position.set(-12, -8, 8);
+        scene.add(fillLight);
+
+        // Rim backlight (creates crisp edges on silhouettes)
+        const rimLight = new THREE.DirectionalLight(0x88a0ee, 3.0);
+        rimLight.position.set(-4, 6, -12);
+        scene.add(rimLight);
+
+        const astroSpotlight = new THREE.SpotLight(0xffffff, 0, 35, Math.PI / 7, 0.45, 1.2);
+        astroSpotlight.position.set(0, 14, 4);
+        astroSpotlight.target.position.set(0, -2.2, -1.5);
+        astroSpotlight.castShadow = true;
+        astroSpotlight.shadow.bias = -0.0008;
+        scene.add(astroSpotlight);
+        scene.add(astroSpotlight.target);
+
+        // Authentic Fetho Ultra-Realistic Micro-Sand Texture System
+        const texLoader = new THREE.TextureLoader();
+
+        // 1. High-fidelity physical sand diffuse texture (individual quartz & regolith grains)
+        const sandColorTex = texLoader.load('/assets/fetho_textures/cellular_sand_color.png');
+        sandColorTex.wrapS = THREE.RepeatWrapping;
+        sandColorTex.wrapT = THREE.RepeatWrapping;
+        sandColorTex.repeat.set(16, 16);
+        sandColorTex.generateMipmaps = true;
+        sandColorTex.minFilter = THREE.LinearMipmapLinearFilter;
+        sandColorTex.magFilter = THREE.LinearFilter;
+
+        // 2. Physical 3D sand normal map (micro-relief for every single grain)
+        const sandNormalTex = texLoader.load('/assets/fetho_textures/cellular_sand_normal.png');
+        sandNormalTex.wrapS = THREE.RepeatWrapping;
+        sandNormalTex.wrapT = THREE.RepeatWrapping;
+        sandNormalTex.repeat.set(16, 16);
+        sandNormalTex.generateMipmaps = true;
+        sandNormalTex.minFilter = THREE.LinearMipmapLinearFilter;
+        sandNormalTex.magFilter = THREE.LinearFilter;
+
+        // 3. Fetho crystalline sand grain facets (triangles_tiling)
+        const sandTrianglesTex = texLoader.load('/assets/fetho_textures/triangles_tiling.png');
+        sandTrianglesTex.wrapS = THREE.RepeatWrapping;
+        sandTrianglesTex.wrapT = THREE.RepeatWrapping;
+        sandTrianglesTex.repeat.set(20, 20);
+        sandTrianglesTex.generateMipmaps = true;
+        sandTrianglesTex.minFilter = THREE.LinearMipmapLinearFilter;
+        sandTrianglesTex.magFilter = THREE.LinearFilter;
+
+        // 4. Fetho dune wind drift noise texture
+        const windNoiseTex = texLoader.load('/assets/fetho_textures/wind_noise.png');
+        windNoiseTex.wrapS = THREE.RepeatWrapping;
+        windNoiseTex.wrapT = THREE.RepeatWrapping;
+        windNoiseTex.repeat.set(4, 4);
+        windNoiseTex.generateMipmaps = true;
+        windNoiseTex.minFilter = THREE.LinearMipmapLinearFilter;
+        windNoiseTex.magFilter = THREE.LinearFilter;
+
+        // 1. CRAGGY LUNAR / VOLCANIC CRATER TERRAIN
+        const terrainGeo = new THREE.PlaneGeometry(85, 85, 180, 180);
+        terrainGeo.rotateX(-Math.PI / 2);
+
+        const pos = terrainGeo.attributes.position;
+        for (let i = 0; i < pos.count; i++) {
+            const vx = pos.getX(i);
+            const vz = pos.getZ(i);
+            const dist = Math.sqrt(vx * vx + vz * vz);
+
+            let h = Math.sin(vx * 0.16) * Math.cos(vz * 0.16) * 2.2;
+            h += Math.sin(vx * 0.35 + 1.2) * Math.sin(vz * 0.38) * 1.2;
+            h += Math.abs(Math.sin(vx * 0.7) * Math.cos(vz * 0.7)) * 0.65;
+            h += (Math.sin(vx * 1.5) * Math.cos(vz * 1.5)) * 0.2;
+
+            if (dist < 15) {
+                const craterFactor = (15 - dist) / 15;
+                h -= craterFactor * 1.8;
+                const rim = Math.sin((dist / 15) * Math.PI);
+                h += rim * 0.8;
+            }
+
+            if (dist > 16) {
+                h += Math.pow((dist - 16) * 0.28, 1.4);
+            }
+
+            pos.setY(i, h - 3.2);
+        }
+        terrainGeo.computeVertexNormals();
+
+        const terrainMat = new THREE.MeshStandardMaterial({
+            map: sandColorTex,
+            normalMap: sandNormalTex,
+            normalScale: new THREE.Vector2(0.55, 0.55),
+            roughness: 0.86,
+            metalness: 0.05,
+            flatShading: false,
+            transparent: true,
+            opacity: 0
+        });
+
+        // Fetho signature crystalline sand sparkle & drifting wind shader injection
+        terrainMat.onBeforeCompile = (shader) => {
+            shader.uniforms.tTriangles = { value: sandTrianglesTex };
+            shader.uniforms.tWind = { value: windNoiseTex };
+            shader.uniforms.uTime = { value: 0 };
+            terrainMat.userData.shader = shader;
+
+            shader.fragmentShader = shader.fragmentShader.replace(
+                '#include <common>',
+                `
+                #include <common>
+
+                uniform sampler2D tTriangles;
+                uniform sampler2D tWind;
+                uniform float uTime;
+                `
+            );
+
+            shader.fragmentShader = shader.fragmentShader.replace(
+                '#include <map_fragment>',
+                `
+                #include <map_fragment>
+
+                // Fetho crystalline sand grain facets
+                vec2 crystalUv = vUv * 20.0;
+                float crystalGrain = texture2D(tTriangles, crystalUv).r;
+                diffuseColor.rgb += vec3(0.12, 0.14, 0.18) * pow(crystalGrain, 2.5);
+
+                // Fetho organic dune wind dust drift
+                vec2 windUv = vUv * 4.0 + vec2(-uTime * 0.012, -uTime * 0.015);
+                float windDust = texture2D(tWind, windUv).r;
+                diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.85, 0.88, 0.96), windDust * 0.10);
+                `
+            );
+        };
+
+        const terrain = new THREE.Mesh(terrainGeo, terrainMat);
+        terrain.receiveShadow = true;
+        terrain.position.y = -22;
+        terrain.visible = true;
+        scene.add(terrain);
+
+        // --- LAYER 1: MISTY VOLUMETRIC STARDUST (32,000 MICRO-PARTICLES) ---
+        const DUST_COUNT = 32000;
+        const dustGeo = new THREE.BufferGeometry();
+        const dustPositions = new Float32Array(DUST_COUNT * 3);
+        const dustColors = new Float32Array(DUST_COUNT * 3);
+        const dustData = [];
+
+        // Smooth radial gaussian particle texture
+        const pCanvas = document.createElement('canvas');
+        pCanvas.width = 128;
+        pCanvas.height = 128;
+        const pCtx = pCanvas.getContext('2d');
+        pCtx.clearRect(0, 0, 128, 128);
+        const grad = pCtx.createRadialGradient(64, 64, 0, 64, 64, 64);
+        grad.addColorStop(0, 'rgba(255,255,255,1)');
+        grad.addColorStop(0.2, 'rgba(235,240,255,0.75)');
+        grad.addColorStop(0.5, 'rgba(180,195,235,0.25)');
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        pCtx.fillStyle = grad;
+        pCtx.fillRect(0, 0, 128, 128);
+        const dustTexture = new THREE.CanvasTexture(pCanvas);
+
+        // Multi-lobe organic cluster attractors (creates the exact asymmetrical fluid explosion)
+        const lobes = [
+            { x: -0.6, y: 1.2, z: 0.2, weight: 0.32, spread: 2.6 },  // Main dense core
+            { x:  0.3, y: 3.4, z: -0.3, weight: 0.24, spread: 2.2 }, // Rising top plume
+            { x:  1.4, y: 1.2, z: 0.5, weight: 0.20, spread: 2.2 },  // Right billowing lobe
+            { x: -1.8, y: 2.6, z: -0.2, weight: 0.16, spread: 2.0 }, // Upper-left splash tendril
+            { x: -0.2, y: 4.2, z: -0.5, weight: 0.08, spread: 1.6 }  // High chimney burst
+        ];
+
+        function getOrganicPoint() {
+            const rnd = Math.random();
+            let chosen = lobes[0];
+            let acc = 0;
+            for (let l of lobes) {
+                acc += l.weight;
+                if (rnd <= acc) { chosen = l; break; }
+            }
+
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            const r = Math.pow(Math.random(), 0.75) * chosen.spread;
+
+            const px = chosen.x + r * Math.sin(phi) * Math.cos(theta);
+            const py = chosen.y + r * Math.sin(phi) * Math.sin(theta) * 1.15; // vertical elongation
+            const pz = chosen.z + r * Math.cos(phi) * 0.85;
+
+            return { x: px, y: py, z: pz };
+        }
+
+        for (let i = 0; i < DUST_COUNT; i++) {
+            const i3 = i * 3;
+            const pt = getOrganicPoint();
+
+            dustPositions[i3] = pt.x;
+            dustPositions[i3 + 1] = pt.y;
+            dustPositions[i3 + 2] = pt.z;
+
+            const coreDist = Math.sqrt(pt.x * pt.x + (pt.y - 1.2) * (pt.y - 1.2) + pt.z * pt.z);
+            const lum = Math.max(0.35, 1 - (coreDist / 7.0));
+
+            dustColors[i3] = 0.92 * lum;
+            dustColors[i3 + 1] = 0.95 * lum;
+            dustColors[i3 + 2] = 1.0 * lum;
+
+            const sDist = 0.35 + Math.random() * 0.75;
+            const sTheta = Math.random() * Math.PI * 2;
+            const sPhi = Math.acos(2 * Math.random() - 1);
+            const sx = sDist * Math.sin(sPhi) * Math.cos(sTheta) + (pt.x - (-0.2)) * 0.25;
+            const sy = sDist * Math.sin(sPhi) * Math.sin(sTheta) + (pt.y - 1.2) * 0.25;
+            const sz = sDist * Math.cos(sPhi) + (pt.z - 0.4) * 0.25;
+
+            dustData.push({
+                ox: pt.x, oy: pt.y, oz: pt.z,
+                sx: sx, sy: sy, sz: sz,
+                speed: 0.18 + Math.random() * 0.5,
+                freq: 0.25 + Math.random() * 0.35,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+
+        dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+        dustGeo.setAttribute('color', new THREE.BufferAttribute(dustColors, 3));
+
+        const dustMat = new THREE.PointsMaterial({
+            size: 0.16,
+            map: dustTexture,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.68,
+            blending: THREE.NormalBlending,
+            depthWrite: false
+        });
+
+        const dustPoints = new THREE.Points(dustGeo, dustMat);
+        scene.add(dustPoints);
+
+        // --- LAYER 2: ORGANIC PORCELAIN PEBBLES (2,800 INSTANCED STONES) ---
+        const PEBBLE_COUNT = 2800;
+        const pebbleGeo = new THREE.SphereGeometry(1, 10, 8);
+        const pPos = pebbleGeo.attributes.position;
+        for (let i = 0; i < pPos.count; i++) {
+            const vx = pPos.getX(i);
+            const vy = pPos.getY(i);
+            const vz = pPos.getZ(i);
+            const noise = 1 + (Math.sin(vx * 4.5) * Math.cos(vy * 4.5) * Math.sin(vz * 4.5)) * 0.16;
+            pPos.setXYZ(i, vx * noise, vy * noise * 0.85, vz * noise);
+        }
+        pebbleGeo.computeVertexNormals();
+
+        const pebbleMat = new THREE.MeshStandardMaterial({
+            color: 0xedeff6,
+            roughness: 0.68,
+            metalness: 0.04
+        });
+
+        const pebbleMesh = new THREE.InstancedMesh(pebbleGeo, pebbleMat, PEBBLE_COUNT);
+        pebbleMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+
+        const pebbleData = [];
+        const dummy = new THREE.Object3D();
+
+        for (let i = 0; i < PEBBLE_COUNT; i++) {
+            const pt = getOrganicPoint();
+
+            const scale = 0.020 + Math.pow(Math.random(), 3.0) * 0.11;
+            const rotX = Math.random() * Math.PI * 2;
+            const rotY = Math.random() * Math.PI * 2;
+            const rotZ = Math.random() * Math.PI * 2;
+
+            const psDist = 0.25 + Math.random() * 0.55;
+            const psTheta = Math.random() * Math.PI * 2;
+            const psPhi = Math.acos(2 * Math.random() - 1);
+            const psx = psDist * Math.sin(psPhi) * Math.cos(psTheta) + (pt.x - (-0.2)) * 0.20;
+            const psy = psDist * Math.sin(psPhi) * Math.sin(psTheta) + (pt.y - 1.2) * 0.20;
+            const psz = psDist * Math.cos(psPhi) + (pt.z - 0.4) * 0.20;
+
+            pebbleData.push({
+                ox: pt.x, oy: pt.y, oz: pt.z,
+                sx: psx, sy: psy, sz: psz,
+                scale: scale,
+                rx: rotX, ry: rotY, rz: rotZ,
+                speed: 0.12 + Math.random() * 0.4,
+                phase: Math.random() * Math.PI * 2
+            });
+
+            dummy.position.set(pt.x, pt.y, pt.z);
+            dummy.scale.set(scale, scale, scale);
+            dummy.rotation.set(rotX, rotY, rotZ);
+            dummy.updateMatrix();
+            pebbleMesh.setMatrixAt(i, dummy.matrix);
+        }
+        pebbleMesh.instanceMatrix.needsUpdate = true;
+        scene.add(pebbleMesh);
+
+        // --- LAYER 3: LUMINOUS HERO GLOWING ORBS (6 HERO SPHERES) ---
+        const HERO_COUNT = 6;
+        const heroOrbsGroup = new THREE.Group();
+
+        const haloCanvas = document.createElement('canvas');
+        haloCanvas.width = 128;
+        haloCanvas.height = 128;
+        const hCtx = haloCanvas.getContext('2d');
+        hCtx.clearRect(0, 0, 128, 128);
+        const hGrad = hCtx.createRadialGradient(64, 64, 0, 64, 64, 64);
+        hGrad.addColorStop(0, 'rgba(255,255,255,1)');
+        hGrad.addColorStop(0.25, 'rgba(240,245,255,0.45)');
+        hGrad.addColorStop(0.6, 'rgba(180,210,255,0.1)');
+        hGrad.addColorStop(1, 'rgba(255,255,255,0)');
+        hCtx.fillStyle = hGrad;
+        hCtx.fillRect(0, 0, 128, 128);
+        const haloTex = new THREE.CanvasTexture(haloCanvas);
+
+        const heroPositions = [
+            [-1.2, 0.7, 1.3, 0.28],
+            [-0.3, 2.1, 0.9, 0.24],
+            [ 0.7, 0.5, 1.4, 0.22],
+            [ 1.1, 2.7, 0.6, 0.26],
+            [-1.7, 2.4, 0.3, 0.20],
+            [ 0.1, -0.4, 1.5, 0.22]
+        ];
+
+        const heroOrbData = [];
+
+        heroPositions.forEach((hp, idx) => {
+            const orbGeo = new THREE.SphereGeometry(hp[3], 24, 24);
+            const orbMat = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                roughness: 0.15,
+                metalness: 0.05,
+                emissive: 0xffffff,
+                emissiveIntensity: 2.8
+            });
+            const orb = new THREE.Mesh(orbGeo, orbMat);
+            orb.position.set(hp[0], hp[1], hp[2]);
+
+            const haloMat = new THREE.SpriteMaterial({
+                map: haloTex,
+                transparent: true,
+                opacity: 0.75,
+                blending: THREE.AdditiveBlending
+            });
+            const halo = new THREE.Sprite(haloMat);
+            halo.scale.set(hp[3] * 4.8, hp[3] * 4.8, 1);
+            orb.add(halo);
+
+            heroOrbsGroup.add(orb);
+            heroOrbData.push({
+                mesh: orb,
+                ox: hp[0], oy: hp[1], oz: hp[2],
+                speed: 0.3 + idx * 0.1,
+                phase: idx * 1.2
+            });
+        });
+
+        scene.add(heroOrbsGroup);
+
+        // 3. PHOTOREALISTIC HUMAN-SCALE APOLLO ASTRONAUT MODEL
+        const astronautGroup = new THREE.Group();
+        astronautGroup.position.set(0, -5.19, -2.9);
+        const LOCKED_ASTRO_SCALE = 0.88;
+        astronautGroup.scale.set(LOCKED_ASTRO_SCALE, LOCKED_ASTRO_SCALE, LOCKED_ASTRO_SCALE);
+
+        const astronautMeshHolder = new THREE.Group();
+        astronautGroup.add(astronautMeshHolder);
+
+        // Procedural woven fabric & wrinkle bump texture
+        const suitCanvas = document.createElement('canvas');
+        suitCanvas.width = 256;
+        suitCanvas.height = 256;
+        const sctx = suitCanvas.getContext('2d');
+        sctx.fillStyle = '#808080';
+        sctx.fillRect(0, 0, 256, 256);
+        for (let y = 0; y < 256; y += 4) {
+            sctx.fillStyle = (y % 8 === 0) ? '#6c707c' : '#9296a2';
+            sctx.fillRect(0, y, 256, 2);
+        }
+        for (let i = 0; i < 7000; i++) {
+            const rx = Math.random() * 256;
+            const ry = Math.random() * 256;
+            const lum = 115 + Math.random() * 45;
+            sctx.fillStyle = `rgb(${lum},${lum},${lum})`;
+            sctx.fillRect(rx, ry, 1, 1);
+        }
+        const suitBumpTex = new THREE.CanvasTexture(suitCanvas);
+        suitBumpTex.wrapS = THREE.RepeatWrapping;
+        suitBumpTex.wrapT = THREE.RepeatWrapping;
+        suitBumpTex.repeat.set(8, 8);
+
+        // Photorealistic PBR Materials matching Apollo lunar EVA Beta Cloth
+        const suitMat = new THREE.MeshStandardMaterial({
+            color: 0xc4c8d4,
+            roughness: 0.80,
+            metalness: 0.08,
+            bumpMap: suitBumpTex,
+            bumpScale: 0.035
+        });
+
+        const darkStrapMat = new THREE.MeshStandardMaterial({
+            color: 0x323644,
+            roughness: 0.85,
+            metalness: 0.14
+        });
+
+        const jointMat = new THREE.MeshStandardMaterial({
+            color: 0x5a6070,
+            roughness: 0.72,
+            metalness: 0.18
+        });
+
+        const visorMat = new THREE.MeshStandardMaterial({
+            color: 0xc89e2e,
+            roughness: 0.06,
+            metalness: 0.96
+        });
+
+        const packMat = new THREE.MeshStandardMaterial({
+            color: 0xd0d4e0,
+            roughness: 0.68,
+            metalness: 0.14
+        });
+
+        const metalTrimMat = new THREE.MeshStandardMaterial({
+            color: 0x8a90a0,
+            roughness: 0.32,
+            metalness: 0.78
+        });
+
+        // --- HELMET ASSEMBLY (Y = 1.96m, feet at 0) ---
+        const helmetGroup = new THREE.Group();
+        helmetGroup.position.set(0, 1.96, 0);
+
+        const helmetShell = new THREE.Mesh(new THREE.SphereGeometry(0.18, 32, 28), suitMat);
+        helmetShell.castShadow = true;
+        helmetGroup.add(helmetShell);
+
+        const visor = new THREE.Mesh(new THREE.SphereGeometry(0.145, 24, 20), visorMat);
+        visor.position.set(0, 0.01, 0.075);
+        visor.scale.set(0.95, 0.90, 0.90);
+        helmetGroup.add(visor);
+
+        const neckRing = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.022, 12, 28), metalTrimMat);
+        neckRing.position.set(0, -0.15, 0);
+        neckRing.rotation.x = Math.PI / 2;
+        helmetGroup.add(neckRing);
+
+        astronautMeshHolder.add(helmetGroup);
+
+        // --- TORSO ASSEMBLY (Y = 1.44m, feet at 0) ---
+        const torsoGroup = new THREE.Group();
+        torsoGroup.position.set(0, 1.44, 0);
+
+        // Tapered chest & back
+        const chest = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.17, 0.52, 24), suitMat);
+        chest.castShadow = true;
+        torsoGroup.add(chest);
+
+        // Abdomen / waist
+        const waist = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.165, 0.20, 24), suitMat);
+        waist.position.set(0, -0.28, 0);
+        waist.castShadow = true;
+        torsoGroup.add(waist);
+
+        // Front RCU chest box (Apollo Remote Control Unit)
+        const rcuBox = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.18, 0.08), metalTrimMat);
+        rcuBox.position.set(0, 0.08, 0.19);
+        rcuBox.castShadow = true;
+        torsoGroup.add(rcuBox);
+
+        // Shoulder Harness Straps
+        const strapL = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.54, 0.015), darkStrapMat);
+        strapL.position.set(-0.12, 0, 0.165);
+        torsoGroup.add(strapL);
+
+        const strapR = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.54, 0.015), darkStrapMat);
+        strapR.position.set(0.12, 0, 0.165);
+        torsoGroup.add(strapR);
+
+        const bStrapL = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.54, 0.015), darkStrapMat);
+        bStrapL.position.set(-0.12, 0, -0.165);
+        torsoGroup.add(bStrapL);
+
+        const bStrapR = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.54, 0.015), darkStrapMat);
+        bStrapR.position.set(0.12, 0, -0.165);
+        torsoGroup.add(bStrapR);
+
+        const waistBelt = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.06, 24), darkStrapMat);
+        waistBelt.position.set(0, -0.36, 0);
+        torsoGroup.add(waistBelt);
+
+        // --- BACKPACK (PLSS - Portable Life Support System) ---
+        const plssGroup = new THREE.Group();
+        plssGroup.position.set(0, 0.08, -0.21);
+
+        const plssMain = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.46, 0.16), packMat);
+        plssMain.castShadow = true;
+        plssGroup.add(plssMain);
+
+        const plssTop = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.07, 0.13), darkStrapMat);
+        plssTop.position.set(0, 0.25, 0);
+        plssGroup.add(plssTop);
+
+        const tankL = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.38, 16), metalTrimMat);
+        tankL.position.set(-0.15, -0.02, 0.01);
+        tankL.castShadow = true;
+        plssGroup.add(tankL);
+
+        const tankR = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.38, 16), metalTrimMat);
+        tankR.position.set(0.15, -0.02, 0.01);
+        tankR.castShadow = true;
+        plssGroup.add(tankR);
+
+        // Umbilical corrugated hoses curving into waist
+        const hoseCurveL = new THREE.CatmullRomCurve3([
+            new THREE.Vector3(-0.12, -0.16, 0),
+            new THREE.Vector3(-0.20, -0.12, 0.10),
+            new THREE.Vector3(-0.14, -0.08, 0.24)
+        ]);
+        const hoseGeoL = new THREE.TubeGeometry(hoseCurveL, 16, 0.018, 8, false);
+        const hoseL = new THREE.Mesh(hoseGeoL, jointMat);
+        plssGroup.add(hoseL);
+
+        const hoseCurveR = new THREE.CatmullRomCurve3([
+            new THREE.Vector3(0.12, -0.16, 0),
+            new THREE.Vector3(0.20, -0.12, 0.10),
+            new THREE.Vector3(0.14, -0.08, 0.24)
+        ]);
+        const hoseGeoR = new THREE.TubeGeometry(hoseCurveR, 16, 0.018, 8, false);
+        const hoseR = new THREE.Mesh(hoseGeoR, jointMat);
+        plssGroup.add(hoseR);
+
+        torsoGroup.add(plssGroup);
+        astronautMeshHolder.add(torsoGroup);
+
+        // --- ARMS & GLOVES (Naturally relaxed human pose) ---
+        function createArm(isLeft) {
+            const arm = new THREE.Group();
+            const sign = isLeft ? -1 : 1;
+            arm.position.set(sign * 0.25, 1.64, 0);
+
+            const shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.082, 16, 16), suitMat);
+            shoulder.castShadow = true;
+            arm.add(shoulder);
+
+            const upperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.058, 0.30, 16), suitMat);
+            upperArm.position.set(sign * 0.04, -0.16, 0);
+            upperArm.rotation.z = sign * 0.16;
+            upperArm.rotation.x = -0.04;
+            upperArm.castShadow = true;
+            arm.add(upperArm);
+
+            const elbow = new THREE.Mesh(new THREE.TorusGeometry(0.058, 0.016, 8, 16), jointMat);
+            elbow.position.set(sign * 0.07, -0.31, 0);
+            elbow.rotation.x = Math.PI / 2;
+            arm.add(elbow);
+
+            const forearm = new THREE.Mesh(new THREE.CylinderGeometry(0.058, 0.050, 0.28, 16), suitMat);
+            forearm.position.set(sign * 0.08, -0.45, 0.03);
+            forearm.rotation.z = sign * -0.08;
+            forearm.rotation.x = 0.14;
+            forearm.castShadow = true;
+            arm.add(forearm);
+
+            const wristRing = new THREE.Mesh(new THREE.TorusGeometry(0.050, 0.012, 8, 16), metalTrimMat);
+            wristRing.position.set(sign * 0.075, -0.59, 0.05);
+            wristRing.rotation.x = Math.PI / 2;
+            arm.add(wristRing);
+
+            const glove = new THREE.Mesh(new THREE.BoxGeometry(0.062, 0.11, 0.055), darkStrapMat);
+            glove.position.set(sign * 0.075, -0.66, 0.06);
+            glove.castShadow = true;
+            arm.add(glove);
+
+            return arm;
+        }
+
+        const leftArm = createArm(true);
+        const rightArm = createArm(false);
+        astronautMeshHolder.add(leftArm);
+        astronautMeshHolder.add(rightArm);
+
+        // --- LEGS & OVERBOOTS (Human proportional length & natural relaxed stance) ---
+        function createLeg(isLeft) {
+            const leg = new THREE.Group();
+            const sign = isLeft ? -1 : 1;
+            leg.position.set(sign * 0.11, 1.05, isLeft ? -0.02 : 0.02);
+            leg.rotation.z = sign * -0.04;
+            leg.rotation.x = isLeft ? -0.03 : 0.03;
+
+            const thigh = new THREE.Mesh(new THREE.CylinderGeometry(0.088, 0.074, 0.44, 16), suitMat);
+            thigh.position.set(0, -0.22, 0);
+            thigh.castShadow = true;
+            leg.add(thigh);
+
+            const knee = new THREE.Mesh(new THREE.TorusGeometry(0.074, 0.016, 8, 16), jointMat);
+            knee.position.set(0, -0.45, 0.015);
+            knee.rotation.x = Math.PI / 2;
+            leg.add(knee);
+
+            const shin = new THREE.Mesh(new THREE.CylinderGeometry(0.074, 0.066, 0.42, 16), suitMat);
+            shin.position.set(0, -0.68, 0.01);
+            shin.castShadow = true;
+            leg.add(shin);
+
+            const ankleRing = new THREE.Mesh(new THREE.TorusGeometry(0.066, 0.014, 8, 16), metalTrimMat);
+            ankleRing.position.set(0, -0.90, 0.01);
+            ankleRing.rotation.x = Math.PI / 2;
+            leg.add(ankleRing);
+
+            const bootGroup = new THREE.Group();
+            bootGroup.position.set(0, -0.97, 0.04);
+            bootGroup.rotation.y = sign * 0.06;
+
+            const bootBody = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.10, 0.22), suitMat);
+            bootBody.castShadow = true;
+            bootGroup.add(bootBody);
+
+            const bootSole = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.04, 0.24), darkStrapMat);
+            bootSole.position.set(0, -0.06, 0);
+            bootSole.castShadow = true;
+            bootGroup.add(bootSole);
+
+            leg.add(bootGroup);
+            return leg;
+        }
+
+        const leftLeg = createLeg(true);
+        const rightLeg = createLeg(false);
+        astronautMeshHolder.add(leftLeg);
+        astronautMeshHolder.add(rightLeg);
+
+        // Ground Contact AO Shadow directly under boots on the terrain plane
+        const shadowCanvas = document.createElement('canvas');
+        shadowCanvas.width = 128;
+        shadowCanvas.height = 128;
+        const shCtx = shadowCanvas.getContext('2d');
+        const shGrad = shCtx.createRadialGradient(64, 64, 6, 64, 64, 64);
+        shGrad.addColorStop(0, 'rgba(6, 8, 14, 0.95)');
+        shGrad.addColorStop(0.35, 'rgba(6, 8, 14, 0.65)');
+        shGrad.addColorStop(1, 'rgba(6, 8, 14, 0)');
+        shCtx.fillStyle = shGrad;
+        shCtx.fillRect(0, 0, 128, 128);
+        const contactShadowTex = new THREE.CanvasTexture(shadowCanvas);
+        const contactShadow = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.3, 0.9),
+            new THREE.MeshBasicMaterial({
+                map: contactShadowTex,
+                transparent: true,
+                opacity: 0.92,
+                depthWrite: false
+            })
+        );
+        contactShadow.rotation.x = -Math.PI / 2;
+        contactShadow.position.set(0, 0.01, 0.04);
+        astronautGroup.add(contactShadow);
+
+        // Load Official Photorealistic NASA Apollo Spacesuit Model via GLTFLoader
+        if (window.THREE && THREE.GLTFLoader) {
+            const gltfLoader = new THREE.GLTFLoader();
+            gltfLoader.load('/Astronaut.glb', (gltf) => {
+                const gltfAstro = gltf.scene;
+                // Astronaut.glb height = 2.01m, feet at y = 0
+                gltfAstro.rotation.y = 0; // Inside astronautMeshHolder (Math.PI) -> faces into crater horizon, showing backpack & back
+                gltfAstro.position.set(0, 0, 0);
+                gltfAstro.traverse((child) => {
+                    if (child.isMesh) {
+                        child.castShadow = true;
+                        child.receiveShadow = true;
+                    }
+                });
+                // Seamlessly swap procedural placeholder with photorealistic GLTF model
+                while (astronautMeshHolder.children.length > 0) {
+                    astronautMeshHolder.remove(astronautMeshHolder.children[0]);
+                }
+                astronautMeshHolder.add(gltfAstro);
+            }, undefined, (err) => {
+                console.warn('GLTF load status:', err);
+            });
+        }
+
+        // Walking stance: naturally looking into the crater horizon (facing away from camera)
+        astronautMeshHolder.rotation.y = Math.PI;
+        astronautGroup.rotation.y = 0;
+        astronautGroup.visible = false;
+        scene.add(astronautGroup);
+
+        // --- SCROLL DRIVER ---
+        let scrollProgress = 0;
+        let targetScrollProgress = 0;
+
+        function updateScroll() {
+            const rect = track.getBoundingClientRect();
+            const totalScroll = track.offsetHeight - window.innerHeight;
+            if (totalScroll <= 0) return;
+            const current = -rect.top;
+            targetScrollProgress = Math.max(0, Math.min(1, current / totalScroll));
+        }
+
+        // Check query param for instant frame preview (e.g. ?p=0.45 or ?p=0.85)
+        const urlParams = new URLSearchParams(window.location.search);
+        const forcedP = urlParams.get('p');
+        if (forcedP !== null) {
+            targetScrollProgress = parseFloat(forcedP);
+            scrollProgress = parseFloat(forcedP);
+        } else {
+            window.addEventListener('scroll', updateScroll, { passive: true });
+            updateScroll();
+        }
+
+        // Mouse Parallax
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+        window.addEventListener('mousemove', function(e) {
+            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- ANIMATION LOOP ---
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = clock.getElapsedTime();
+
+            if (forcedP === null) {
+                scrollProgress += (targetScrollProgress - scrollProgress) * 0.08;
+            }
+            mouseX += (targetMouseX - mouseX) * 0.05;
+            mouseY += (targetMouseY - mouseY) * 0.05;
+
+            const p = scrollProgress;
+
+            // Camera Timeline (Exact alignment)
+            let camY, camZ, lookY, lookZ;
+
+            if (p < 0.25) {
+                camY = 0;
+                camZ = 16;
+                lookY = 0.6;
+                lookZ = 0;
+            } else if (p < 0.65) {
+                const f = (p - 0.25) / 0.40;
+                camY = THREE.MathUtils.lerp(0, 2.8, f);
+                camZ = THREE.MathUtils.lerp(16, 12.5, f);
+                lookY = THREE.MathUtils.lerp(0.6, -0.7, f);
+                lookZ = THREE.MathUtils.lerp(0, -1.8, f);
+            } else {
+                // Cinematic Scroll Trigger Zoom onto the Astronaut
+                const f = (p - 0.65) / 0.35;
+                const easeZoom = f * f * (3 - 2 * f);
+                camY = THREE.MathUtils.lerp(2.8, -2.4, easeZoom);
+                camZ = THREE.MathUtils.lerp(12.5, 3.8, easeZoom);
+                lookY = THREE.MathUtils.lerp(-0.7, -4.3, easeZoom);
+                lookZ = THREE.MathUtils.lerp(-1.8, -2.9, easeZoom);
+            }
+
+            camera.position.x = mouseX * 0.7;
+            camera.position.y = camY - mouseY * 0.45;
+            camera.position.z = camZ;
+            camera.lookAt(0, lookY, lookZ);
+
+            // Terrain Continuous Parallax (Fixed abrupt snap: smoothly fades in/out between p=0.10 and p=0.25)
+            if (p < 0.10) {
+                terrain.position.y = -24;
+                terrainMat.opacity = 0;
+            } else if (p < 0.25) {
+                const fIn = (p - 0.10) / 0.15;
+                const easeIn = fIn * fIn * (3 - 2 * fIn);
+                terrain.position.y = THREE.MathUtils.lerp(-24, -12, easeIn);
+                terrainMat.opacity = easeIn;
+            } else if (p < 0.65) {
+                const f = (p - 0.25) / 0.40;
+                terrain.position.y = THREE.MathUtils.lerp(-12, 0, Math.min(1, f * 1.5));
+                terrainMat.opacity = 1.0;
+            } else {
+                terrain.position.y = 0;
+                terrainMat.opacity = 1.0;
+            }
+
+            // Particles
+            let cloudY = 0;
+            if (p >= 0.28) {
+                cloudY = THREE.MathUtils.lerp(0, 4.6, Math.min(1, (p - 0.28) / 0.35));
+            }
+            dustPoints.position.set(0, cloudY, 0);
+            pebbleMesh.position.set(0, cloudY, 0);
+            heroOrbsGroup.position.set(0, cloudY, 0);
+
+            dustPoints.rotation.y = time * 0.07 + p * 0.7;
+            pebbleMesh.rotation.y = time * 0.07 + p * 0.7;
+            heroOrbsGroup.rotation.y = time * 0.07 + p * 0.7;
+
+            // Scatter Trigger Effect: slightly scattered at initial screen (p=0), coalescing into the exact plume as you scroll down
+            const coalesceP = Math.min(1.0, p / 0.10);
+            const scatterFactor = 1.0 - (coalesceP * coalesceP * (3 - 2 * coalesceP));
+
+            // 1. Stardust Animation (Harmonic fluid drift + scroll coalesce trigger)
+            const posAttr = dustGeo.attributes.position;
+            const posArr = posAttr.array;
+            for (let i = 0; i < DUST_COUNT; i++) {
+                const i3 = i * 3;
+                const d = dustData[i];
+                const wave = Math.sin(time * d.speed + d.phase);
+                posArr[i3] = d.ox + d.sx * scatterFactor + Math.sin(time * d.freq + d.phase) * 0.18;
+                posArr[i3 + 1] = d.oy + d.sy * scatterFactor + wave * 0.22;
+                posArr[i3 + 2] = d.oz + d.sz * scatterFactor + Math.cos(time * d.freq + d.phase) * 0.18;
+            }
+            posAttr.needsUpdate = true;
+
+            // 2. Organic Pebbles Animation
+            for (let i = 0; i < PEBBLE_COUNT; i++) {
+                const pb = pebbleData[i];
+                const wave = Math.sin(time * pb.speed + pb.phase);
+                dummy.position.set(
+                    pb.ox + pb.sx * scatterFactor + Math.sin(time * 0.3 + pb.phase) * 0.2,
+                    pb.oy + pb.sy * scatterFactor + wave * 0.25,
+                    pb.oz + pb.sz * scatterFactor + Math.cos(time * 0.3 + pb.phase) * 0.2
+                );
+                dummy.scale.set(pb.scale, pb.scale, pb.scale);
+                dummy.rotation.set(pb.rx + time * 0.1, pb.ry + time * 0.08, pb.rz);
+                dummy.updateMatrix();
+                pebbleMesh.setMatrixAt(i, dummy.matrix);
+            }
+            pebbleMesh.instanceMatrix.needsUpdate = true;
+
+            // 3. Hero Luminous Orbs Breathing
+            heroOrbData.forEach((h) => {
+                const wave = Math.sin(time * h.speed + h.phase);
+                h.mesh.position.set(
+                    h.ox + Math.sin(time * 0.4 + h.phase) * 0.25,
+                    h.oy + wave * 0.3,
+                    h.oz + Math.cos(time * 0.4 + h.phase) * 0.25
+                );
+            });
+
+            // Frame 3: Astronaut
+            if (p >= 0.50) {
+                astronautGroup.visible = true;
+                const astroAlpha = Math.min(1, (p - 0.50) / 0.15);
+                // LOCKED SIZE: Absolutely no dynamic growing/inflating on scroll
+                astronautGroup.scale.set(LOCKED_ASTRO_SCALE, LOCKED_ASTRO_SCALE, LOCKED_ASTRO_SCALE);
+                astronautGroup.position.set(0, -5.19 + Math.sin(time * 1.0) * 0.008, -2.9);
+                astroSpotlight.intensity = 3.2 * astroAlpha;
+                astroSpotlight.position.set(0, 7, -2.0);
+                astroSpotlight.target.position.set(0, -5.19, -2.9);
+            } else {
+                astronautGroup.visible = false;
+                astroSpotlight.intensity = 0;
+            }
+
+            // DOM Typography (Frame 1 bottom stays 100% solid white until scroll passes 0.08, then cleanly dissolves)
+            if (p < 0.22) {
+                const f1Alpha = p < 0.08 ? 1 : Math.max(0, 1 - ((p - 0.08) / 0.14));
+                frame1Bottom.style.opacity = f1Alpha;
+                frame1Bottom.style.transform = `translateY(${p * 60}px) scale(${1 - p * 0.08})`;
+            } else {
+                frame1Bottom.style.opacity = 0;
+            }
+
+            if (p >= 0.28) {
+                const splitAlpha = Math.min(1, (p - 0.28) / 0.18);
+                splitTypo.style.opacity = splitAlpha;
+                splitTypo.style.transform = `translateY(${Math.max(0, (1 - splitAlpha) * 30)}px)`;
+            } else {
+                splitTypo.style.opacity = 0;
+                splitTypo.style.transform = 'translateY(30px)';
+            }
+
+            if (terrainMat && terrainMat.userData && terrainMat.userData.shader) {
+                terrainMat.userData.shader.uniforms.uTime.value = time;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    }
+    initFethoHeroScene();
+})();
+</script>
+</body>
+</html>
+

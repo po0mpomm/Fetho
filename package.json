@@ -4,6 +4,7 @@
   "description": "Local server for Fetho website",
   "main": "server.js",
   "scripts": {
+    "build": "node build.js",
     "start": "node server.js"
   },
   "keywords": [],

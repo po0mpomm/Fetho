@@ -1,0 +1,1615 @@
+﻿/* ================================================================
+   FETHO â€” Production CSS
+   Complete standalone design system.
+================================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --color-dark:#08080a;--color-dark-2:#0f0f12;--color-dark-3:#161619;
+  --color-surface:#faf9f6;--color-surface-2:#f0ede8;--color-surface-3:#e8e5df;
+  --color-gold:#fff15a;--color-gold-dim:#e6c832;--color-teal:#28bea0;
+  --color-blue:#006494;--color-text:#313638;--color-text-muted:#6b7280;
+  --color-text-light:#9ca3af;--color-white:#ffffff;--color-cream:#fefdfb;
+  --font-display:"Aeonik",-apple-system,sans-serif;
+  --font-body:"Aeonik",-apple-system,sans-serif;
+  --radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--radius-full:9999px;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 8px 24px rgba(0,0,0,.10);
+  --shadow-lg:0 20px 60px rgba(0,0,0,.15);--shadow-dark:0 20px 60px rgba(0,0,0,.45);
+  --section-gap:120px;--container-max:1320px;--container-pad:clamp(20px,5vw,60px);
+  --transition-fast:.15s cubic-bezier(.16,1,.3,1);--transition-base:.3s cubic-bezier(.16,1,.3,1);
+  --transition-slow:.5s cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--color-text);background:var(--color-dark);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;visibility:visible!important}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}button{cursor:pointer;border:none;background:none;font:inherit}
+
+.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+.body-inner{padding-top:0!important;margin-top:0!important;border-radius:0!important}
+#main{margin:0!important;padding:0!important}
+.section-gap{padding:var(--section-gap) 0}
+
+/* NAVBAR */
+.header{position:fixed!important;top:0!important;left:0!important;right:0!important;width:100%!important;max-width:100%!important;margin:0!important;padding:20px 40px!important;box-sizing:border-box!important;z-index:9999!important;background:transparent!important;transform:translateY(0);transition:transform .4s cubic-bezier(.16,1,.3,1),background-color .3s ease,backdrop-filter .3s ease,box-shadow .3s ease,padding .3s ease!important;will-change:transform}
+.header.header--hidden{transform:translateY(-135%)!important;pointer-events:none!important}
+.header.header--scrolled{background-color:rgba(8,8,10,.92)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;padding:12px 40px!important;box-shadow:0 10px 40px rgba(0,0,0,.5)!important;border-bottom:1px solid rgba(255,255,255,.07)!important}
+.header .container{display:flex;flex-direction:column;gap:6px}
+.header .d-flex{display:flex}.header .justify-content-between{justify-content:space-between}.header .align-items-center{align-items:center}.header .col-auto{flex:0 0 auto}.header .ms-auto{margin-left:auto}
+.header .header-top-right-contact{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.75);font-family:var(--font-body)}
+.header .header-top-right-contact a{color:rgba(255,255,255,.8);transition:color var(--transition-fast)}
+.header .header-top-right-contact a:hover{color:var(--color-gold)}
+.header .header-top-right-contact svg{opacity:.4}
+.header .logo{display:flex;align-items:center}.header .logo a{display:flex;align-items:center}
+.header .logo lottie-player{width:80px!important;height:50px!important;filter:brightness(0) invert(1)!important}
+.header .navigation-bar-wrapper{display:flex;align-items:center;gap:32px;background:transparent!important;box-shadow:none!important;border:none!important;backdrop-filter:none!important}
+.header .navigation-bar{display:flex;align-items:center}
+.header .nav-menu{display:flex;align-items:center;gap:0;list-style:none;margin:0;padding:0}
+.header .nav-menu li{position:relative;display:flex;align-items:center}
+.header .nav-menu li+li::before{content:"";display:block;width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 16px}
+.header .nav-menu li a{font-family:var(--font-body);font-size:13.5px;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.01em;text-shadow:0 1px 4px rgba(0,0,0,.5);transition:color var(--transition-fast);white-space:nowrap}
+.header .nav-menu li a:hover{color:var(--color-gold)}
+.header .navRight{display:flex;align-items:center;gap:12px}
+.header .navbar_toggler{display:none}
+.header .navRight .btn_.primary{display:inline-flex!important;align-items:center!important;gap:8px!important;padding:8px 20px!important;background:var(--color-gold)!important;color:var(--color-dark)!important;border-radius:var(--radius-full)!important;font-family:var(--font-body)!important;font-weight:700!important;font-size:13px!important;letter-spacing:.02em!important;text-shadow:none!important;border:none!important;transition:transform var(--transition-fast),box-shadow var(--transition-fast)!important;white-space:nowrap!important}
+.header .navRight .btn_.primary:hover{background:#ffe224!important;transform:translateY(-1px)!important;box-shadow:0 6px 20px rgba(255,241,90,.4)!important}
+.header .navRight .btn_.primary svg path{fill:var(--color-dark)!important}
+.header .navRight .btn_.primary span{display:inline-flex;align-items:center;background:transparent!important;width:auto!important;height:auto!important;border-radius:0!important}
+
+/* HERO */
+#home-home-banner-block-1.fetho-hero-fullpage,.banner-section.fetho-hero-fullpage{position:relative!important;height:100vh!important;min-height:700px!important;width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;margin:0!important;padding:120px 24px 80px!important;box-sizing:border-box!important;background-color:var(--color-dark)!important;z-index:2!important}
+#fetho-gradient-waves-bg.gradient-waves-container{position:absolute!important;inset:0!important;overflow:hidden!important;z-index:1!important;pointer-events:auto!important;background-color:var(--color-dark)!important}
+#fetho-gradient-waves-bg.gradient-waves-container canvas{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important}
+.fetho-banner-content{position:relative!important;z-index:3!important}
+.banner-caption{text-align:center!important;max-width:900px!important;margin:0 auto!important}
+.banner-caption h1{font-family:var(--font-display)!important;font-size:clamp(80px,16vw,200px)!important;font-weight:400!important;line-height:.9!important;letter-spacing:.01em!important;color:var(--color-white)!important;text-shadow:0 4px 40px rgba(0,0,0,.8)!important;margin-bottom:0!important;display:block!important}
+.banner-caption .location{display:block!important;font-family:var(--font-body)!important;font-size:13px!important;font-weight:700!important;letter-spacing:.3em!important;color:var(--color-gold)!important;text-transform:uppercase!important;margin:20px auto 0!important;text-shadow:0 2px 8px rgba(0,0,0,.6)!important;white-space:nowrap!important;writing-mode:horizontal-tb!important;text-orientation:mixed!important;width:auto!important}
+.banner-caption p{font-family:var(--font-body)!important;font-size:clamp(15px,2vw,18px)!important;font-weight:400!important;line-height:1.7!important;color:rgba(255,255,255,.85)!important;max-width:620px!important;margin:28px auto 0!important;text-shadow:0 2px 10px rgba(0,0,0,.6)!important}
+
+/* SCROLL HINT */
+.hero-scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.5);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-family:var(--font-body)}
+.hero-scroll-hint::after{content:"";display:block;width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.5}50%{transform:scaleY(1.4);opacity:1}}
+
+/* SECTION 2 REMOVED */
+
+/* SECTION 3 SERVICES */
+#home-services-block-3{background:var(--color-surface);padding:80px 0 120px!important}
+.service-wrapper{display:grid;grid-template-columns:80px 1fr;gap:60px;align-items:start}
+.service-ring{position:sticky;top:120px;display:flex;flex-direction:column;gap:16px}
+.service-number{width:48px;height:48px;border-radius:50%;border:2px solid var(--color-surface-3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--transition-base);background:transparent}
+.service-number .number{font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-text-light);letter-spacing:.05em;transition:color var(--transition-base)}
+.service-number:hover,.service-number.active{border-color:var(--color-dark);background:var(--color-dark)}
+.service-number:hover .number,.service-number.active .number{color:var(--color-gold)}
+.service-right{display:flex;flex-direction:column}
+.service-boxes{display:flex;flex-direction:column;gap:0}
+.service-box{padding:40px 0;border-bottom:1px solid var(--color-surface-3);transition:all var(--transition-base)}
+.service-box:first-child{border-top:1px solid var(--color-surface-3)}
+.service-box h2{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--color-dark);line-height:1.1;margin-bottom:16px;display:flex;align-items:flex-start;gap:8px}
+.service-box h2 sup{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--color-text-muted);line-height:1;margin-top:8px;letter-spacing:.05em}
+.service-box p{font-family:var(--font-body);font-size:15px;font-weight:400;line-height:1.8;color:var(--color-text-muted);max-width:640px}
+.service-box:hover{padding-left:16px}.service-box:hover h2{color:var(--color-blue)}
+.text-end{text-align:right;margin-top:40px}
+
+/* BTN PRIMARY */
+.btn_.primary,a.btn_.primary{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body)!important;font-size:14px!important;font-weight:700!important;color:var(--color-dark)!important;background:transparent!important;border:none!important;letter-spacing:.02em;transition:gap var(--transition-fast),color var(--transition-fast);text-decoration:none}
+.btn_.primary:hover{gap:14px;color:var(--color-blue)!important}
+.btn_.primary span{display:inline-flex;align-items:center;width:24px;height:24px;background:var(--color-dark);border-radius:50%;justify-content:center;transition:background var(--transition-fast),transform var(--transition-fast);flex-shrink:0}
+.btn_.primary span svg path{fill:var(--color-surface)!important}
+.btn_.primary:hover span{background:var(--color-blue);transform:rotate(-45deg)}
+
+/* SECTION 4 MARQUEE */
+#home-featured-text-block-4{background:var(--color-dark);overflow:hidden;padding:0!important}
+.overflow-wrapper{position:relative;overflow:hidden}
+.circle-logo{position:absolute;right:6%;top:50%;transform:translateY(-50%);z-index:10;width:150px;height:150px}
+.circle-logo a{display:flex;align-items:center;justify-content:center;width:150px;height:150px;animation:rotateSlow 20s linear infinite}
+@keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.featured-text-marquee{display:flex;white-space:nowrap;padding:48px 0}
+.featured-text-marquee-inner{display:flex;gap:60px;animation:marqueeScroll 20s linear infinite;flex-shrink:0}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.featured-text-marquee-inner span{font-family:var(--font-display);font-size:clamp(40px,7vw,80px);color:var(--color-white);line-height:1;opacity:.9}
+.featured-text-marquee-inner .dot{font-size:clamp(20px,3vw,36px);color:var(--color-gold);opacity:.8}
+
+/* SECTION 5 WORK */
+#home-work-block-5{background:var(--color-dark);padding:80px 0 120px!important}
+.work-section-title{font-family:var(--font-display);font-size:clamp(32px,5vw,56px);font-weight:400;color:var(--color-white);margin-bottom:0}
+.work-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.work-cart{border-radius:var(--radius-md);overflow:hidden;aspect-ratio:4/3;background:var(--color-dark-3);position:relative}
+.work-cart img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);filter:brightness(.85)}
+.work-cart:hover img{transform:scale(1.04);filter:brightness(1)}
+
+/* SECTION 6 CLIENTS */
+.client{background:var(--color-dark);padding:80px 0 120px!important}
+.client-wrapper{display:flex;flex-direction:column;gap:60px}
+.client-wrapper h2{font-family:var(--font-display);font-size:clamp(32px,5vw,56px);font-weight:400;color:var(--color-white)!important;margin:0!important}
+.clients-scroll{display:flex;flex-direction:column;gap:0}
+.client-row{display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:all var(--transition-base)}
+.client-row:first-child{border-top:1px solid rgba(255,255,255,.08)}
+.client-row:hover{padding-left:12px}
+.left-col{display:flex;align-items:center;gap:40px}
+.client-desc{display:flex;flex-direction:column;gap:16px;max-width:480px}
+.client-desc p{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
+.client-desc .btn_.primary{color:var(--color-white)!important}
+.client-desc .btn_.primary span{background:var(--color-gold)}
+.client-desc .btn_.primary span svg path{fill:var(--color-dark)!important}
+.client-desc .btn_.primary:hover{color:var(--color-gold)!important}
+.client-logo{flex-shrink:0;display:flex;align-items:center}
+.client-logo svg{opacity:.65;transition:opacity var(--transition-base);filter:invert(1) brightness(100)}
+.client-row:hover .client-logo svg{opacity:1}
+.right-col h4{font-family:var(--font-body);font-size:13px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.15em;text-transform:uppercase}
+
+/* PARTNER LOGOS */
+.partner-logos-section{background:var(--color-surface);padding:60px 0!important}
+.nav-tabs-container{overflow:hidden}
+ul.partner-logos{display:flex;align-items:center;flex-wrap:wrap;gap:40px 60px;list-style:none;padding:0;margin:0}
+ul.partner-logos li svg{opacity:.5;transition:opacity var(--transition-base);filter:grayscale(1)}
+ul.partner-logos li:hover svg{opacity:.9;filter:grayscale(0)}
+
+/* ABOUT SECTION */
+.web-deisgn-agency-section{background:var(--color-surface-2)!important;padding:100px 0!important}
+.web-deisgn-agency-section .container-inner{max-width:1100px;margin:0 auto}
+.web-deisgn-agency-section .title-container{margin-bottom:60px}
+.web-deisgn-agency-section .title-container h2{font-family:var(--font-display);font-size:clamp(36px,6vw,64px);font-weight:400;color:var(--color-dark);line-height:1.05}
+.web-deisgn-agency-section .row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.whitebox,.graybox{border-radius:var(--radius-lg);padding:40px;height:100%}
+.whitebox{background:var(--color-white);box-shadow:var(--shadow-sm)}
+.graybox{background:var(--color-surface-3)}
+.whitebox h3,.graybox h3{font-family:var(--font-display);font-size:clamp(20px,2.5vw,28px);font-weight:400;color:var(--color-dark);margin-bottom:20px}
+.whitebox hr,.graybox hr{border:none;border-top:2px solid var(--color-surface-3);margin-bottom:20px}
+.graybox hr{border-color:rgba(0,0,0,.12)}
+.whitebox p,.graybox p{font-family:var(--font-body);font-size:15px;line-height:1.8;color:var(--color-text-muted);margin-bottom:16px}
+.whitebox ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.whitebox ul li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--color-text-muted);font-family:var(--font-body)}
+.whitebox ul li::before{content:"âœ¦";color:var(--color-blue);flex-shrink:0;font-size:12px;margin-top:3px}
+.graybox h3:first-of-type{color:var(--color-blue)}
+
+/* STATISTICS */
+#home-statistics-block-10{background:var(--color-dark);padding:100px 0!important}
+.circleboxes{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.circlebox{aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;transition:all var(--transition-base);background:rgba(255,255,255,.03);position:relative;overflow:hidden}
+.circlebox::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center,rgba(255,241,90,.08),transparent 70%);opacity:0;transition:opacity var(--transition-base)}
+.circlebox:hover{border-color:var(--color-gold);transform:scale(1.05)}
+.circlebox:hover::before{opacity:1}
+.circlebox .inner{display:flex;flex-direction:column;gap:8px;align-items:center}
+.circlebox h3{font-family:var(--font-display);font-size:clamp(28px,3.5vw,42px);font-weight:400;color:var(--color-gold);line-height:1}
+.circlebox p{font-family:var(--font-body);font-size:clamp(11px,1.2vw,13px);color:rgba(255,255,255,.6);line-height:1.5;text-align:center}
+
+/* FOCUS SECTION */
+.focus-section{background:var(--color-surface)!important;padding:100px 0!important}
+.focus-section .container-inner{max-width:1100px;margin:0 auto}
+.focus-section .row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.focus .sticky{position:sticky;top:120px}
+.focus .title-container h2{font-family:var(--font-display);font-size:clamp(36px,5vw,56px);font-weight:400;color:var(--color-dark);line-height:1.05;margin-bottom:20px}
+.focus .title-container hr{border:none;border-top:2px solid var(--color-surface-3);margin-bottom:20px}
+.focus .title-container p{font-family:var(--font-body);font-size:15px;line-height:1.8;color:var(--color-text-muted)}
+.focus-inner{display:flex;flex-direction:column;gap:0}
+.focus-inner>div{padding:36px 0;border-bottom:1px solid var(--color-surface-3);transition:padding-left var(--transition-base)}
+.focus-inner>div:first-child{border-top:1px solid var(--color-surface-3)}
+.focus-inner>div:hover{padding-left:12px}
+.focus-inner h3{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:400;color:var(--color-dark);margin-bottom:14px}
+.focus-inner p{font-family:var(--font-body);font-size:15px;line-height:1.8;color:var(--color-text-muted)}
+.focus-inner .seo h3{color:var(--color-blue)}.focus-inner .design h3{color:var(--color-teal)}.focus-inner .development h3{color:var(--color-dark)}
+
+/* REVIEWS */
+.review-section{background:var(--color-dark-2)!important;padding:80px 0 120px!important}
+.review-tag{display:flex;align-items:center;gap:16px;padding:20px var(--container-pad);max-width:var(--container-max);margin:0 auto;margin-bottom:60px}
+.review-tag .rating{display:flex;align-items:center;gap:4px}
+.review-tag .rating img{width:20px;height:20px;display:inline-block}
+.review-tag p{font-family:var(--font-body);font-size:14px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase}
+.reviews-wrapper h2{font-family:var(--font-display);font-size:clamp(32px,5vw,56px);font-weight:400;color:var(--color-white)!important;margin-bottom:0!important}
+.swiper{overflow:hidden;padding-bottom:20px!important}
+.swiper-wrapper{display:flex}
+.swiper-slide{flex-shrink:0;width:380px!important;margin-right:24px!important}
+.reviewbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:32px;height:100%;display:flex;flex-direction:column;gap:12px;transition:all var(--transition-base)}
+.reviewbox:hover{background:rgba(255,255,255,.08);border-color:rgba(255,241,90,.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.reviewbox h4{font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--color-gold)}
+.reviewbox small{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.03em}
+.reviewbox p{font-family:var(--font-body);font-size:14px;line-height:1.8;color:rgba(255,255,255,.7);flex:1}
+
+/* FOOTER */
+.footer{background:var(--color-dark)!important;padding:80px 0 0!important;border-top:1px solid rgba(255,255,255,.06)}
+.footer .top{display:grid;grid-template-columns:280px 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer .logo{display:flex;align-items:flex-start}
+.footer .logo lottie-player{width:90px!important;height:55px!important;filter:brightness(0) invert(1)!important}
+.footer .row.row-gap-1{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.footer h4{font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--color-white);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.footer p{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:8px}
+.footer-link{color:rgba(255,255,255,.6)!important;text-decoration:none;transition:color var(--transition-fast)}
+.footer-link:hover{color:var(--color-gold)!important}
+.footer-menu{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer-menu li a{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,.5);transition:color var(--transition-fast)}
+.footer-menu li a:hover{color:var(--color-gold)}
+.footer .middle{padding:60px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer .middle .row.row-gap-1{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start}
+.newletterbox,.careerbox{border-radius:var(--radius-lg);padding:32px}
+.newletterbox{background:var(--color-blue)}.careerbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.newletterbox .top h4,.careerbox .top h4{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-white);letter-spacing:0;text-transform:none;margin-bottom:8px}
+.newletterbox .top p,.careerbox .top p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:24px}
+.subscribe-from{display:flex;flex-direction:column;gap:12px}
+.subscribe-from input[type="email"]{width:100%;padding:12px 16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:14px;color:var(--color-white);outline:none;transition:border-color var(--transition-fast),background var(--transition-fast);box-sizing:border-box}
+.subscribe-from input[type="email"]::placeholder{color:rgba(255,255,255,.5)}
+.subscribe-from input[type="email"]:focus{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.2)}
+.subscribe-from input[type="submit"]{padding:12px 24px;background:var(--color-white);color:var(--color-blue);font-family:var(--font-body);font-weight:700;font-size:14px;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:transform var(--transition-fast),box-shadow var(--transition-fast);align-self:flex-start}
+.subscribe-from input[type="submit"]:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.custom-checkboxs{margin-top:8px}
+.custom-checkboxs label{display:flex;align-items:flex-start;gap:8px;font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.5);cursor:pointer;line-height:1.5}
+.custom-checkboxs input[type="checkbox"]{margin-top:2px;flex-shrink:0}
+.download-box{display:flex;align-items:center;justify-content:space-between;padding:16px;background:rgba(255,255,255,.08);border-radius:var(--radius-sm);margin-bottom:16px}
+.download-box p{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,.8);margin:0}
+.download-box a{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--color-gold);border-radius:50%;transition:transform var(--transition-fast)}
+.download-box a:hover{transform:translateY(2px)}.download-box a svg path{fill:var(--color-dark)}
+.footer .bottom{padding:28px 0}
+.footer .bottom .row.row-gap-1{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.footer .bottom p{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.35);margin:0}
+.footer-botom-right{text-align:right}
+
+/* MISC UTILITIES */
+.hidden{display:none!important}
+.d-flex{display:flex}
+.col-lg-4,.col-lg-6,.col-lg-8,.col-md-6{min-width:0}
+.col-4{width:33.333%}.col-8{width:66.667%}
+.pl-0{padding-left:0!important}.pt-0{padding-top:0!important}
+.mt{margin-top:0!important}.mt-0{margin-top:0!important}
+.mb-3{margin-bottom:24px!important}.mt-1{margin-top:8px!important}
+.text-white{color:var(--color-white)!important}
+.bg-primary{background:var(--color-blue)!important}
+.bg-secondary{background:rgba(255,255,255,.05)!important;border:1px solid rgba(255,255,255,.08)!important}
+.bg-backgroundSecondary{background:var(--color-surface-2)!important}
+.overflow-hidden{overflow:hidden!important}
+.text-center{text-align:center}
+.screen-reader-response{position:absolute;left:-9999px}
+fieldset.hidden-fields-container{display:none}
+.wpcf7-response-output{display:none}.wpcf7-spinner{display:none}
+.rating img{width:18px!important;height:18px!important;display:inline-block!important}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .circleboxes{grid-template-columns:repeat(3,1fr);gap:20px}
+  .service-wrapper{grid-template-columns:1fr;gap:40px}
+  .service-ring{position:static;flex-direction:row;flex-wrap:wrap}
+  .focus-section .row{grid-template-columns:1fr;gap:40px}
+  .focus .sticky{position:static}
+  .web-deisgn-agency-section .row{grid-template-columns:1fr}
+  .footer .top{grid-template-columns:1fr}
+  .footer .middle .row.row-gap-1{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  :root{--section-gap:80px}
+  .header{padding:16px 20px!important}
+  .header.header--scrolled{padding:12px 20px!important}
+  .header .nav-menu{display:none}
+  .header .header-top-right-contact{display:none}
+  .header .navbar_toggler{display:flex}
+  .banner-caption h1{font-size:clamp(60px,18vw,100px)!important}
+  .work-row{grid-template-columns:1fr}
+  .circleboxes{grid-template-columns:repeat(2,1fr)}
+  .client-row{grid-template-columns:1fr}
+  .left-col{flex-direction:column;align-items:flex-start}
+  .footer .row.row-gap-1{grid-template-columns:1fr}
+  .footer .middle .row.row-gap-1{grid-template-columns:1fr}
+  .footer .bottom .row.row-gap-1{grid-template-columns:1fr}
+  .footer-botom-right{text-align:left}
+  .swiper-slide{width:300px!important}
+}
+@media(max-width:480px){
+  .circleboxes{grid-template-columns:1fr 1fr}
+  .hero-scroll-hint{display:none}
+}
+
+
+/* ================================================================
+   FETHO â€” Ultra-Premium Component Polish
+   ================================================================ */
+
+.web-deisgn-agency-section .container,
+.focus-section .container,
+.web-deisgn-agency-section,
+.focus-section {
+    background-color: transparent !important;
+}
+
+/* Section 5: FETHO Card */
+.fetho-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--color-dark-3);
+}
+.fetho-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    filter: brightness(0.75);
+}
+.fetho-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+.fetho-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8, 8, 10, 0.94) 0%, rgba(8, 8, 10, 0.45) 55%, transparent 100%);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.fetho-card-overlay .card-tag {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 6px;
+    font-family: var(--font-body);
+}
+.fetho-card-overlay h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--color-white);
+    margin: 0 0 4px;
+    letter-spacing: 0.02em;
+}
+.fetho-card-overlay p {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Section 7: Case Studies Cards */
+.fetho-cs-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+}
+.fetho-cs-card:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 241, 90, 0.3) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Section 8: Partner Badges */
+.partner-badge {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    cursor: default;
+}
+.partner-badge:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+/* Section 12: Review Boxes */
+.reviewbox {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+}
+.reviewbox:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 241, 90, 0.3) !important;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Section 13: Team Rows */
+.team-row {
+    transition: padding-left 0.25s ease;
+}
+.team-row:hover {
+    padding-left: 12px !important;
+}
+
+/* Section 14: FAQ Blocks */
+.faq-block {
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.faq-block:hover {
+    border-color: rgba(255, 241, 90, 0.3) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    transform: translateX(4px);
+}
+
+/* Section 16: Recognition Rows */
+.recognition-table-row {
+    transition: padding-left 0.25s ease;
+}
+.recognition-table-row:hover {
+    padding-left: 12px !important;
+}
+
+/* Section 17: Brochure Cards */
+.brochure-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+.brochure-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .columns-container {
+        grid-template-columns: 1fr !important;
+    }
+    .footer .top {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* Section 18: FETHO CTA Section */
+.fetho-cta-section {
+    background-color: #08080a !important;
+    color: #ffffff !important;
+    padding: 120px 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    position: relative;
+    z-index: 5;
+}
+.fetho-cta-section .container,
+.fetho-cta-section .container-inner {
+    background-color: transparent !important;
+}
+
+/* Section 7: Case Study Section Dark Background */
+#home-case-study-block-7,
+.case-study-section {
+    background-color: #08080a !important;
+    color: #ffffff !important;
+    padding: 100px 0 !important;
+    position: relative;
+    z-index: 5;
+}
+#home-case-study-block-7 .case-top h2 {
+    color: #ffffff !important;
+}
+#home-case-study-block-7 .container {
+    background-color: transparent !important;
+}
+
+
+/* ================================================================
+   FETHO HOLISTIC ECOSYSTEM - FETHO DESIGN
+   ================================================================ */
+
+.fetho-section {
+    position: relative;
+    padding: 130px 0;
+    background-color: #08080a;
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+}
+
+.fetho-section-header {
+    max-width: 860px;
+    margin: 0 auto 70px auto;
+}
+
+.fetho-badge-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 24px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+}
+
+.fetho-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff15a;
+    box-shadow: 0 0 10px #fff15a;
+}
+
+.fetho-display-title {
+    font-family: Anton, sans-serif !important;
+    font-size: clamp(38px, 5.8vw, 76px) !important;
+    font-weight: 400 !important;
+    color: #ffffff !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    margin-bottom: 22px !important;
+}
+
+.fetho-gradient-text {
+    background: linear-gradient(135deg, #fff15a 0%, #28bea0 50%, #00e5ff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    display: inline-block;
+}
+
+.fetho-lead-text {
+    font-family: Inter, system-ui, -apple-system, sans-serif !important;
+    font-size: clamp(15.5px, 1.8vw, 18px) !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+    line-height: 1.8 !important;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* SECTION 1: COMPARISON GRID */
+.fetho-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+.fetho-compare-card {
+    border-radius: 28px;
+    padding: 44px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.fetho-card-dim {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.fetho-card-dim:hover {
+    background: rgba(255, 255, 255, 0.035);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.fetho-card-active {
+    background: linear-gradient(145deg, rgba(255, 241, 90, 0.06) 0%, rgba(40, 190, 160, 0.04) 50%, rgba(8, 8, 10, 0.95) 100%);
+    border: 1px solid rgba(255, 241, 90, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 241, 90, 0.08);
+}
+
+.fetho-card-active:hover {
+    transform: translateY(-4px);
+    border-color: #fff15a;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(255, 241, 90, 0.15);
+}
+
+.fetho-card-tag {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.fetho-tag-muted {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.fetho-tag-glow {
+    color: #fff15a;
+}
+
+.fetho-card-title {
+    font-family: Anton, sans-serif !important;
+    font-size: clamp(26px, 3.2vw, 38px) !important;
+    color: #ffffff !important;
+    margin-bottom: 14px !important;
+}
+
+.fetho-card-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.fetho-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.fetho-bullet-list li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.fetho-check {
+    color: #28bea0;
+    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+.fetho-cross {
+    color: #f43f5e;
+    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+/* FETHO STATS BAR */
+.fetho-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fetho-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.fetho-stat-value {
+    font-family: Anton, sans-serif;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 700;
+    line-height: 1;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.fetho-stat-line {
+    height: 1px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 18px 0 14px 0;
+}
+
+.fetho-stat-label {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    color: #fff15a;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.fetho-stat-sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+/* SECTION 2: BRAND ARCHITECTURE BLUEPRINT */
+.fetho-hierarchy-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fetho-hierarchy-node {
+    width: 100%;
+    text-align: center;
+    border-radius: 24px;
+    padding: 32px 40px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.fetho-node-master {
+    max-width: 540px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fetho-node-master:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.fetho-node-level {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.fetho-node-title {
+    font-family: Anton, sans-serif !important;
+    font-size: clamp(32px, 4.5vw, 54px) !important;
+    color: #ffffff !important;
+    margin: 0 0 6px 0 !important;
+    letter-spacing: 0.02em;
+}
+
+.fetho-node-sub {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.fetho-hierarchy-connector {
+    width: 2px;
+    height: 48px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.12);
+    margin: 4px 0;
+}
+
+.fetho-connector-pulse {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff15a;
+    left: -2px;
+    top: 0;
+    animation: connectorPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes connectorPulse {
+    0% { top: 0%; opacity: 0; }
+    30% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.fetho-node-signature {
+    max-width: 720px;
+    background: linear-gradient(135deg, rgba(255, 241, 90, 0.08) 0%, rgba(40, 190, 160, 0.05) 100%), rgba(16, 16, 22, 0.9);
+    border: 1px solid rgba(255, 241, 90, 0.4);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 241, 90, 0.06);
+}
+
+.fetho-pillars-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.fetho-pillar-pill {
+    flex: 1 1 160px;
+    max-width: 190px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fetho-pillar-pill:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #fff15a;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 241, 90, 0.2);
+}
+
+.fetho-pill-icon {
+    font-size: 26px;
+}
+
+.fetho-pill-name {
+    font-family: Anton, sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+}
+
+.fetho-pill-sub {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* SECTION 3: FIVE PILLARS GRID */
+.fetho-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.fetho-pillar-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.fetho-pillar-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--pillar-glow, #fff15a);
+    opacity: 0.4;
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.fetho-pillar-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.fetho-pillar-card:hover::before {
+    opacity: 1;
+    height: 4px;
+}
+
+.fetho-pillar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fetho-pillar-num {
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--pillar-glow, #fff15a);
+    font-weight: 700;
+}
+
+.fetho-pillar-icon-box {
+    font-size: 30px;
+}
+
+.fetho-pillar-title {
+    font-family: Anton, sans-serif !important;
+    font-size: clamp(26px, 3vw, 34px) !important;
+    color: #ffffff !important;
+    margin-bottom: 14px !important;
+}
+
+.fetho-pillar-desc {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.fetho-pillar-disciplines {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.fetho-discipline-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
+}
+
+.fetho-discipline-chip:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.fetho-pillar-outcome {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 18px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.fetho-pillar-outcome strong {
+    color: #ffffff;
+}
+
+/* SECTION 4: WEEKLY EXPLORER */
+.fetho-schedule-explorer {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.fetho-days-nav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.fetho-day-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.fetho-day-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.fetho-day-btn.active {
+    background: #fff15a;
+    border-color: #fff15a;
+    color: #08080a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 241, 90, 0.3);
+}
+
+.fetho-day-abbr {
+    font-family: ui-monospace, monospace;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.fetho-day-focus {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.fetho-day-card {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 44px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fetho-day-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 24px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.fetho-day-tag {
+    font-family: ui-monospace, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    color: #fff15a;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.fetho-day-title {
+    font-family: Anton, sans-serif !important;
+    font-size: clamp(26px, 3.5vw, 38px) !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+}
+
+.fetho-day-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.fetho-day-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.fetho-day-col h4 {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #28bea0;
+    margin-bottom: 12px;
+}
+
+.fetho-day-col p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* SECTION 5: MEMBERSHIPS */
+.fetho-membership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    align-items: stretch;
+}
+
+.fetho-membership-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.fetho-membership-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.fetho-tier-highlight {
+    background: linear-gradient(145deg, rgba(255, 241, 90, 0.08) 0%, rgba(40, 190, 160, 0.05) 50%, rgba(12, 12, 16, 0.95) 100%);
+    border: 1px solid rgba(255, 241, 90, 0.4);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6), 0 0 50px rgba(255, 241, 90, 0.1);
+    transform: scale(1.02);
+}
+
+.fetho-tier-highlight:hover {
+    transform: scale(1.02) translateY(-6px);
+    border-color: #fff15a;
+}
+
+.fetho-featured-ribbon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff15a;
+    color: #08080a;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.fetho-tier-badge {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.fetho-tier-name {
+    font-family: Anton, sans-serif !important;
+    font-size: 38px !important;
+    color: #ffffff !important;
+    margin: 8px 0 !important;
+    letter-spacing: 0.02em;
+}
+
+.fetho-tier-desc {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.fetho-tier-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 24px;
+}
+
+.fetho-tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fetho-tier-features li {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.fetho-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.fetho-btn-solid {
+    background: #fff15a !important;
+    color: #08080a !important;
+    border: none;
+}
+
+.fetho-btn-solid:hover {
+    background: #ffe600 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 241, 90, 0.4);
+}
+
+.fetho-btn-outline {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.fetho-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+/* SECTION 6: ACADEMIC PILLARS & DESTINATIONS */
+.fetho-academic-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 70px;
+}
+
+.fetho-acad-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 36px;
+    transition: all 0.3s ease;
+}
+
+.fetho-acad-card:hover {
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
+}
+
+.fetho-acad-code {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #00e5ff;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.fetho-acad-card h3 {
+    font-family: Anton, sans-serif;
+    font-size: 26px;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.fetho-acad-card p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.fetho-destinations-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 44px;
+}
+
+.fetho-destination-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fetho-dest-row {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.fetho-dest-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateX(4px);
+}
+
+.fetho-badge-mini {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.fetho-dest-left h4 {
+    font-family: Anton, sans-serif;
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+}
+
+.fetho-dest-left p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    max-width: 600px;
+}
+
+.fetho-dest-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.fetho-dest-right strong {
+    font-family: Anton, sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+.fetho-dest-right span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* SECTION 7: CASE STUDIES */
+.fetho-case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.fetho-case-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.fetho-case-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.fetho-case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.fetho-case-name {
+    font-family: Anton, sans-serif !important;
+    font-size: 24px !important;
+    color: #ffffff !important;
+    margin: 0 0 12px 0 !important;
+}
+
+.fetho-case-quote {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 24px;
+}
+
+.fetho-case-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* SECTION 8: SPECIAL BATCHES */
+.fetho-community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.fetho-special-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 26px;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* SECTION 9: FACULTY LIST (Fetho Services style) */
+.fetho-faculty-list {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.fetho-faculty-item {
+    padding: 26px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.fetho-faculty-item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fetho-faculty-item:hover {
+    padding-left: 24px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.fetho-faculty-info h4 {
+    font-family: Anton, sans-serif;
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+.fetho-faculty-item:hover .fetho-faculty-info h4 {
+    color: #fff15a;
+}
+
+.fetho-faculty-info p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 4px 0 0 0;
+}
+
+.fetho-faculty-idx {
+    font-family: Anton, sans-serif;
+    font-size: 22px;
+    color: #fff15a;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fetho-faculty-item:hover .fetho-faculty-idx {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* SECTION 10: REVIEWS */
+.fetho-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.fetho-review-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 34px;
+}
+
+/* SECTION 11: FAQS */
+.fetho-faqs-accordion {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fetho-faq-item {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.fetho-faq-item[open] {
+    border-color: rgba(255, 241, 90, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.fetho-faq-question {
+    padding: 24px 28px;
+    font-family: Inter, sans-serif;
+    font-size: 16.5px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.fetho-faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.fetho-faq-icon {
+    font-size: 22px;
+    color: #fff15a;
+    transition: transform 0.3s ease;
+}
+
+.fetho-faq-item[open] .fetho-faq-icon {
+    transform: rotate(45deg);
+}
+
+.fetho-faq-answer {
+    padding: 0 28px 24px 28px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* SECTION 12: CTA & CONTACT */
+.fetho-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.fetho-contact-pills {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.fetho-contact-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.75);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fetho-contact-pill a {
+    color: #fff15a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.fetho-contact-pill a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 991px) {
+    .fetho-comparison-grid,
+    .fetho-community-grid {
+        grid-template-columns: 1fr;
+    }
+    .fetho-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+    .fetho-days-nav {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .fetho-day-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .fetho-membership-grid {
+        grid-template-columns: 1fr;
+    }
+    .fetho-academic-pillars-grid,
+    .fetho-case-grid,
+    .fetho-reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .fetho-tier-highlight {
+        transform: none;
+    }
+    .fetho-tier-highlight:hover {
+        transform: translateY(-4px);
+    }
+    .fetho-dest-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .fetho-dest-right {
+        text-align: left;
+    }
+}

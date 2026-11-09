@@ -1,0 +1,1125 @@
+﻿<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1628F5">
+    <style>
+        body { visibility: hidden; }
+    </style>
+    <noscript><style>body{visibility:inherit;}</style></noscript>
+    <title>FETHO Venture Lab | Vertical 03 | Evidence-Based Startup Validation</title>
+    <meta name="description" content="Build What Comes Next. FETHO Venture Lab applies disciplined scientific protocols to reduce startup uncertainty â€” not empty promises of funding." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FETHO Venture Lab | Vertical 03" />
+    <meta property="og:description" content="Build What Comes Next. Disciplined Startup Validation." />
+    <meta property="og:url" content="https://fetho.edu.in/venture-lab" />
+
+    <link rel="icon" href="https://edge.studio/wp-content/uploads/2025/12/favicon-fetho-150x150.webp" sizes="32x32" />
+    <link rel="icon" href="https://edge.studio/wp-content/uploads/2025/12/favicon-fetho-300x300.webp" sizes="192x192" />
+
+    <style>
+        @font-face {
+            font-family: 'Archivo';
+            src: url('https://edge.studio/wp-content/themes/fetho/public/fonts/Archivo-Regular.woff2') format('woff2');
+            font-weight: 400; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'Anton';
+            src: url('https://edge.studio/wp-content/themes/fetho/public/fonts/Anton-Regular.woff2') format('woff2');
+            font-weight: 400; font-style: normal; font-display: swap;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/fetho-tokens.css">
+
+    <style>
+        :root {
+            --fetho-accent: #1628F5;
+            --fetho-dark: #0A0A12;
+            --fetho-white: #FFFFFF;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background: #FFFFFF;
+            color: #0A0A12;
+            font-family: 'Aeonik', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ---- HERO ---- */
+        .vl-hero {
+            position: relative;
+            min-height: 100vh;
+            background: #0A0A12;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 160px 5vw 100px;
+            overflow: hidden;
+        }
+
+        /* Noise texture overlay */
+        .vl-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* Animated blueprint grid */
+        .vl-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(22,40,245,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22,40,245,0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+
+        .vl-hero-glow-1 {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(ellipse at center, rgba(22,40,245,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vl-hero-glow-2 {
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse at center, rgba(22,40,245,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vl-hero-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .vl-hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(22,40,245,0.1);
+            border: 1px solid rgba(22,40,245,0.25);
+            border-radius: 999px;
+            padding: 8px 20px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #6888FF;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .vl-eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            background: #1628F5;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #1628F5;
+            animation: vl-pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes vl-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .vl-hero-h1 {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(44px, 7.5vw, 116px);
+            font-weight: 900;
+            letter-spacing: -0.045em;
+            line-height: 0.93;
+            color: #FFFFFF;
+            margin-bottom: 32px;
+        }
+
+        .vl-hero-h1 em {
+            font-style: normal;
+            color: #1628F5;
+        }
+
+        .vl-hero-lead {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(15px, 1.5vw, 19px);
+            line-height: 1.65;
+            color: rgba(255,255,255,0.6);
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        .vl-hero-ctas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .vl-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1628F5;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 999px;
+            padding: 16px 32px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(22,40,245,0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .vl-cta-primary:hover {
+            background: #0D1DCF;
+            box-shadow: 0 12px 48px rgba(22,40,245,0.55);
+            transform: translateY(-2px);
+        }
+
+        .vl-cta-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 999px;
+            padding: 16px 28px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .vl-cta-ghost:hover {
+            border-color: rgba(22,40,245,0.4);
+            color: #FFFFFF;
+        }
+
+        .vl-vertical-badge {
+            position: absolute;
+            top: 50%;
+            left: 5vw;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: rgba(22,40,245,0.35);
+            text-transform: uppercase;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .vl-vertical-badge::before {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: rgba(22,40,245,0.25);
+        }
+
+        /* ---- SHARED SECTION STYLES ---- */
+        .vl-section { padding: 120px 5vw; }
+        .vl-container { max-width: 1280px; margin: 0 auto; }
+
+        .vl-section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: #1628F5;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .vl-section-badge-dot {
+            width: 5px;
+            height: 5px;
+            background: #1628F5;
+            border-radius: 50%;
+        }
+
+        .vl-section-h2 {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(36px, 4.5vw, 72px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: #0A0A12;
+            margin-bottom: 24px;
+        }
+
+        .vl-section-lead {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #4A4C5A;
+            max-width: 620px;
+            margin-bottom: 60px;
+        }
+
+        /* ---- 6-STAGE VALIDATION PROCESS ---- */
+        .vl-process-section {
+            background: #F4F6FC;
+            padding: 120px 5vw;
+        }
+
+        .vl-process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .vl-process-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .vl-process-grid { grid-template-columns: 1fr; }
+        }
+
+        .vl-process-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(22,40,245,0.08);
+            border-radius: 24px;
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .vl-process-card:hover {
+            border-color: rgba(22,40,245,0.22);
+            box-shadow: 0 20px 50px rgba(22,40,245,0.1);
+            transform: translateY(-6px);
+        }
+
+        .vl-process-step {
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #1628F5;
+        }
+
+        .vl-process-icon {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .vl-process-title {
+            font-family: 'Aeonik', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #0A0A12;
+            letter-spacing: -0.02em;
+        }
+
+        .vl-process-desc {
+            font-size: 14px;
+            line-height: 1.65;
+            color: #767888;
+            flex: 1;
+        }
+
+        .vl-process-outcome {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #1628F5;
+        }
+
+        /* ---- BOUNDARY CALLOUT ---- */
+        .vl-boundary-section {
+            background: #0A0A12;
+            padding: 100px 5vw;
+        }
+
+        .vl-boundary-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .vl-boundary-label {
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: rgba(22,40,245,0.6);
+            text-transform: uppercase;
+            padding-top: 6px;
+        }
+
+        .vl-boundary-heading {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(28px, 3vw, 48px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            color: #FFFFFF;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .vl-boundary-heading em {
+            font-style: normal;
+            color: #1628F5;
+        }
+
+        .vl-boundary-body {
+            font-size: 16px;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 32px;
+        }
+
+        .vl-boundary-items {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .vl-boundary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+        }
+
+        .vl-boundary-check {
+            width: 22px;
+            height: 22px;
+            background: rgba(22,40,245,0.15);
+            border: 1px solid rgba(22,40,245,0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11px;
+            color: #1628F5;
+        }
+
+        .vl-boundary-item-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.65);
+        }
+
+        @media (max-width: 900px) {
+            .vl-boundary-inner { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        /* ---- FOUNDER INTAKE ---- */
+        .vl-intake-section {
+            padding: 120px 5vw;
+            background: #FFFFFF;
+        }
+
+        .vl-intake-inner {
+            background: linear-gradient(135deg, #0A0A12 0%, #0D1230 100%);
+            border-radius: 32px;
+            padding: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vl-intake-inner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(22,40,245,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22,40,245,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .vl-intake-inner::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(22,40,245,0.22) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vl-intake-left { position: relative; z-index: 1; }
+
+        .vl-intake-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: #6888FF;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .vl-intake-heading {
+            font-family: 'Aeonik', sans-serif;
+            font-size: clamp(32px, 3.5vw, 56px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: #FFFFFF;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .vl-intake-heading em { font-style: normal; color: #1628F5; }
+
+        .vl-intake-sub {
+            font-size: 15px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .vl-intake-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vl-form-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px 18px;
+            font-family: 'Aeonik', sans-serif;
+            font-size: 15px;
+            color: #FFFFFF;
+            outline: none;
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .vl-form-input::placeholder { color: rgba(255,255,255,0.3); }
+
+        .vl-form-input:focus {
+            border-color: rgba(22,40,245,0.6);
+            background: rgba(22,40,245,0.08);
+        }
+
+        .vl-form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .vl-form-btn {
+            background: #1628F5;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 12px;
+            padding: 18px 32px;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(22,40,245,0.4);
+        }
+
+        .vl-form-btn:hover {
+            background: #0D1DCF;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(22,40,245,0.55);
+        }
+
+        @media (max-width: 900px) {
+            .vl-intake-inner { grid-template-columns: 1fr; padding: 48px 32px; }
+            .vl-vertical-badge { display: none; }
+        }
+
+        /* Ensure header matches exact clean Fetho layout (drawer holds menu links) */
+        .lusion-header-nav {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     FETHO PREV-PAGE BAR (Scroll UP at top 3x to go back to Pillar 2)
+     ============================================================ -->
+<div id="lusionPrevPageBar">
+    <div class="lusion-prev-left">
+        <span class="lusion-prev-arrow">&rarr;</span>
+        <div class="lusion-prev-label">
+            <span class="lusion-prev-kicker">SCROLL UP 5&times; TO RETURN</span>
+            <span class="lusion-prev-title">FETHO CAREER &amp; LIFE</span>
+        </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="lusion-prev-dots">
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+            <span class="lusion-prev-dot"></span>
+        </div>
+        <div class="lusion-prev-track">
+            <div class="lusion-prev-bar" id="lusionPrevBar"></div>
+        </div>
+        <span class="lusion-prev-hint">PREV VERTICAL</span>
+    </div>
+</div>
+
+<!-- ============================================================
+     UNIFIED GLOBAL HEADER
+     ============================================================ -->
+<header class="lusion-header" id="globalHeader">
+    <div class="lusion-header-left">
+        <a href="/" class="lusion-wordmark">FETHO</a>
+    </div>
+
+    <div class="lusion-header-right">
+        <div class="fetho-nav-verticals-dropdown">
+            <button class="fetho-nav-verticals-btn" id="fethoVerticalsBtn" aria-expanded="false" type="button">
+                <span class="verticals-dot"></span>
+                <span>VERTICALS</span>
+                <span class="verticals-chevron">&#9662;</span>
+            </button>
+            <div class="fetho-nav-verticals-menu" id="fethoVerticalsMenu">
+                <a href="/" class="verticals-menu-item">
+                    <span class="menu-item-tag">VERTICAL 01 // SCHOOL SCHOLARS</span>
+                    <span class="menu-item-title">FETHO Young Minds</span>
+                    <span class="menu-item-desc">5 Synchronized Pillars &middot; Academic Rigor</span>
+                </a>
+                <a href="/career-life.html" class="verticals-menu-item">
+                    <span class="menu-item-tag">VERTICAL 02 // GRADUATES</span>
+                    <span class="menu-item-title">FETHO Career &amp; Life</span>
+                    <span class="menu-item-desc">Professional Readiness &middot; Industry Sprints</span>
+                </a>
+                <a href="/venture-lab.html" class="verticals-menu-item active">
+                    <span class="menu-item-tag">VERTICAL 03 // FOUNDERS</span>
+                    <span class="menu-item-title">FETHO Venture Lab</span>
+                    <span class="menu-item-desc">Evidence-Based Startup Validation</span>
+                </a>
+            </div>
+        </div>
+        <a href="#intake" class="lusion-pill-btn lusion-pill-dark">
+            LET'S TALK <span class="lusion-btn-dot"></span>
+        </a>
+        <button class="lusion-pill-btn lusion-pill-light" id="lusionMenuBtn" aria-label="Menu">
+            MENU <span class="lusion-btn-dots"><span></span><span></span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Slide Menu Overlay -->
+<div class="lusion-nav-overlay" id="lusionNavOverlay">
+    <div class="lusion-nav-overlay-backdrop"></div>
+    <div class="lusion-nav-overlay-panel">
+        <div class="lusion-nav-overlay-top">
+            <span class="lusion-wordmark" style="color:#ffffff;">FETHO</span>
+            <button class="lusion-nav-close" id="lusionNavClose" aria-label="Close Menu">âœ•</button>
+        </div>
+        <nav class="lusion-overlay-menu">
+            <a href="/" class="lusion-overlay-link"><span class="overlay-num">01</span> Young Minds</a>
+            <a href="/career-life.html" class="lusion-overlay-link"><span class="overlay-num">02</span> Career &amp; Life</a>
+            <a href="/venture-lab.html" class="lusion-overlay-link"><span class="overlay-num">03</span> Venture Lab</a>
+            <a href="#process" class="lusion-overlay-link"><span class="overlay-num">04</span> Validation Process</a>
+            <a href="#boundary" class="lusion-overlay-link"><span class="overlay-num">05</span> Our Boundary</a>
+            <a href="#intake" class="lusion-overlay-link"><span class="overlay-num">06</span> Apply</a>
+        </nav>
+        <div class="lusion-overlay-footer">
+            <p class="overlay-contact-label">ADMISSIONS &amp; COUNSELLING</p>
+            <a href="tel:+919876543210" class="overlay-contact-link">+91 98765 43210</a>
+            <a href="mailto:admissions@fetho.edu.in" class="overlay-contact-link">admissions@fetho.edu.in</a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="vl-hero" id="hero">
+    <div class="vl-hero-glow-1"></div>
+    <div class="vl-hero-glow-2"></div>
+    <div class="vl-vertical-badge">VERTICAL 03 &middot; FOUNDERS</div>
+
+    <div class="vl-hero-inner">
+        <div class="vl-hero-eyebrow">
+            <span class="vl-eyebrow-dot"></span>
+            FETHO VENTURE LAB
+        </div>
+        <h1 class="vl-hero-h1">Build What<br>Comes <em>Next.</em><br>Disciplined<br>Validation.</h1>
+        <p class="vl-hero-lead">Most startups fail before they begin â€” not from lack of passion, but from lack of evidence. FETHO Venture Lab applies a rigorous six-stage validation protocol to separate viable ideas from wishful thinking. No shortcuts. No empty promises.</p>
+        <div class="vl-hero-ctas">
+            <a href="#intake" class="vl-cta-primary">
+                Submit Your Idea
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#process" class="vl-cta-ghost">See The Process</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     6-STAGE VALIDATION PROCESS
+     ============================================================ -->
+<section class="vl-process-section" id="process">
+    <div class="vl-container">
+        <div class="vl-section-badge">
+            <span class="vl-section-badge-dot"></span>
+            VALIDATION PROTOCOL
+        </div>
+        <h2 class="vl-section-h2">Six Stages.<br>Zero Assumptions.</h2>
+        <p class="vl-section-lead">Each stage is a gate. Ideas that cannot pass on evidence do not advance. This is not an incubator â€” it is a disciplined scientific protocol for reducing uncertainty.</p>
+
+        <div class="vl-process-grid">
+            <div class="vl-process-card">
+                <div class="vl-process-step">STAGE 01</div>
+                <div class="vl-process-icon">ðŸ’¡</div>
+                <div class="vl-process-title">Idea Intake</div>
+                <p class="vl-process-desc">Structured submission: founder background, problem hypothesis, proposed solution, and initial market intuition. No pitch decks â€” just clear thinking.</p>
+                <div class="vl-process-outcome">â†³ INTAKE SCORECARD</div>
+            </div>
+            <div class="vl-process-card">
+                <div class="vl-process-step">STAGE 02</div>
+                <div class="vl-process-icon">ðŸ”</div>
+                <div class="vl-process-title">Problem Validation</div>
+                <p class="vl-process-desc">60+ customer discovery interviews, secondary research synthesis, and pain-severity ranking. The problem must be real before the solution matters.</p>
+                <div class="vl-process-outcome">â†³ PROBLEM EVIDENCE REPORT</div>
+            </div>
+            <div class="vl-process-card">
+                <div class="vl-process-step">STAGE 03</div>
+                <div class="vl-process-icon">âš–ï¸</div>
+                <div class="vl-process-title">Feasibility Assessment</div>
+                <p class="vl-process-desc">Market sizing (TAM/SAM/SOM), competitive mapping, regulatory scan, and founding team capability analysis against the execution requirements.</p>
+                <div class="vl-process-outcome">â†³ FEASIBILITY MATRIX</div>
+            </div>
+            <div class="vl-process-card">
+                <div class="vl-process-step">STAGE 04</div>
+                <div class="vl-process-icon">ðŸ“Š</div>
+                <div class="vl-process-title">Evidence-Based Decision</div>
+                <p class="vl-process-desc">Expert panel review of all gathered evidence. A structured go/no-go/pivot decision is issued with documented reasoning â€” not gut feel, never politics.</p>
+                <div class="vl-process-outcome">â†³ GO / NO-GO / PIVOT</div>
+            </div>
+            <div class="vl-process-card">
+                <div class="vl-process-step">STAGE 05</div>
+                <div class="vl-process-icon">ðŸš€</div>
+                <div class="vl-process-title">MVP Launch Planning</div>
+                <p class="vl-process-desc">For validated ideas: 90-day MVP roadmap, hypothesis-to-feature mapping, success metrics definition, and early adopter acquisition strategy.</p>
+                <div class="vl-process-outcome">â†³ 90-DAY MVP ROADMAP</div>
+            </div>
+            <div class="vl-process-card">
+                <div class="vl-process-step">STAGE 06</div>
+                <div class="vl-process-icon">ðŸŒ±</div>
+                <div class="vl-process-title">Growth Support</div>
+                <p class="vl-process-desc">Post-launch monitoring, iteration coaching, mentor introductions, and ecosystem connections. We track outcomes â€” not just outputs.</p>
+                <div class="vl-process-outcome">â†³ SUSTAINED ADVISORY</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     TRANSPARENT BOUNDARY CALLOUT
+     ============================================================ -->
+<section class="vl-boundary-section" id="boundary">
+    <div class="vl-boundary-inner">
+        <div class="vl-boundary-label">OUR BOUNDARY &amp; COMMITMENT</div>
+        <div>
+            <h2 class="vl-boundary-heading">Validation is <em>science</em>.<br>Not a promise of funding.</h2>
+            <p class="vl-boundary-body">We are transparent about what FETHO Venture Lab is â€” and what it is not. Our protocol is a disciplined scientific process for reducing uncertainty. It does not guarantee commercial success, funding, or revenue. What it guarantees is rigor, honesty, and clarity â€” things the startup ecosystem desperately lacks.</p>
+            <div class="vl-boundary-items">
+                <div class="vl-boundary-item">
+                    <div class="vl-boundary-check">âœ“</div>
+                    <div class="vl-boundary-item-text"><strong style="color:#fff;">We do:</strong> Apply rigorous validation methodology, provide honest expert feedback, and give founders evidence-backed clarity on their idea's viability.</div>
+                </div>
+                <div class="vl-boundary-item">
+                    <div class="vl-boundary-check" style="color:#FF4D4D;border-color:rgba(255,77,77,0.3);background:rgba(255,77,77,0.08);">âœ•</div>
+                    <div class="vl-boundary-item-text"><strong style="color:#fff;">We do not:</strong> Guarantee investment, promise revenue, manufacture optimism, or advance ideas on the strength of enthusiasm alone.</div>
+                </div>
+                <div class="vl-boundary-item">
+                    <div class="vl-boundary-check">âœ“</div>
+                    <div class="vl-boundary-item-text"><strong style="color:#fff;">Our commitment:</strong> Every founder receives a documented, evidence-based outcome â€” whether that is a validated path forward, a recommended pivot, or an honest assessment that the timing is not right.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FOUNDER INTAKE FORM
+     ============================================================ -->
+<section class="vl-intake-section" id="intake">
+    <div class="vl-container">
+        <div class="vl-intake-inner">
+            <div class="vl-intake-left">
+                <div class="vl-intake-badge">
+                    <span style="width:5px;height:5px;background:#1628F5;border-radius:50%;display:inline-block;"></span>
+                    FOUNDER INTAKE â€” OPEN
+                </div>
+                <h2 class="vl-intake-heading">Start with<br>your <em>problem</em>,<br>not your pitch.</h2>
+                <p class="vl-intake-sub">We review every submission. If your problem meets our intake threshold, we schedule a 30-minute discovery call within 5 working days. No vanity metrics required.</p>
+            </div>
+            <form class="vl-intake-form" onsubmit="return false;">
+                <input type="text" class="vl-form-input" placeholder="Your full name" autocomplete="name">
+                <input type="email" class="vl-form-input" placeholder="Email address" autocomplete="email">
+                <input type="text" class="vl-form-input" placeholder="Industry / domain of your idea">
+                <input type="text" class="vl-form-input" placeholder="Problem you are solving (one line)">
+                <textarea class="vl-form-input vl-form-textarea" placeholder="Why does this problem matter? Who suffers from it and how severely? (3â€“5 sentences)"></textarea>
+                <button type="submit" class="vl-form-btn">Submit For Review &rarr;</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FRAME 2: FETHO WHITE FOOTER
+     ============================================================ -->
+<footer class="lusion-white-footer" id="lusionWhiteFooter">
+    <div class="lw-footer-topbar">
+        <a href="/" class="lw-footer-brand">FETHO</a>
+    </div>
+
+    <div class="lusion-white-footer-grid">
+        <!-- Col 1: Campus Headquarters -->
+        <div class="lw-address-block">
+            <p>FETHO Innovation Campus</p>
+            <p>Academic Enclave, Sector 14</p>
+            <p>Knowledge City, Gurugram</p>
+            <p>NCR 122002, India</p>
+        </div>
+
+        <!-- Col 2: Social & Community + Enquiries -->
+        <div>
+            <ul class="lw-links-list">
+                <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener">Linkedin</a></li>
+                <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            </ul>
+
+            <div class="lw-enquiries-block">
+                <div class="lw-enquiry-group">
+                    <div class="lw-enquiry-label">General enquires</div>
+                    <a href="mailto:hello@fetho.edu.in" class="lw-enquiry-val">hello@fetho.edu.in</a>
+                </div>
+                <div class="lw-enquiry-group">
+                    <div class="lw-enquiry-label">Admissions helpline</div>
+                    <a href="tel:+919876543210" class="lw-enquiry-val">+91 98765 43210</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Col 3: Newsletter & Application -->
+        <div class="lw-newsletter-col">
+            <h3 class="lw-newsletter-title">Subscribe to<br>our newsletter</h3>
+            <form class="lw-newsletter-form" id="lusionNewsletterForm">
+                <input type="email" class="lw-newsletter-input" placeholder="Your email" required>
+                <button type="submit" class="lw-newsletter-submit" aria-label="Subscribe">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="lw-footer-bottom">
+        <div>&copy; 2026 FETHO Educational Ecosystem</div>
+        <div class="lw-bottom-center">
+            <a href="#pillars">Development Pillars</a>
+            <span>&middot;</span>
+            <a href="#admissions">Student Welfare Code</a>
+            <span>&middot;</span>
+            <a href="#admissions">Admissions Guidelines</a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px;">
+            <span>Built by FETHO with &hearts;</span>
+            <button class="lw-scroll-top-btn" id="lusionScrollTopBtn" type="button" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+</footer>
+
+<!-- FRAME 3: FETHO NEXT PAGE BAR â€” loops back to Pillar 1 -->
+<div class="lusion-next-page-bar" id="lusionNextPageBar" data-next-href="/" data-prev-href="/career-life.html">
+    <div class="lusion-next-page-inner">
+        <div class="lusion-next-left">
+            <div class="lusion-next-kicker">SCROLL DOWN 5&times; OR CLICK TO RETURN TO FOUNDATION</div>
+            <h3 class="lusion-next-title">FETHO YOUNG MINDS</h3>
+        </div>
+        <a href="/" class="lusion-next-right" id="lusionNextPageLink">
+            <span class="lusion-next-tag">NEXT PAGE</span>
+            <div class="lusion-next-dots">
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+                <span class="lusion-next-dot"></span>
+            </div>
+            <div class="lusion-next-track">
+                <div class="lusion-next-bar" id="lusionNextBar"></div>
+            </div>
+            <span class="lusion-next-arrow">&rarr;</span>
+        </a>
+    </div>
+    <div class="lusion-np-crosshairs">
+        <span>+</span><span>+</span><span>+</span><span>+</span><span>+</span>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+(function() {
+    window.addEventListener('load', function() {
+        document.body.style.visibility = 'visible';
+    });
+
+    // Header scroll behaviour
+    var header = document.getElementById('globalHeader');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+            header.style.background = 'rgba(255,255,255,0.97)';
+            header.style.backdropFilter = 'blur(16px)';
+            header.style.boxShadow = '0 1px 0 rgba(22,40,245,0.08)';
+            var wordmark = header.querySelector('.lusion-wordmark');
+            if (wordmark) wordmark.style.color = '#0A0A12';
+            var navLinks = header.querySelectorAll('.lusion-nav-link');
+            navLinks.forEach(function(l) { l.style.color = 'rgba(10,10,18,0.65)'; l.onmouseover = function() { l.style.color = '#0A0A12'; }; l.onmouseout = function() { l.style.color = 'rgba(10,10,18,0.65)'; }; });
+        } else {
+            header.style.background = '';
+            header.style.backdropFilter = '';
+            header.style.boxShadow = '';
+            var wordmark = header.querySelector('.lusion-wordmark');
+            if (wordmark) wordmark.style.color = '';
+            var navLinks = header.querySelectorAll('.lusion-nav-link');
+            navLinks.forEach(function(l) { l.style.color = ''; l.onmouseover = null; l.onmouseout = null; });
+        }
+    }, { passive: true });
+
+    // Menu overlay
+    var menuBtn = document.getElementById('lusionMenuBtn');
+    var overlay = document.getElementById('lusionNavOverlay');
+    var closeBtn = document.getElementById('lusionNavClose');
+    if (menuBtn && overlay) {
+        menuBtn.addEventListener('click', function() { overlay.classList.add('active'); });
+        if (closeBtn) closeBtn.addEventListener('click', function() { overlay.classList.remove('active'); });
+        overlay.querySelector('.lusion-nav-overlay-backdrop').addEventListener('click', function() { overlay.classList.remove('active'); });
+    }
+
+    // Verticals dropdown
+    var dropdown = document.querySelector('.fetho-nav-verticals-dropdown');
+    var vBtn = document.getElementById('fethoVerticalsBtn');
+    if (dropdown && vBtn) {
+        vBtn.addEventListener('click', function() {
+            var open = dropdown.classList.toggle('open');
+            vBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                vBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+        dropdown.querySelectorAll('.verticals-menu-item:not(.active)').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                var href = item.getAttribute('href');
+                if (href) {
+                    document.body.classList.add('page-transitioning');
+                    setTimeout(function() { window.location.href = href; }, 420);
+                }
+            });
+        });
+    }
+
+    // 5-SCROLL INTENT-BASED TRANSITION (Next & Prev)
+    var bar = document.getElementById('lusionNextPageBar');
+    var nextHref = bar ? bar.dataset.nextHref : null;
+    var prevHref = bar ? bar.dataset.prevHref : null;
+    var progressBar = document.getElementById('lusionNextBar');
+    var nextLink = document.getElementById('lusionNextPageLink');
+    var prevBar = document.getElementById('lusionPrevPageBar');
+    var prevProgress = document.getElementById('lusionPrevBar');
+
+    var THRESHOLD = 65;
+    var downCount = 0;
+    var upCount = 0;
+    var navigating = false;
+    var cooldown = false;
+
+    function isAtBottom() {
+        var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        return window.scrollY >= (maxScroll - 10);
+    }
+    function isAtTop() {
+        return window.scrollY <= 15;
+    }
+    function setProgress(barEl, pct) {
+        if (barEl) barEl.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    }
+    function updateNextDots(count) {
+        var activeDots = Math.floor((count / THRESHOLD) * 5);
+        var dots = document.querySelectorAll('.lusion-next-dots .lusion-next-dot');
+        for (var i = 0; i < dots.length; i++) {
+            if (i < activeDots) {
+                dots[i].classList.add('filled');
+            } else {
+                dots[i].classList.remove('filled');
+            }
+        }
+    }
+    function updatePrevDots(count) {
+        var activeDots = Math.floor((count / THRESHOLD) * 5);
+        var dots = document.querySelectorAll('.lusion-prev-dots .lusion-prev-dot');
+        for (var i = 0; i < dots.length; i++) {
+            if (i < activeDots) {
+                dots[i].classList.add('filled');
+            } else {
+                dots[i].classList.remove('filled');
+            }
+        }
+    }
+    function navigate(href) {
+        if (navigating || !href) return;
+        navigating = true;
+        document.body.classList.add('page-transitioning');
+        setTimeout(function() { window.location.href = href; }, 440);
+    }
+    function showPrevBar(show) {
+        if (!prevBar) return;
+        prevBar.style.opacity = show ? '1' : '0';
+        prevBar.style.transform = show ? 'translateY(0)' : 'translateY(-100%)';
+        prevBar.style.pointerEvents = show ? 'auto' : 'none';
+    }
+
+    if (nextLink) {
+        nextLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigate(nextHref);
+        });
+    }
+    if (prevBar) {
+        prevBar.addEventListener('click', function() {
+            navigate(prevHref);
+        });
+    }
+
+    var lastWheelTime = 0;
+    window.addEventListener('wheel', function(e) {
+        if (navigating) return;
+        var goingDown = e.deltaY > 0;
+        var goingUp = e.deltaY < 0;
+        var now = performance.now();
+
+        if (goingDown && isAtBottom() && nextHref) {
+            if (now - lastWheelTime < 40) return;
+            lastWheelTime = now;
+
+            upCount = 0;
+            updatePrevDots(0);
+            showPrevBar(false);
+
+            downCount = Math.min(downCount + 1, THRESHOLD);
+            setProgress(progressBar, (downCount / THRESHOLD) * 100);
+            updateNextDots(downCount);
+            if (downCount >= THRESHOLD) navigate(nextHref);
+            return;
+        }
+
+        if (goingUp && isAtTop() && prevHref) {
+            if (now - lastWheelTime < 40) return;
+            lastWheelTime = now;
+
+            downCount = 0;
+            setProgress(progressBar, 0);
+            updateNextDots(0);
+
+            upCount = Math.min(upCount + 1, THRESHOLD);
+            setProgress(prevProgress, (upCount / THRESHOLD) * 100);
+            updatePrevDots(upCount);
+            showPrevBar(true);
+            if (upCount >= THRESHOLD) navigate(prevHref);
+            return;
+        }
+    }, { passive: true });
+
+    window.addEventListener('scroll', function() {
+        var barRect = bar ? bar.getBoundingClientRect() : null;
+        var nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 250);
+        var barVisible = barRect && barRect.top <= (window.innerHeight + 100);
+        if (!nearBottom && !barVisible && downCount > 0) {
+            downCount = 0;
+            setProgress(progressBar, 0);
+            updateNextDots(0);
+        }
+        if (window.scrollY > 80 && upCount > 0) {
+            upCount = 0;
+            setProgress(prevProgress, 0);
+            updatePrevDots(0);
+            showPrevBar(false);
+        }
+    }, { passive: true });
+})();
+</script>
+</body>
+</html>
+
