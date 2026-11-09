@@ -1,0 +1,5082 @@
+﻿/* ================================================================
+   FETHO TYPOGRAPHY (Aeonik + IBMPlexMono)
+   ================================================================ */
+@font-face {
+    font-family: 'Aeonik';
+    src: url('/fonts/Aeonik-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('/fonts/Aeonik-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('/fonts/Aeonik-RegularItalic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IBMPlexMono';
+    src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IBMPlexMono';
+    src: url('/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FethoMono';
+    src: url('/fonts/FethoMono.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ================================================================
+   FETHO DESIGN SYSTEM TOKENS & CINEMATIC STYLES
+   Pure Studio Quality, 12-Column Grid, Clay WebGL & Showreel
+   ================================================================ */
+
+:root {
+    --lusion-bg: #F0F0FA;
+    --lusion-ink: #0A0A12;
+    --lusion-ink-muted: #555566;
+    --lusion-accent-blue: #2B35FF;
+    --lusion-accent-yellow: #FFB800;
+    --lusion-accent-cyan: #00F2FE;
+    --lusion-showreel-bg: linear-gradient(135deg, #7c3aed 0%, #4338ca 40%, #2563eb 80%, #1d4ed8 100%);
+    --lusion-card-grey: #E4E4EE;
+    --lusion-card-dark: #0A0A12;
+    --lusion-card-white: #FFFFFF;
+    --lusion-font: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --lusion-font-display: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --lusion-font-mono: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    --lusion-grid-margin: 5vw;
+    --lusion-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Base Second Section Canvas & Flow */
+.lusion-rebuild-container {
+    position: relative;
+    background-color: var(--lusion-bg);
+    color: var(--lusion-ink);
+    overflow: visible;
+    width: 100%;
+}
+
+.lusion-rebuild-container,
+.lusion-rebuild-container h1,
+.lusion-rebuild-container h2,
+.lusion-rebuild-container h3,
+.lusion-rebuild-container p,
+.lusion-rebuild-container span,
+.lusion-rebuild-container a,
+.lusion-rebuild-container button,
+.lusion-header,
+.lusion-nav-overlay {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Fetho Blue Gradient Ribbon SVG Layer */
+.lusion-ribbon-svg-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1800px;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 90%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 90%);
+}
+
+.lusion-ribbon-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    will-change: transform;
+}
+
+/* Strict 12-Column Grid */
+.lusion-grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    padding: 0 var(--lusion-grid-margin);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ================================================================
+   PERSISTENT HEADER (1 Website = 1 Unified Navbar)
+   ================================================================ */
+header.header,
+.header.sticky-nav {
+    display: none !important;
+}
+
+.lusion-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 40px var(--lusion-grid-margin, 96px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    z-index: 99999 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+@media (max-width: 768px) {
+    .lusion-header {
+        padding: 24px 20px !important;
+    }
+}
+
+/* Fetho navbar NEVER hides and NEVER changes background or frosted glass on scroll */
+.lusion-header.header-hidden,
+.lusion-header.header-scrolled,
+.lusion-header.sticky-nav {
+    transform: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 40px var(--lusion-grid-margin, 96px) !important;
+}
+
+@media (max-width: 768px) {
+
+    .lusion-header.header-hidden,
+    .lusion-header.header-scrolled,
+    .lusion-header.sticky-nav {
+        padding: 24px 20px !important;
+    }
+}
+
+.lusion-header-left {
+    pointer-events: auto !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Exact Fetho Logo Wordmark (White by default on dark/blue sections) */
+.lusion-wordmark {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    transition: color 0.3s ease !important;
+}
+
+/* Light Theme (when floating over light sections like Paradigm) */
+.lusion-header.header-light-theme .lusion-wordmark {
+    color: #0A0A12 !important;
+}
+
+/* Fetho has NO middle links in the fixed header (clean minimalist layout, drawer holds all links) */
+.lusion-header-nav {
+    display: none !important;
+}
+
+.lusion-header-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    pointer-events: auto !important;
+}
+
+/* Exact Fetho Pill Buttons */
+.lusion-pill-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: transform 0.25s var(--lusion-ease-spring), background-color 0.2s ease, color 0.2s ease !important;
+    will-change: transform !important;
+}
+
+/* Round Sound/Toggle button (Default: translucent on dark/blue) */
+.lusion-pill-icon {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.25s var(--lusion-ease-spring) !important;
+}
+
+.lusion-pill-icon:hover {
+    transform: scale(1.06) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Round button on light theme */
+.lusion-header.header-light-theme .lusion-pill-icon {
+    background: rgb(228, 230, 239) !important;
+    border: none !important;
+    color: #0A0A12 !important;
+}
+
+.lusion-header.header-light-theme .lusion-pill-icon:hover {
+    background: rgb(215, 218, 230) !important;
+}
+
+/* Dark Pill: LET'S TALK */
+.lusion-pill-dark {
+    height: 46px !important;
+    padding: 0 24px 0 28px !important;
+    border-radius: 105px !important;
+    background: rgb(43, 46, 58) !important;
+    color: #FFFFFF !important;
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    gap: 9px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.lusion-pill-dark:hover {
+    transform: scale(1.04) !important;
+    background: rgb(30, 32, 42) !important;
+}
+
+/* Light Pill: MENU */
+.lusion-pill-light {
+    height: 46px !important;
+    padding: 0 24px 0 28px !important;
+    border-radius: 105px !important;
+    background: rgb(228, 230, 239) !important;
+    color: #0A0A12 !important;
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    gap: 8px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.lusion-pill-light:hover {
+    transform: scale(1.04) !important;
+    background: rgb(215, 218, 230) !important;
+}
+
+/* Dots inside buttons */
+.lusion-btn-dot {
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    display: inline-block !important;
+}
+
+.lusion-btn-dots {
+    display: inline-flex !important;
+    gap: 3.5px !important;
+    align-items: center !important;
+}
+
+.lusion-btn-dots span {
+    width: 4px !important;
+    height: 4px !important;
+    border-radius: 50% !important;
+    background: #0A0A12 !important;
+}
+
+
+/* Navigation Overlay Menu Drawer */
+.lusion-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lusion-nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lusion-nav-overlay-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 18, 0.65);
+    backdrop-filter: blur(10px);
+}
+
+.lusion-nav-overlay-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 460px;
+    height: 100%;
+    background: #0b0c12;
+    color: #ffffff;
+    padding: 36px 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.lusion-nav-overlay.active .lusion-nav-overlay-panel {
+    transform: translateX(0);
+}
+
+.lusion-nav-overlay-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lusion-nav-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.lusion-nav-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.lusion-overlay-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 40px 0;
+}
+
+.lusion-overlay-link {
+    font-family: var(--lusion-font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.lusion-overlay-link:hover {
+    color: #284AF7;
+    transform: translateX(8px);
+}
+
+.overlay-num {
+    font-family: monospace;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+}
+
+.lusion-overlay-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.overlay-contact-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+.overlay-contact-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.overlay-contact-link:hover {
+    color: #284AF7;
+}
+
+/* Pill Buttons with Squash & Stretch */
+.lusion-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 9999px;
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transform-origin: center;
+    transition: transform 0.25s var(--lusion-ease-spring), background-color 0.2s ease, color 0.2s ease;
+    will-change: transform;
+}
+
+.lusion-pill-btn:hover {
+    transform: scale(1.05, 0.95);
+}
+
+.lusion-pill-btn:active {
+    transform: scale(0.96, 1.04);
+}
+
+.lusion-pill-icon {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: var(--lusion-ink);
+    box-shadow: 0 2px 10px rgba(10, 10, 18, 0.06);
+}
+
+.lusion-pill-dark {
+    background: var(--lusion-ink);
+    color: #FFFFFF;
+}
+
+.lusion-pill-light {
+    background: var(--lusion-card-grey);
+    color: var(--lusion-ink);
+}
+
+.lusion-btn-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+}
+
+.lusion-btn-dots {
+    display: inline-flex;
+    gap: 3px;
+}
+
+.lusion-btn-dots span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* ================================================================
+   SECTION 1 & 2: UNIFIED FETHO MORPH STAGE (Single Video Element)
+   ================================================================ */
+.lusion-morph-track {
+    position: relative;
+    height: 270vh;
+    background-color: var(--lusion-bg);
+    width: 100%;
+}
+
+.lusion-morph-stage {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.lusion-badge-mono {
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.22em !important;
+    color: var(--lusion-accent-blue) !important;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+/* Masked 12-14vw Headline */
+.lusion-display-headline {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(48px, 6.8vw, 120px) !important;
+    font-weight: 400 !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.025em !important;
+    color: #0A0A12 !important;
+    margin: 0 0 36px 0 !important;
+    text-align: left !important;
+    text-transform: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lusion-mask-wrap {
+    overflow: hidden;
+    display: block;
+}
+
+.lusion-mask-line {
+    display: block;
+    transform: translateY(0%);
+    will-change: transform;
+    white-space: nowrap !important;
+}
+
+.lusion-hero-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 130px;
+    box-sizing: border-box;
+    z-index: 2;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.lusion-hero-layer .lusion-intro-right-col {
+    pointer-events: auto;
+}
+
+.lusion-intro-right-col {
+    grid-column: 7 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 40px;
+    padding-left: 24px;
+}
+
+.lusion-intro-paragraph {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(18px, 1.4vw, 24px) !important;
+    font-weight: 400 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.01em !important;
+    color: #0A0A12 !important;
+    margin: 0 0 32px 0 !important;
+    max-width: 580px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.lusion-intro-paragraph strong {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-weight: 500 !important;
+    font-size: inherit !important;
+    letter-spacing: inherit !important;
+    color: #0A0A12 !important;
+}
+
+.lusion-cta-wrap {
+    margin-top: 8px;
+}
+
+.lusion-pill-cta {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background: #FFFFFF;
+    color: #0A0A12 !important;
+    box-shadow: 0 4px 20px rgba(10, 10, 18, 0.08);
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    padding: 13px 26px !important;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    transition: transform 0.25s var(--lusion-ease-spring), box-shadow 0.2s ease;
+}
+
+.lusion-pill-cta:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 30px rgba(10, 10, 18, 0.12);
+}
+
+.lusion-pill-cta .lusion-btn-dot {
+    background: #0A0A12;
+}
+
+/* THE SINGLE UNIFIED VIDEO PLAYER CARD ANCHOR */
+.lusion-unified-card-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    perspective: 1400px;
+}
+
+.lusion-unified-card {
+    position: absolute;
+    /* Initial state (Hero Bleed Card): bottom-left */
+    left: var(--lusion-grid-margin);
+    top: 55vh;
+    width: 36vw;
+    height: 380px;
+    max-width: 680px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+    box-shadow: 0 24px 60px rgba(10, 10, 18, 0.14);
+    cursor: default;
+    pointer-events: auto;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: left, top, width, height, transform, border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.lusion-unified-card:hover {
+    box-shadow: 0 32px 80px rgba(10, 10, 18, 0.22);
+}
+
+.lusion-unified-video {
+    position: absolute;
+    inset: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    object-fit: cover;
+    display: block;
+    background: #000000;
+}
+
+.lusion-card-tint {
+    display: none !important;
+}
+
+/* Showreel Overlay ("PLAY REEL") hidden so video plays continuously with no clicks required */
+.lusion-showreel-overlay {
+    display: none !important;
+}
+
+.lusion-reel-word {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(60px, 9.5vw, 140px) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.03em !important;
+    color: #FFFFFF !important;
+    text-transform: uppercase;
+    user-select: none;
+    will-change: transform;
+}
+
+.lusion-play-trigger-btn {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s var(--lusion-ease-spring), box-shadow 0.2s ease;
+    padding: 0;
+}
+
+.lusion-play-trigger-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.lusion-play-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 20px;
+    border-color: transparent transparent transparent #0A0A12;
+    margin-left: 4px;
+}
+
+/* Grid Crosshairs ("+" Registration Marks) */
+.lusion-grid-crosshairs {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--lusion-grid-margin);
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    will-change: opacity;
+}
+
+.lusion-crosshairs-top {
+    top: 30px;
+}
+
+.lusion-crosshairs-bottom {
+    bottom: 30px;
+}
+
+.lusion-crosshair {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(10, 10, 18, 0.4);
+    user-select: none;
+}
+
+/* ================================================================
+   SECTION 3: THE PARADIGM SHIFT (Fetho Architectural Comparison)
+   ================================================================ */
+.lusion-comparison-section {
+    position: relative;
+    background-color: var(--lusion-bg, #F0F0FA);
+    padding: 110px 0 160px 0;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.lusion-comparison-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--lusion-bg, #F0F0FA));
+    pointer-events: none;
+    z-index: 10;
+}
+
+.lusion-comp-crosshairs {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 100%;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.lusion-comp-header-col {
+    grid-column: 1 / 13;
+    margin-bottom: 64px;
+}
+
+.lusion-comp-card-col {
+    perspective: 1400px;
+}
+
+.lusion-comp-card-col-left {
+    grid-column: 1 / 7;
+}
+
+.lusion-comp-card-col-right {
+    grid-column: 7 / 13;
+}
+
+@media (max-width: 991px) {
+
+    .lusion-comp-card-col-left,
+    .lusion-comp-card-col-right {
+        grid-column: 1 / 13;
+        margin-bottom: 32px;
+    }
+}
+
+/* Master Architectural Card */
+.lusion-arch-card {
+    position: relative;
+    border-radius: 36px;
+    padding: 48px;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    will-change: transform;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Problem Card: Frosted Ethereal Parchment */
+.lusion-card-problem {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(10, 10, 18, 0.08);
+    box-shadow: 0 24px 60px rgba(10, 10, 18, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.lusion-card-problem:hover {
+    box-shadow: 0 36px 80px rgba(10, 10, 18, 0.09), inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(10, 10, 18, 0.14);
+}
+
+/* Solution Card: Deep Midnight Sapphire with Luminous Glow */
+.lusion-card-solution {
+    background: linear-gradient(155deg, #0d1229 0%, #060814 100%);
+    border: 1px solid rgba(67, 103, 255, 0.28);
+    box-shadow: 0 30px 80px rgba(10, 14, 40, 0.32), 0 0 50px rgba(43, 53, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.lusion-card-solution:hover {
+    border-color: rgba(90, 144, 255, 0.45);
+    box-shadow: 0 40px 100px rgba(10, 14, 40, 0.45), 0 0 70px rgba(43, 53, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.lusion-solution-ambient {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(43, 53, 255, 0.25) 0%, rgba(0, 242, 254, 0.08) 50%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Card Header Bar */
+.lusion-card-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.lusion-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.lusion-status-pill.is-problem {
+    background: rgba(239, 68, 68, 0.08);
+    color: #DC2626;
+    border: 1px solid rgba(239, 68, 68, 0.16);
+}
+
+.lusion-status-pill.is-solution {
+    background: rgba(43, 53, 255, 0.22);
+    color: #38BDF8;
+    border: 1px solid rgba(56, 189, 248, 0.32);
+    box-shadow: 0 0 16px rgba(43, 53, 255, 0.2);
+}
+
+.lusion-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.lusion-pulse-dot.is-offline {
+    background: #EF4444;
+}
+
+.lusion-pulse-dot.is-online {
+    background: #00F2FE;
+    box-shadow: 0 0 8px #00F2FE;
+    animation: lusionPillPulse 2s infinite ease-in-out;
+}
+
+@keyframes lusionPillPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+.lusion-card-index-mono {
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: #9CA3AF;
+}
+
+/* Card Title Group */
+.lusion-card-title-group {
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+}
+
+.lusion-card-main-title {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(28px, 2.5vw, 42px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #0A0A12;
+    margin: 0 0 12px 0;
+}
+
+.lusion-card-subtitle {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: #555566;
+    margin: 0;
+}
+
+/* Broken Commute Timeline Visual */
+.lusion-schedule-timeline {
+    background: rgba(10, 10, 18, 0.03);
+    border: 1px dashed rgba(10, 10, 18, 0.12);
+    border-radius: 18px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.lusion-schedule-label {
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.lusion-schedule-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.lusion-schedule-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid rgba(10, 10, 18, 0.1);
+    border-radius: 10px;
+    padding: 6px 10px;
+    box-shadow: 0 2px 8px rgba(10, 10, 18, 0.04);
+}
+
+.lusion-schedule-node .node-time {
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    font-size: 10px;
+    color: #9CA3AF;
+}
+
+.lusion-schedule-node .node-badge {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1F2937;
+    white-space: nowrap;
+}
+
+.lusion-schedule-node.is-exhaustion {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(254, 242, 242, 0.9);
+}
+
+.lusion-schedule-node.is-exhaustion .node-badge {
+    color: #DC2626;
+}
+
+.lusion-schedule-commute {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.lusion-schedule-commute .commute-text {
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    font-size: 9.5px;
+    color: #EF4444;
+    white-space: nowrap;
+    padding: 0 4px;
+}
+
+.lusion-schedule-commute .commute-dash {
+    width: 100%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, #EF4444 0, #EF4444 4px, transparent 4px, transparent 8px);
+    margin: 4px 0;
+}
+
+/* Synchronized 5-Pillar Ribbon */
+.lusion-sync-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 14px 18px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.lusion-sync-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBMPlexMono', 'FethoMono', ui-monospace, monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #F8FAFC;
+    background: rgba(43, 53, 255, 0.25);
+    padding: 6px 12px;
+    border-radius: 9999px;
+    border: 1px solid rgba(67, 103, 255, 0.35);
+}
+
+.lusion-sync-pill .sync-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #38BDF8;
+    box-shadow: 0 0 6px #38BDF8;
+}
+
+.lusion-sync-sep {
+    font-family: 'Aeonik', sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+/* Structured Points Stack */
+.lusion-points-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.lusion-point-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.lusion-point-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform 0.25s ease;
+}
+
+.lusion-point-row:hover .lusion-point-icon {
+    transform: scale(1.1);
+}
+
+.lusion-point-icon.is-problem {
+    background: rgba(239, 68, 68, 0.08);
+    color: #EF4444;
+    border: 1px solid rgba(239, 68, 68, 0.18);
+}
+
+.lusion-point-icon.is-solution {
+    background: rgba(43, 53, 255, 0.28);
+    color: #38BDF8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.22);
+}
+
+.lusion-point-text {
+    flex: 1;
+}
+
+.point-heading {
+    display: block;
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.point-desc {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: #6B7280;
+    margin: 0;
+}
+
+/* ================================================================
+   FULLSCREEN VIDEO MODAL
+   ================================================================ */
+.lusion-video-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 18, 0.94);
+    backdrop-filter: blur(20px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.lusion-video-modal.modal-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lusion-modal-inner {
+    width: 90vw;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    transform: scale(0.92);
+    transition: transform 0.4s var(--lusion-ease-spring);
+}
+
+.lusion-video-modal.modal-active .lusion-modal-inner {
+    transform: scale(1);
+}
+
+.lusion-modal-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lusion-modal-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 10;
+}
+
+.lusion-modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* ================================================================
+   FETHO BESPOKE CURSOR
+   ================================================================ */
+.lusion-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999999;
+    will-change: transform;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.lusion-cursor-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--lusion-ink);
+    transform: translate(-50%, -50%);
+    transition: width 0.25s var(--lusion-ease-spring), height 0.25s var(--lusion-ease-spring), background-color 0.25s ease;
+}
+
+.lusion-cursor.is-active {
+    opacity: 1;
+}
+
+.lusion-cursor.cursor-play .lusion-cursor-dot {
+    width: 72px;
+    height: 72px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lusion-cursor-text {
+    display: none;
+    font-family: var(--lusion-font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--lusion-ink);
+}
+
+.lusion-cursor.cursor-play .lusion-cursor-text {
+    display: block;
+}
+
+/* Touch & Reduced Motion Overrides */
+@media (hover: none) and (pointer: coarse) {
+    .lusion-cursor {
+        display: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lusion-mask-line {
+        transform: none !important;
+    }
+
+    .lusion-intro-paragraph,
+    .lusion-cta-wrap,
+    .lusion-crosshair {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .lusion-webgl-canvas-wrap {
+        display: none !important;
+    }
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 991px) {
+    .lusion-display-headline {
+        font-size: clamp(40px, 12vw, 80px);
+    }
+
+    .lusion-intro-paragraph,
+    .lusion-cta-wrap {
+        grid-column: 1 / 13;
+    }
+
+    .lusion-bleed-card-col {
+        grid-column: 1 / 13;
+        margin-top: 30px;
+    }
+
+    .lusion-comp-card-col-left,
+    .lusion-comp-card-col-right {
+        grid-column: 1 / 13;
+        margin-bottom: 24px;
+    }
+
+    .lusion-showreel-card {
+        width: 92vw;
+        height: 50vh;
+        min-height: 380px;
+    }
+
+    .lusion-feature-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Kill 14px black body frame border */
+html,
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+.home .body-inner,
+body.home .body-inner,
+.body-inner {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+
+
+
+/* Kill 14px black body frame border */
+html,
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+.home .body-inner,
+body.home .body-inner,
+.body-inner {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+
+
+
+/* Kill 14px black body frame border */
+html,
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+.home .body-inner,
+body.home .body-inner,
+.body-inner {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+
+
+/* ================================================================
+   EXACT FETHO 5 PILLARS PINNED 3D CARDS SECTION
+   ================================================================ */
+html,
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    width: 100% !important;
+}
+
+.home .body-inner,
+body.home .body-inner,
+.body-inner {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+}
+
+/* ==========================================================================
+   FETHO 5 PILLARS SYSTEM
+   ========================================================================== */
+
+/* ==========================================================================
+   FETHO 5 PILLARS SYSTEM
+   ========================================================================== */
+
+/* ==========================================================================
+   FETHO 5 PILLARS SYSTEM (Harmonized with FETHO Master Spatial Architecture)
+   Obsidian Glass, Cyber Energy Spline, Anton Editorial Display,
+   Tactile Holographic Dimension Cards, Volumetric Ambient Lighting
+   ========================================================================== */
+
+/* ==========================================================================
+   BLUE PROD BACKUP: FETHO 5 PILLARS SYSTEM
+   Electric Klein Blue (#1628F5), White Clay 3D Organic Spline,
+   Aeonik Typography, Crisp Playing Cards with Inverted Footers
+   ========================================================================== */
+
+.lusion-pillars-track {
+    position: relative;
+    width: 100%;
+    height: 380vh;
+    background: #1628F5 !important;
+    /* Electric Klein Blue */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: visible;
+    z-index: 10;
+}
+
+.lusion-pillars-stage {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1628F5 !important;
+    overflow: hidden;
+    perspective: 1400px;
+    perspective-origin: 50% 50%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D Background White Clay Ribbon */
+.lusion-pillars-ribbon-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+}
+
+.lusion-pillars-ribbon-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Grid Crosshairs */
+.lusion-pillars-crosshairs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.lusion-p-crosshair {
+    position: absolute;
+    font-family: FethoMono, IBMPlexMono, monospace;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1;
+}
+
+/* Giant Fetho Display Title (Top-Left) */
+.lusion-pillars-header {
+    position: absolute;
+    top: 150px;
+    left: var(--lusion-grid-margin, 96px);
+    z-index: 5;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.lusion-pillars-display-title {
+    font-family: 'Aeonik', -apple-system, sans-serif;
+    font-size: clamp(60px, 7.8vw, 136px);
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    text-transform: none;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.lusion-title-line {
+    display: block;
+    white-space: nowrap;
+}
+
+.lusion-title-line-1 {
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.lusion-title-line-2 {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.96);
+    margin-left: 0;
+    padding-left: clamp(24px, 3.5vw, 64px);
+}
+
+/* Subheader (Top-Right) */
+.lusion-pillars-subheader {
+    position: absolute;
+    top: 150px;
+    right: var(--lusion-grid-margin, 96px);
+    z-index: 5;
+    max-width: 360px;
+    text-align: right;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.lusion-pillars-subheader-tag {
+    font-family: FethoMono, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.lusion-pillars-desc {
+    font-family: Aeonik, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.35;
+    color: #FFFFFF;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+}
+
+.lusion-pillars-mini-badges {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.about-capability-subheader-card {
+    width: 38px;
+    height: 52px;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: FethoMono, monospace;
+    font-size: 17px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+}
+
+.about-capability-subheader-card.active,
+.about-capability-subheader-card:hover {
+    background: #FFFFFF !important;
+    color: #1628F5 !important;
+    border-color: #FFFFFF !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* 3D Card Deck Arena */
+.lusion-pillars-cards-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.lusion-pillars-cards-track {
+    position: relative;
+    width: 100%;
+    max-width: 1720px;
+    height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transform-style: preserve-3d !important;
+    transform-style: preserve-3d !important;
+}
+
+/* Individual 3D Card */
+.about-capability-card {
+    position: absolute;
+    width: clamp(260px, 16.5vw, 314px);
+    height: clamp(460px, 32vw, 530px);
+    -webkit-transform-style: preserve-3d !important;
+    transform-style: preserve-3d !important;
+    transform-origin: center center;
+    cursor: pointer;
+    pointer-events: auto;
+    will-change: transform;
+    border-radius: 20px;
+}
+
+/* Card Front Face (Crisp Playing Card) */
+.about-capability-card-front {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF !important;
+    border-radius: 20px;
+    padding: 30px 38px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    transform: rotateY(0deg) translateZ(2px) !important;
+    box-shadow: 0 24px 60px rgba(5, 12, 60, 0.28);
+    overflow: visible !important;
+}
+
+/* Card Back Face (Geometric Artwork with F Monogram) */
+.about-capability-card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/card-back.png?v=1793061678965');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    transform: rotateY(180deg) translateZ(2px) !important;
+    box-shadow: 0 24px 60px rgba(5, 12, 60, 0.32);
+}
+
+/* Card Header (Top) */
+.about-capability-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+
+.about-capability-card-header-text {
+    font-family: Aeonik, -apple-system, sans-serif;
+    font-size: clamp(22px, 1.6vw, 28px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.about-capability-card-header-letter {
+    font-family: FethoMono, monospace;
+    font-size: clamp(48px, 3.5vw, 60px);
+    line-height: 1;
+    color: #000000;
+}
+
+/* Card Capabilities List */
+.about-capability-list {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 52%;
+}
+
+.about-capability-list li::before,
+.about-capability-list-item::before {
+    content: none !important;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.about-capability-list-item {
+    position: relative;
+    font-family: Aeonik, -apple-system, sans-serif;
+    font-size: clamp(12px, 0.88vw, 14.5px);
+    font-weight: 400;
+    line-height: 1.35;
+    color: #000000;
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 0 14px 0 !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    overflow: visible !important;
+    background-image: radial-gradient(#1A2FFB 1.4px, transparent 1.4px) !important;
+    background-size: 7px 3px !important;
+    background-repeat: repeat-x !important;
+    background-position: bottom left !important;
+}
+
+.about-capability-list-item:last-child {
+    background-image: none !important;
+    padding-bottom: 0 !important;
+}
+
+/* Inverted Card Footer */
+.about-capability-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    transform: rotate(180deg);
+}
+
+/* Navbar over Blue Section */
+.lusion-header.header-on-blue {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.lusion-header.header-on-blue .lusion-wordmark {
+    color: #FFFFFF !important;
+}
+
+.lusion-header.header-on-blue .lusion-pill-icon {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+}
+
+.lusion-header.header-on-blue .lusion-pill-dark {
+    background: rgb(43, 46, 58) !important;
+    color: #FFFFFF !important;
+}
+
+.lusion-header.header-on-blue .lusion-pill-light {
+    background: rgb(228, 230, 239) !important;
+    color: #0A0A12 !important;
+}
+
+
+/* ================================================================
+   ACTIVE THEORY 3D SPATIAL STORYTELLING SECTION (#brand-architecture)
+   100% Harmonic Alignment with FETHO Design System
+   Obsidian Glass, Klein Blue Accents, Architectural Crosshairs,
+   Swiss Editorial Typography & Cinematic 3D Spline Curve
+   ================================================================ */
+.active-spatial-section {
+    position: relative;
+    width: 100%;
+    background: #FFFFFF !important;
+    color: #0A0A12 !important;
+    overflow: clip;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.active-spatial-track {
+    position: relative;
+    width: 100%;
+    height: 440vh;
+    min-height: 400vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================================================================
+   PERFECT SWISS EDITORIAL ALIGNMENT: #brand-architecture LEFT HUD
+   Zero Header Overlap, Precision Monospace Grid Columns, 
+   Balanced Vertical Hierarchy & Breathing Room
+   ================================================================ */
+.active-spatial-stage {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF !important;
+    box-sizing: border-box;
+}
+
+.active-spatial-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: clamp(96px, 12vh, 120px) clamp(24px, 4.5vw, 72px) clamp(32px, 5vh, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* Left Spatial HUD (Swiss Architectural Layout) */
+.active-spatial-hud {
+    position: relative;
+    z-index: 10;
+    width: 42%;
+    max-width: 480px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.8vh, 18px);
+    pointer-events: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Badge Chip (Crisp Micro-Pill) */
+.active-spatial-hud .fetho-badge-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 5px 12px !important;
+    border-radius: 999px !important;
+    background: rgba(22, 40, 245, 0.05) !important;
+    border: 1px solid rgba(22, 40, 245, 0.14) !important;
+    width: fit-content !important;
+    margin: 0 0 2px 0 !important;
+}
+
+.active-spatial-hud .fetho-badge-dot {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background: #1628F5 !important;
+    box-shadow: 0 0 6px rgba(22, 40, 245, 0.5) !important;
+}
+
+.active-spatial-hud .fetho-badge-text {
+    font-family: 'IBMPlexMono', ui-monospace, monospace !important;
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #1628F5 !important;
+    line-height: 1 !important;
+}
+
+/* Headline Typography: Highly Refined, Clean, No Header Overlap */
+.active-spatial-title {
+    font-family: 'Aeonik', -apple-system, sans-serif !important;
+    font-size: clamp(26px, 2.4vw, 36px) !important;
+    font-weight: 800 !important;
+    line-height: 1.14 !important;
+    letter-spacing: -0.025em !important;
+    text-transform: uppercase !important;
+    color: #0A0A12 !important;
+    margin: 0 !important;
+}
+
+.active-spatial-title-gradient,
+.active-spatial-section .fetho-gradient-text {
+    background: linear-gradient(135deg, #1628F5 0%, #3B4BFF 50%, #0099FF 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    display: inline-block;
+}
+
+/* Refined Narrative Paragraph */
+.active-spatial-desc {
+    font-family: 'Aeonik', -apple-system, sans-serif !important;
+    font-size: clamp(13.5px, 0.98vw, 15px) !important;
+    line-height: 1.62 !important;
+    color: #55586A !important;
+    margin: 0 !important;
+    max-width: 460px;
+}
+
+.active-spatial-lead-hl {
+    color: #1628F5 !important;
+    font-weight: 700;
+    text-shadow: none !important;
+}
+
+/* Editorial Interactive Pillar Index (Precision Grid Card) */
+.fetho-spatial-index {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 16px 40px rgba(10, 10, 18, 0.05), 0 2px 6px rgba(10, 10, 18, 0.02) !important;
+    max-width: 480px;
+}
+
+.fetho-spatial-index-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(22, 40, 245, 0.08) !important;
+    padding-bottom: 8px;
+    margin-bottom: 6px;
+}
+
+.fetho-spatial-index-tag {
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #767888 !important;
+    font-weight: 700;
+}
+
+.fetho-spatial-index-counter {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1628F5 !important;
+    letter-spacing: 0.06em;
+    text-shadow: none !important;
+}
+
+.fetho-spatial-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* 4-Column Strict Tabular Grid: [Dot] [01] [NAME] [SUBTITLE] */
+.fetho-spatial-nav-btn {
+    display: grid !important;
+    grid-template-columns: 8px 22px 76px 1fr !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    padding: 7px 12px !important;
+    border-radius: 9px !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    color: #55586A !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-sizing: border-box !important;
+}
+
+.fetho-spatial-nav-btn:hover {
+    color: #1628F5 !important;
+    background: rgba(22, 40, 245, 0.035) !important;
+}
+
+.fetho-spatial-nav-btn.is-active {
+    color: #1628F5 !important;
+    background: rgba(22, 40, 245, 0.06) !important;
+    border-color: rgba(22, 40, 245, 0.18) !important;
+    box-shadow: 0 2px 10px rgba(22, 40, 245, 0.06) !important;
+}
+
+.nav-indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(22, 40, 245, 0.2);
+    transition: all 0.2s ease;
+    justify-self: center;
+}
+
+.fetho-spatial-nav-btn.is-active .nav-indicator-dot {
+    background: #1628F5 !important;
+    box-shadow: 0 0 6px rgba(22, 40, 245, 0.6) !important;
+}
+
+.nav-btn-num, .nav-num {
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #8C8FA2;
+}
+
+.fetho-spatial-nav-btn.is-active .nav-btn-num,
+.fetho-spatial-nav-btn.is-active .nav-num {
+    color: #1628F5 !important;
+}
+
+.nav-btn-name, .nav-name {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 13.5px;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0A0A12 !important;
+}
+
+.fetho-spatial-nav-btn.is-active .nav-btn-name,
+.fetho-spatial-nav-btn.is-active .nav-name {
+    color: #1628F5 !important;
+}
+
+/* Hide floating mid-dot in tabular grid */
+.nav-btn-sep, .nav-sep {
+    display: none !important;
+}
+
+.nav-btn-sub, .nav-sub {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 12px;
+    color: #8C8FA2;
+    margin-left: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fetho-spatial-nav-btn.is-active .nav-btn-sub,
+.fetho-spatial-nav-btn.is-active .nav-sub {
+    color: #1628F5 !important;
+    font-weight: 500;
+}
+
+.fetho-spatial-scrub-bar {
+    height: 3px;
+    width: 100%;
+    background: rgba(22, 40, 245, 0.1) !important;
+    border-radius: 3px;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.fetho-spatial-scrub-indicator {
+    height: 100%;
+    width: 20%;
+    background: #1628F5 !important;
+    box-shadow: 0 0 10px rgba(22, 40, 245, 0.35) !important;
+    transition: width 0.18s ease-out;
+}
+
+.active-spatial-hud-footer {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.fetho-spatial-cta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    border-radius: 9999px;
+    background: #1628F5 !important;
+    color: #FFFFFF !important;
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 24px rgba(22, 40, 245, 0.25) !important;
+}
+
+.fetho-spatial-cta-pill:hover {
+    background: #0D1AB8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(22, 40, 245, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+.active-spatial-scroll-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    color: #767888 !important;
+    text-transform: uppercase;
+}
+
+.active-mouse-icon {
+    width: 14px;
+    height: 22px;
+    border: 1.5px solid rgba(22, 40, 245, 0.3) !important;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.active-mouse-wheel {
+    width: 2px;
+    height: 5px;
+    background: #1628F5 !important;
+    border-radius: 2px;
+    position: absolute;
+    top: 4px;
+    animation: activeMouseWheel 1.6s ease-in-out infinite;
+}
+
+@keyframes activeMouseWheel {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(7px); opacity: 0; }
+}
+
+/* Right 3D Spatial Orbital Cards Viewport */
+.active-spatial-viewport {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 62%;
+    height: 100%;
+    perspective: 1800px;
+    -webkit-perspective: 1800px;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.active-spatial-orbital-rig {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.active-spatial-card {
+    position: absolute;
+    width: clamp(460px, 34vw, 620px);
+    height: clamp(450px, 58vh, 600px);
+    border-radius: 24px;
+    transform-style: preserve-3d;
+    pointer-events: auto;
+    will-change: transform, opacity;
+    cursor: grab;
+    user-select: none;
+}
+
+.active-spatial-card:active {
+    cursor: grabbing;
+}
+
+.active-card-glass {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    /* backdrop-filter removed for 120fps hardware acceleration */
+    -webkit-/* backdrop-filter removed for 120fps hardware acceleration */
+    box-shadow: 0 30px 70px rgba(10, 10, 18, 0.08), 0 4px 16px rgba(10, 10, 18, 0.03) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(22px, 2.4vw, 32px);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.active-spatial-card.is-active .active-card-glass {
+    border-color: #1628F5 !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 35px 80px rgba(22, 40, 245, 0.15), 0 0 30px rgba(22, 40, 245, 0.08) !important;
+}
+
+.active-spatial-card:hover .active-card-glass {
+    border-color: #1628F5 !important;
+    box-shadow: 0 40px 90px rgba(22, 40, 245, 0.22) !important;
+}
+
+.active-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 3;
+}
+
+.active-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.active-card-meta .lusion-sync-pill {
+    background: rgba(22, 40, 245, 0.06) !important;
+    border: 1px solid rgba(22, 40, 245, 0.15) !important;
+    color: #1628F5 !important;
+}
+
+.active-card-meta .lusion-sync-pill .sync-dot {
+    background: #1628F5 !important;
+    box-shadow: 0 0 6px #1628F5 !important;
+}
+
+.active-card-pill-tier {
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    color: #1628F5 !important;
+    text-transform: uppercase;
+}
+
+.active-card-glyph {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 42px;
+    font-weight: 700 !important;
+    line-height: 1;
+    color: rgba(22, 40, 245, 0.12) !important;
+    letter-spacing: -0.02em;
+    transition: color 0.35s ease;
+}
+
+.active-spatial-card.is-active .active-card-glyph {
+    color: rgba(22, 40, 245, 0.3) !important;
+    text-shadow: none !important;
+}
+
+.active-card-visual-frame {
+    position: relative;
+    width: 100%;
+    height: clamp(160px, 20vh, 220px);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 12px 0 14px 0;
+    border: 1px solid rgba(22, 40, 245, 0.1) !important;
+    background: #F0F4FF !important;
+    z-index: 2;
+}
+
+.active-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: brightness(1) contrast(1.02);
+}
+
+.active-spatial-card:hover .active-card-img {
+    transform: scale(1.05);
+}
+
+.active-card-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.8) 100%) !important;
+    pointer-events: none;
+}
+
+.active-card-focus-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #1628F5 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(22, 40, 245, 0.2) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 5px 12px;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(10, 10, 18, 0.06);
+}
+
+.active-card-focus-tag .tag-status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1628F5 !important;
+    box-shadow: 0 0 6px #1628F5 !important;
+}
+
+.active-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 3;
+}
+
+.active-card-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.active-card-title {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(32px, 3vw, 40px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    text-transform: uppercase !important;
+    color: #0A0A12 !important;
+    margin: 0 !important;
+    line-height: 1.05 !important;
+}
+
+.active-card-sub {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1628F5 !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.active-card-text {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #4A4C5A !important;
+    margin: 0;
+}
+
+.active-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.active-card-tags .lusion-sync-pill {
+    background: rgba(22, 40, 245, 0.06) !important;
+    border: 1px solid rgba(22, 40, 245, 0.14) !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    color: #1628F5 !important;
+    padding: 5px 12px !important;
+}
+
+.active-card-tags .lusion-sync-pill .sync-dot {
+    background: #1628F5 !important;
+    box-shadow: 0 0 6px #1628F5 !important;
+}
+
+.active-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(22, 40, 245, 0.08) !important;
+    padding-top: 14px;
+    margin-top: 8px;
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 10px;
+    color: #767888 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    z-index: 3;
+}
+
+.active-card-badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #1628F5 !important;
+    text-transform: uppercase;
+}
+
+.active-card-badge-status .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1628F5 !important;
+    box-shadow: 0 0 8px #1628F5 !important;
+}
+
+.active-card-badge-status .status-dot.is-standby {
+    background: #A0A5B8 !important;
+    box-shadow: none !important;
+}
+
+.active-card-badge-status:has(.is-standby) {
+    color: #767888 !important;
+}
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 1024px) {
+    .active-spatial-stage {
+        height: auto;
+        min-height: 100vh;
+        position: relative;
+        padding: 80px 0;
+    }
+    .active-spatial-track {
+        height: auto;
+        min-height: 0;
+    }
+    .active-spatial-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 50px;
+    }
+    .active-spatial-hud {
+        width: 100%;
+        max-width: 100%;
+    }
+    .active-spatial-viewport {
+        position: relative;
+        width: 100%;
+        height: 560px;
+    }
+    .active-spatial-card {
+        width: 90vw;
+        max-width: 480px;
+        height: 520px;
+    }
+}
+
+/* ================================================================
+   FETHO ARCHITECTURAL 3-FRAME FOOTER & GEOMETRIC PARTICLE SYSTEM
+   Frame 1: Royal Blue Interactive Geometric Particle Hero
+   Frame 2: Studio Minimalist White 12-Column Grid Footer
+   Frame 3: Pitch Black Curriculum Blueprint Sub-Footer
+   ================================================================ */
+
+/* FRAME 1: FETHO ROYAL BLUE INTERACTIVE PARTICLE HERO */
+.lusion-footer-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 860px;
+    background-color: #2435FF !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 60px 4vw 48px;
+    color: #FFFFFF;
+}
+
+.lusion-footer-crosshair {
+    position: absolute;
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    user-select: none;
+    z-index: 5;
+}
+.lusion-footer-crosshair.ch-tl { top: 40px; left: 4vw; }
+.lusion-footer-crosshair.ch-tr { top: 40px; right: 4vw; }
+.lusion-footer-crosshair.ch-bl { bottom: 40px; left: 4vw; }
+.lusion-footer-crosshair.ch-br { bottom: 40px; right: 4vw; }
+
+.lusion-footer-kicker {
+    position: relative;
+    z-index: 4;
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: clamp(10.5px, 0.9vw, 12px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.lusion-footer-headline-wrap {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    pointer-events: none;
+}
+
+.lusion-footer-headline {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(80px, 12vw, 172px) !important;
+    font-weight: 500 !important;
+    line-height: 0.90 !important;
+    letter-spacing: -0.045em !important;
+    color: #FFFFFF !important;
+    margin: 0 !important;
+    user-select: none;
+    text-rendering: optimizeLegibility;
+}
+
+.lusion-footer-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    cursor: default;
+}
+
+.lusion-scroll-pill-btn {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 15px 36px;
+    border-radius: 9999px;
+    background: #FFFFFF;
+    color: #0A0A12;
+    font-family: 'Aeonik', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16);
+    margin-bottom: 40px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.lusion-scroll-pill-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+    color: #1A22C8 !important;
+}
+
+/* FRAME 2: FETHO WHITE FOOTER */
+.lusion-white-footer {
+    position: relative;
+    width: 100%;
+    background: #FFFFFF !important;
+    color: #0A0A12 !important;
+    box-sizing: border-box;
+    padding: 110px 4vw 60px;
+    z-index: 10;
+}
+
+.lusion-white-footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.3fr 2.2fr;
+    column-gap: 5vw;
+    row-gap: 48px;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding-bottom: 90px;
+}
+
+.lw-col-title {
+    font-family: 'IBMPlexMono', ui-monospace, monospace !important;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #71717A;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+.lw-address-block p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(16px, 1.25vw, 19px);
+    line-height: 1.5;
+    color: #0A0A12 !important;
+    margin: 0 0 6px 0;
+    font-weight: 400;
+}
+
+.lw-footer-topbar {
+    max-width: 1680px;
+    margin: 0 auto 64px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lw-footer-brand {
+    font-family: Anton, sans-serif !important;
+    font-size: 34px;
+    letter-spacing: 0.02em;
+    color: #0A0A12 !important;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.lw-links-list {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 0 36px 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lw-links-list li {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.lw-links-list li::before,
+.lw-links-list li::marker {
+    display: none !important;
+    content: none !important;
+}
+
+.lw-links-list a {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(16px, 1.25vw, 19px);
+    color: #0A0A12 !important;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.lw-links-list a:hover {
+    color: #2435FF !important;
+    transform: translateX(3px);
+}
+
+.lw-enquiries-block {
+    margin-top: 28px;
+}
+
+.lw-enquiry-group {
+    margin-bottom: 20px;
+}
+
+.lw-enquiry-label {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14.5px;
+    color: #555566 !important;
+    margin-bottom: 4px;
+}
+
+.lw-enquiry-val {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(16px, 1.25vw, 19px);
+    color: #0A0A12 !important;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.lw-enquiry-val:hover {
+    color: #2435FF !important;
+}
+
+.lw-newsletter-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.lw-newsletter-title {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(38px, 4.4vw, 68px);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: #0A0A12 !important;
+    margin: 0 0 36px 0;
+}
+
+.lw-newsletter-form {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    background: #F1F1F8;
+    border-radius: 9999px;
+    padding: 8px 10px 8px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.25s ease, background 0.25s ease;
+    box-sizing: border-box;
+}
+
+.lw-newsletter-form:focus-within {
+    background: #FFFFFF;
+    box-shadow: 0 0 0 2px #2435FF, 0 10px 30px rgba(36, 53, 255, 0.12);
+}
+
+.lw-newsletter-input {
+    border: none;
+    background: transparent;
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 16px;
+    color: #0A0A12 !important;
+    width: 80%;
+    outline: none;
+}
+
+.lw-newsletter-input::placeholder {
+    color: #8E8EA0;
+}
+
+.lw-newsletter-submit {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A0A12;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.lw-newsletter-submit:hover {
+    background: #0A0A12;
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+.lw-footer-bottom {
+    max-width: 1680px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 13.5px;
+    color: #555566 !important;
+}
+
+.lw-bottom-center a, .lw-bottom-center span {
+    color: #555566 !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    margin: 0 10px;
+}
+.lw-bottom-center a:hover {
+    color: #2435FF !important;
+}
+
+.lw-scroll-top-btn {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #0A0A12;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.lw-scroll-top-btn:hover {
+    background: #2435FF;
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 12px 30px rgba(36, 53, 255, 0.35);
+}
+
+/* FRAME 3: FETHO NEXT PAGE BAR */
+.lusion-next-page-bar {
+    position: relative;
+    width: 100%;
+    background: #F4F6FC !important;
+    color: #0A0A12 !important;
+    padding: 80px 4vw 80px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(22, 40, 245, 0.1);
+    overflow: hidden;
+    min-height: 240px;
+}
+
+.lusion-next-page-inner {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.lusion-next-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lusion-next-kicker {
+    font-family: 'IBMPlexMono', ui-monospace, monospace !important;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: #1628F5 !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.lusion-next-title {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(38px, 4.6vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #0A0A12 !important;
+    margin: 0;
+}
+
+.lusion-next-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+    color: #0A0A12 !important;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.lusion-next-right:hover {
+    transform: translateX(8px);
+}
+
+.lusion-next-tag {
+    font-family: 'IBMPlexMono', ui-monospace, monospace !important;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: #0A0A12 !important;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.lusion-next-track {
+    width: 150px;
+    height: 4px;
+    background: rgba(22, 40, 245, 0.14);
+    border-radius: 9999px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lusion-next-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: #1628F5;
+    border-radius: 9999px;
+    box-shadow: 0 0 14px rgba(22, 40, 245, 0.4);
+    transition: width 0.1s linear;
+}
+
+.lusion-next-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1628F5;
+    font-size: 24px;
+}
+
+.lusion-np-crosshairs {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4vw;
+    box-sizing: border-box;
+    pointer-events: none;
+    font-family: 'IBMPlexMono', monospace !important;
+    font-size: 16px;
+    color: rgba(22, 40, 245, 0.2);
+}
+
+@media (max-width: 900px) {
+    .lusion-white-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .lusion-footer-headline {
+        font-size: 56px;
+    }
+}
+
+/* ================================================================
+   FETHO BLUE & WHITE COMPLETE THEME ARCHITECTURE
+   Eliminates all dark theme dissonance; establishes consistent,
+   world-class Swiss/Fetho typography (Aeonik) and pristine
+   Electric Klein Blue (#1628F5) & Crisp White visual harmony.
+   ================================================================ */
+
+/* Global Section Core Reset */
+.fetho-section {
+    position: relative;
+    padding: clamp(100px, 11vw, 150px) 0 !important;
+    border-top: 1px solid rgba(22, 40, 245, 0.08) !important;
+    overflow: hidden;
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.fetho-section-header {
+    max-width: 860px;
+    margin: 0 auto clamp(48px, 6vw, 76px) auto;
+}
+
+.fetho-section .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 56px);
+    box-sizing: border-box;
+}
+
+/* Global Typography & Gradient Rules */
+.fetho-display-title {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(38px, 4.8vw, 68px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.035em !important;
+    line-height: 1.06 !important;
+    margin-bottom: 20px !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-lead-text {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(16px, 1.2vw, 19px) !important;
+    color: #4A4C5A !important;
+    line-height: 1.7 !important;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.fetho-section:not(#admissions) .fetho-gradient-text {
+    background: linear-gradient(135deg, #1628F5 0%, #2563EB 50%, #0099FF 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    display: inline-block;
+}
+
+/* Badge Chips */
+.fetho-badge-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 7px 18px !important;
+    border-radius: 999px !important;
+    background: rgba(22, 40, 245, 0.06) !important;
+    border: 1px solid rgba(22, 40, 245, 0.16) !important;
+    margin-bottom: 24px !important;
+    font-family: 'IBMPlexMono', ui-monospace, monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.22em !important;
+    color: #1628F5 !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+}
+
+.fetho-badge-dot {
+    width: 7px !important;
+    height: 7px !important;
+    border-radius: 50% !important;
+    background: #1628F5 !important;
+    box-shadow: 0 0 10px rgba(22, 40, 245, 0.6) !important;
+}
+
+.fetho-badge-mini {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(22, 40, 245, 0.08) !important;
+    color: #1628F5 !important;
+    border: 1px solid rgba(22, 40, 245, 0.16) !important;
+}
+
+/* Buttons */
+.fetho-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.fetho-btn-outline {
+    background: transparent !important;
+    color: #1628F5 !important;
+    border: 1.5px solid #1628F5 !important;
+}
+
+.fetho-btn-outline:hover {
+    background: #1628F5 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(22, 40, 245, 0.25);
+}
+
+.fetho-btn-solid {
+    background: #1628F5 !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid #1628F5 !important;
+    box-shadow: 0 10px 24px rgba(22, 40, 245, 0.25);
+}
+
+.fetho-btn-solid:hover {
+    background: #0D1AB8 !important;
+    border-color: #0D1AB8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(22, 40, 245, 0.35);
+}
+
+/* ================================================================
+   SECTION 4: SYNCHRONIZED TIMETABLE (#journey)
+   ================================================================ */
+#journey,
+section#journey,
+.fetho-journey-section {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #0A0A12 !important;
+    position: relative;
+    z-index: 10;
+}
+
+#journey .fetho-display-title,
+.fetho-journey-section .fetho-display-title {
+    color: #0A0A12 !important;
+}
+
+#journey .fetho-lead-text,
+.fetho-journey-section .fetho-lead-text {
+    color: #4A4C5A !important;
+}
+
+.fetho-schedule-explorer {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.fetho-days-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #F4F6FC;
+    padding: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(22, 40, 245, 0.1);
+}
+
+.fetho-day-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fetho-day-abbr {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #0A0A12;
+}
+
+.fetho-day-focus {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 11px;
+    color: #767888;
+    margin-top: 2px;
+}
+
+.fetho-day-btn:hover {
+    background: rgba(22, 40, 245, 0.05);
+}
+
+.fetho-day-btn.active {
+    background: #1628F5 !important;
+    box-shadow: 0 8px 24px rgba(22, 40, 245, 0.3) !important;
+}
+
+.fetho-day-btn.active .fetho-day-abbr {
+    color: #FFFFFF !important;
+}
+
+.fetho-day-btn.active .fetho-day-focus {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.fetho-day-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.14) !important;
+    border-radius: 28px !important;
+    padding: clamp(28px, 4vw, 48px) !important;
+    box-shadow: 0 24px 60px rgba(10, 10, 18, 0.06), 0 4px 16px rgba(10, 10, 18, 0.02) !important;
+}
+
+.fetho-day-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(22, 40, 245, 0.08) !important;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.fetho-day-tag {
+    font-family: 'IBMPlexMono', monospace !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.18em !important;
+    font-weight: 700 !important;
+    color: #1628F5 !important;
+    text-transform: uppercase !important;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.fetho-day-title {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(24px, 2.5vw, 34px) !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 !important;
+}
+
+.fetho-day-badge {
+    background: rgba(22, 40, 245, 0.08) !important;
+    color: #1628F5 !important;
+    border: 1px solid rgba(22, 40, 245, 0.2) !important;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.fetho-day-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 36px);
+}
+
+.fetho-day-col h4 {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    margin-bottom: 10px !important;
+}
+
+.fetho-day-col p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14.5px !important;
+    color: #4A4C5A !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 800px) {
+    .fetho-day-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================================
+   SECTION 7: MEMBERSHIP PATHWAYS (#memberships)
+   ================================================================ */
+#memberships.fetho-membership-section {
+    background-color: #F4F6FC !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-membership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.8vw, 32px);
+    margin-bottom: 48px;
+}
+
+.fetho-membership-card {
+    position: relative;
+    border-radius: 28px !important;
+    padding: clamp(32px, 3.2vw, 44px) !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    box-shadow: 0 20px 50px rgba(10, 10, 18, 0.05), 0 4px 12px rgba(10, 10, 18, 0.02) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.fetho-membership-card:hover {
+    transform: translateY(-6px);
+    border-color: #1628F5 !important;
+    box-shadow: 0 30px 70px rgba(22, 40, 245, 0.14) !important;
+}
+
+.fetho-tier-badge {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #1628F5 !important;
+    background: rgba(22, 40, 245, 0.06) !important;
+    border: 1px solid rgba(22, 40, 245, 0.16) !important;
+    padding: 6px 14px;
+    border-radius: 999px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.fetho-tier-name {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(30px, 3vw, 40px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em !important;
+    color: #0A0A12 !important;
+    margin: 0 0 12px 0 !important;
+}
+
+.fetho-tier-desc {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14.5px !important;
+    color: #4A4C5A !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+    min-height: 48px;
+}
+
+.fetho-tier-divider {
+    height: 1px;
+    background: rgba(22, 40, 245, 0.08) !important;
+    margin-bottom: 24px;
+}
+
+.fetho-tier-features {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 36px 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.fetho-tier-features li {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14px !important;
+    color: #313638 !important;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+}
+
+.fetho-check {
+    color: #1628F5 !important;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+/* Flagship Electric Klein Blue Card */
+.fetho-membership-card.fetho-tier-highlight {
+    background: #1628F5 !important;
+    border-color: #1628F5 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 35px 80px rgba(22, 40, 245, 0.35), 0 8px 24px rgba(22, 40, 245, 0.2) !important;
+    transform: scale(1.03);
+}
+
+.fetho-membership-card.fetho-tier-highlight:hover {
+    transform: scale(1.03) translateY(-6px);
+    box-shadow: 0 45px 100px rgba(22, 40, 245, 0.45) !important;
+}
+
+.fetho-featured-ribbon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF !important;
+    color: #1628F5 !important;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    padding: 6px 18px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.fetho-tier-highlight .fetho-tier-badge {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.fetho-tier-highlight .fetho-tier-name {
+    color: #FFFFFF !important;
+}
+
+.fetho-tier-highlight .fetho-tier-desc {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.fetho-tier-highlight .fetho-tier-divider {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.fetho-tier-highlight .fetho-tier-features li {
+    color: #FFFFFF !important;
+}
+
+.fetho-tier-highlight .fetho-check {
+    color: #FFFFFF !important;
+}
+
+.fetho-tier-highlight .fetho-btn-solid {
+    background: #FFFFFF !important;
+    color: #1628F5 !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.fetho-tier-highlight .fetho-btn-solid:hover {
+    background: #F0F4FF !important;
+    color: #0D1AB8 !important;
+}
+
+@media (max-width: 991px) {
+    .fetho-membership-grid {
+        grid-template-columns: 1fr;
+    }
+    .fetho-membership-card.fetho-tier-highlight {
+        transform: none;
+    }
+    .fetho-membership-card.fetho-tier-highlight:hover {
+        transform: translateY(-6px);
+    }
+}
+
+/* ================================================================
+   SECTION 8: ACADEMIC BENCHMARKS (#academics)
+   ================================================================ */
+#academics.fetho-academics-section {
+    background-color: #FFFFFF !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-academic-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+    margin-bottom: 60px;
+}
+
+.fetho-acad-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    border-radius: 24px !important;
+    padding: clamp(28px, 3vw, 40px) !important;
+    box-shadow: 0 16px 40px rgba(10, 10, 18, 0.04) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fetho-acad-card:hover {
+    transform: translateY(-4px);
+    border-color: #1628F5 !important;
+    box-shadow: 0 24px 60px rgba(22, 40, 245, 0.1) !important;
+}
+
+.fetho-acad-code {
+    font-family: 'IBMPlexMono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.18em !important;
+    font-weight: 700 !important;
+    color: #1628F5 !important;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.fetho-acad-card h3 {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(20px, 2vw, 24px) !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 12px !important;
+}
+
+.fetho-acad-card p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14.5px !important;
+    color: #4A4C5A !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+}
+
+.fetho-destinations-box {
+    background: #F4F6FC !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    border-radius: 28px !important;
+    padding: clamp(28px, 3.5vw, 48px) !important;
+}
+
+.fetho-dest-row {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.1) !important;
+    border-radius: 18px !important;
+    padding: 24px 28px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 24px;
+    flex-wrap: wrap;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.fetho-dest-row:hover {
+    transform: translateX(4px);
+    border-color: #1628F5 !important;
+}
+
+.fetho-dest-left h4 {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    margin: 6px 0 6px 0 !important;
+}
+
+.fetho-dest-left p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14px !important;
+    color: #4A4C5A !important;
+    margin: 0 !important;
+}
+
+.fetho-dest-right strong {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #1628F5 !important;
+    display: block;
+}
+
+.fetho-dest-right span {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 12px;
+    color: #767888;
+}
+
+@media (max-width: 900px) {
+    .fetho-academic-pillars-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================================
+   SECTION 9: STUDENT TRANSFORMATIONS (#transformations)
+   ================================================================ */
+#transformations.fetho-case-studies-section {
+    background-color: #F8F9FD !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+}
+
+.fetho-case-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    border-radius: 28px !important;
+    padding: clamp(28px, 3vw, 40px) !important;
+    box-shadow: 0 20px 50px rgba(10, 10, 18, 0.05) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fetho-case-card:hover {
+    transform: translateY(-5px);
+    border-color: #1628F5 !important;
+    box-shadow: 0 30px 70px rgba(22, 40, 245, 0.12) !important;
+}
+
+.fetho-case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.fetho-case-name {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(18px, 1.8vw, 22px) !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    margin: 0 0 14px 0 !important;
+}
+
+.fetho-case-quote {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14.5px !important;
+    color: #4A4C5A !important;
+    line-height: 1.7 !important;
+    margin-bottom: 24px !important;
+    font-style: normal !important;
+}
+
+.fetho-case-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(22, 40, 245, 0.08) !important;
+    padding-top: 16px;
+    font-family: 'Aeonik', sans-serif;
+    font-size: 13px;
+    color: #767888 !important;
+}
+
+.fetho-case-footer strong {
+    color: #1628F5 !important;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .fetho-case-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================================
+   SECTION 10: COMMUNITY BOOSTERS (#community)
+   ================================================================ */
+#community.fetho-community-section {
+    background-color: #FFFFFF !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3vw, 40px);
+}
+
+.fetho-special-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.14) !important;
+    border-radius: 28px !important;
+    padding: clamp(32px, 3.5vw, 48px) !important;
+    box-shadow: 0 20px 50px rgba(10, 10, 18, 0.05) !important;
+}
+
+.fetho-special-card h3 {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: clamp(24px, 2.4vw, 30px) !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    letter-spacing: -0.02em !important;
+    margin: 12px 0 14px !important;
+}
+
+.fetho-special-card p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 15px !important;
+    color: #4A4C5A !important;
+    line-height: 1.7 !important;
+}
+
+.fetho-bullet-list li {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14px !important;
+    color: #313638 !important;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 800px) {
+    .fetho-community-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================================
+   SECTION 11: FACULTY COUNCIL (#faculty)
+   ================================================================ */
+#faculty.fetho-faculty-section {
+    background-color: #F4F6FC !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-faculty-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.fetho-faculty-item {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 24px 36px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 24px rgba(10, 10, 18, 0.03);
+}
+
+.fetho-faculty-item:hover {
+    transform: translateX(6px);
+    border-color: #1628F5 !important;
+    box-shadow: 0 16px 40px rgba(22, 40, 245, 0.1);
+}
+
+.fetho-faculty-info h4 {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    margin: 0 0 6px 0 !important;
+    transition: color 0.2s ease;
+}
+
+.fetho-faculty-item:hover .fetho-faculty-info h4 {
+    color: #1628F5 !important;
+}
+
+.fetho-faculty-info p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14px !important;
+    color: #767888 !important;
+    margin: 0 !important;
+}
+
+.fetho-faculty-idx {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #1628F5 !important;
+}
+
+/* ================================================================
+   SECTION 12: PARENT & STUDENT REVIEWS (#reviews)
+   ================================================================ */
+#reviews.fetho-reviews-section {
+    background-color: #FFFFFF !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+}
+
+.fetho-review-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    border-radius: 28px !important;
+    padding: clamp(28px, 3vw, 40px) !important;
+    box-shadow: 0 20px 50px rgba(10, 10, 18, 0.05) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.fetho-review-card:hover {
+    transform: translateY(-4px);
+    border-color: #1628F5 !important;
+}
+
+.fetho-review-card h4 {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-review-card p {
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 14.5px !important;
+    color: #4A4C5A !important;
+    line-height: 1.7 !important;
+}
+
+@media (max-width: 900px) {
+    .fetho-reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================================
+   SECTION 13: FAQS (#faqs)
+   ================================================================ */
+#faqs.fetho-faqs-section {
+    background-color: #F8F9FD !important;
+    color: #0A0A12 !important;
+}
+
+.fetho-faqs-accordion {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.fetho-faq-item {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(22, 40, 245, 0.12) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 6px 20px rgba(10, 10, 18, 0.03) !important;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fetho-faq-item[open] {
+    border-color: #1628F5 !important;
+    box-shadow: 0 12px 36px rgba(22, 40, 245, 0.08) !important;
+}
+
+.fetho-faq-question {
+    padding: 24px 30px !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #0A0A12 !important;
+    list-style: none;
+}
+
+.fetho-faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.fetho-faq-icon {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1628F5 !important;
+    transition: transform 0.25s ease;
+}
+
+.fetho-faq-item[open] .fetho-faq-icon {
+    transform: rotate(45deg);
+}
+
+.fetho-faq-answer {
+    padding: 0 30px 24px 30px !important;
+    font-family: 'Aeonik', sans-serif !important;
+    font-size: 15.5px !important;
+    color: #4A4C5A !important;
+    line-height: 1.7 !important;
+}
+
+/* ================================================================
+   SECTION 14: ADMISSIONS HERO CTA BLOCK (#admissions)
+   ================================================================ */
+#admissions.fetho-cta-section {
+    background-color: #1628F5 !important;
+    color: #FFFFFF !important;
+    padding: clamp(110px, 12vw, 160px) 0 !important;
+    border-top: none !important;
+}
+
+#admissions .fetho-badge-chip {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+#admissions .fetho-badge-dot {
+    background: #FFFFFF !important;
+    box-shadow: 0 0 10px #FFFFFF !important;
+}
+
+#admissions .fetho-display-title {
+    color: #FFFFFF !important;
+}
+
+#admissions .fetho-gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 0%, #D8E2FF 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+#admissions .fetho-lead-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.fetho-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+#admissions .fetho-btn-solid {
+    background: #FFFFFF !important;
+    color: #1628F5 !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25) !important;
+}
+
+#admissions .fetho-btn-solid:hover {
+    background: #F0F4FF !important;
+    color: #0D1AB8 !important;
+    transform: translateY(-3px);
+}
+
+#admissions .fetho-btn-outline {
+    background: transparent !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFFFFF !important;
+}
+
+#admissions .fetho-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-3px);
+}
+
+.fetho-contact-pills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.fetho-contact-pill {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    color: #FFFFFF !important;
+    font-family: 'Aeonik', sans-serif;
+    font-size: 13.5px;
+    backdrop-filter: blur(10px);
+}
+
+.fetho-contact-pill a {
+    color: #FFFFFF !important;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Fetho Kicker Bar with horizontal crosses */
+.lusion-footer-kicker-bar {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 64vw;
+    max-width: 980px;
+    margin: 36px auto 0;
+    pointer-events: none;
+}
+.lusion-kicker-cross {
+    font-family: 'IBMPlexMono', ui-monospace, monospace;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+
+/* Restored headline wrap styles */
+.lusion-footer-headline-wrap {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    pointer-events: none;
+    transform: translateY(-2vh);
+}
+
+.lusion-footer-headline {
+    font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: clamp(80px, 12vw, 172px) !important;
+    font-weight: 500 !important;
+    line-height: 0.90 !important;
+    letter-spacing: -0.045em !important;
+    color: #FFFFFF !important;
+    margin: 0 !important;
+    user-select: none;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* ================================================================
+   ULTRA-REALISTIC 3D SCULPTED WHITE CLAY FETHO (PILLOWY ROUNDED EDGES)
+   ================================================================ */
+.lusion-footer-headline-wrap {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    pointer-events: auto;
+    width: 100%;
+    max-width: 1440px;
+    height: clamp(340px, 42vh, 520px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-2vh);
+}
+
+.fetho-clay-3d-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fetho-clay-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: none;
+    pointer-events: auto;
+}
+
+
+
+
+
+/* ================================================================
+   LANDO NORRIS SCROLL EFFECTS & KINETIC ANIMATIONS
+   (Pure Motion Only: 3D Card Tilt, Parallax Lift, & ScrollTrigger Physics)
+   Maintains 100% of the site's White & Electric Blue (#1628F5) Theme
+   ================================================================ */
+
+/* Stagger entrances with initial hardware acceleration */
+.fetho-acad-card,
+.fetho-dest-row,
+.fetho-special-card,
+.fetho-review-card {
+    will-change: transform, box-shadow;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Subtle dynamic lighting shimmer on white card surfaces */
+.fetho-acad-card,
+.fetho-special-card,
+.fetho-review-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.fetho-card-shimmer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(circle 280px at 50% 50%, rgba(22, 40, 245, 0.06) 0%, transparent 80%);
+}
+
+.fetho-acad-card:hover .fetho-card-shimmer,
+.fetho-special-card:hover .fetho-card-shimmer,
+.fetho-review-card:hover .fetho-card-shimmer {
+    opacity: 1;
+}
+
+/* Smooth row hover slide with electric blue glow */
+.fetho-dest-row {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease !important;
+}
+
+.fetho-dest-row:hover {
+    transform: translateX(10px) translateY(-2px) !important;
+    border-color: #1628F5 !important;
+    box-shadow: 0 16px 40px rgba(22, 40, 245, 0.08) !important;
+}
+
+/* ================================================================
+   FETHO PRELOADER (3D SCULPTED WHITE CLAY & ECOSYSTEM TELEMETRY)
+   ================================================================ */
+.fetho-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(24px, 4vw, 48px);
+    background: radial-gradient(circle at 50% 45%, #182BF8 0%, #1221D4 45%, #0B1367 100%);
+    color: #FFFFFF;
+    overflow: hidden;
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+}
+
+.fetho-preloader.fetho-preloader-hidden {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(12px);
+    pointer-events: none;
+}
+
+.fetho-preloader-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.fetho-preloader-header .fetho-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px #FFFFFF;
+    animation: fethoDotPulse 1.6s infinite ease-in-out;
+}
+
+.fetho-preloader-3d-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    height: clamp(240px, 35vh, 420px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fetho-preloader-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+.fetho-preloader-bar-wrap {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fetho-preloader-bar-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.fetho-preloader-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 999px;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.95), 0 0 30px rgba(22, 40, 245, 0.8);
+    transition: width 0.15s ease-out;
+}
+
+.fetho-preloader-telemetry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+}
+
+.fetho-preloader-percent {
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.fetho-preloader-footer {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    display: flex;
+    gap: 12px;
+}
+
+.fetho-preloader-footer .sep {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ================================================================
+   FETHO 3-PILLAR SELECTION PORTAL (TRIPTYCH GATEWAY)
+   ================================================================ */
+.fetho-portal {
+    position: fixed;
+    inset: 0;
+    z-index: 99990;
+    display: flex;
+    flex-direction: column;
+    background: #F8F9FD;
+    color: #0A0A12;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.6s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.fetho-portal.fetho-portal-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.98);
+}
+
+/* Portal Top Navigation */
+.fetho-portal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px clamp(20px, 4vw, 48px);
+    border-bottom: 1px solid rgba(22, 40, 245, 0.08);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 20;
+    position: sticky;
+    top: 0;
+}
+
+.fetho-portal-logo {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #1628F5;
+    text-decoration: none;
+}
+
+.fetho-portal-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #EEF2FF;
+    border: 1px solid rgba(22, 40, 245, 0.18);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #1628F5;
+    text-transform: uppercase;
+}
+
+.fetho-portal-skip-btn {
+    background: transparent;
+    border: 1px solid rgba(10, 10, 18, 0.15);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #0A0A12;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.fetho-portal-skip-btn:hover {
+    background: #0A0A12;
+    color: #FFFFFF;
+    border-color: #0A0A12;
+}
+
+/* 3-Pillar Columns Wrapper */
+.fetho-portal-columns {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 140px);
+    position: relative;
+    background: #F8F9FD;
+}
+
+@media (max-width: 980px) {
+    .fetho-portal-columns {
+        flex-direction: column;
+        min-height: auto;
+    }
+}
+
+/* Individual Pillar Column */
+.fetho-portal-col {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(28px, 3.5vw, 48px);
+    border-right: 1px solid rgba(22, 40, 245, 0.08);
+    background: #FFFFFF;
+    cursor: pointer;
+    overflow: hidden;
+    transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s ease,
+                opacity 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+.fetho-portal-col:last-child {
+    border-right: none;
+}
+
+.fetho-portal-col-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.col-young-minds .fetho-portal-col-glow {
+    background: radial-gradient(circle at 50% 20%, rgba(22, 40, 245, 0.08) 0%, transparent 70%);
+}
+
+.col-career-life .fetho-portal-col-glow {
+    background: radial-gradient(circle at 50% 20%, rgba(0, 150, 255, 0.09) 0%, transparent 70%);
+}
+
+.col-venture-lab .fetho-portal-col-glow {
+    background: radial-gradient(circle at 50% 20%, rgba(13, 26, 184, 0.09) 0%, transparent 70%);
+}
+
+/* Hover expansion physics (Fetho style, FETHO colors) */
+@media (min-width: 981px) {
+    .fetho-portal-columns:hover .fetho-portal-col {
+        flex: 0.85;
+        opacity: 0.55;
+    }
+
+    .fetho-portal-columns .fetho-portal-col:hover {
+        flex: 2.1;
+        opacity: 1;
+        background: #FFFFFF;
+        box-shadow: 0 20px 60px rgba(22, 40, 245, 0.1);
+        z-index: 10;
+    }
+
+    .fetho-portal-columns .fetho-portal-col:hover .fetho-portal-col-glow {
+        opacity: 1;
+    }
+}
+
+/* Pillar Content Elements */
+.col-header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: clamp(24px, 3vw, 44px);
+}
+
+.col-badge {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.col-young-minds .col-badge {
+    background: rgba(22, 40, 245, 0.08);
+    color: #1628F5;
+    border: 1px solid rgba(22, 40, 245, 0.18);
+}
+
+.col-career-life .col-badge {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0066FF;
+    border: 1px solid rgba(0, 120, 255, 0.2);
+}
+
+.col-venture-lab .col-badge {
+    background: rgba(10, 10, 18, 0.06);
+    color: #0A0A12;
+    border: 1px solid rgba(10, 10, 18, 0.18);
+}
+
+.col-index {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 700;
+    color: rgba(10, 10, 18, 0.15);
+    letter-spacing: -0.04em;
+    transition: color 0.3s ease;
+}
+
+.fetho-portal-col:hover .col-index {
+    color: #1628F5;
+}
+
+.col-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.col-title {
+    font-family: 'Aeonik', sans-serif;
+    font-size: clamp(32px, 3.2vw, 54px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #0A0A12;
+    margin: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fetho-portal-col:hover .col-title {
+    transform: translateY(-4px);
+}
+
+.col-hl-blue {
+    color: #1628F5;
+}
+
+.col-hl-cyan {
+    color: #0066FF;
+}
+
+.col-hl-ink {
+    color: #0A0A12;
+    text-decoration: underline;
+    text-decoration-color: #1628F5;
+    text-underline-offset: 6px;
+}
+
+.col-audience {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #767888;
+    text-transform: uppercase;
+}
+
+.col-desc {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4A4C5A;
+    max-width: 420px;
+    margin: 0;
+}
+
+/* Disciplines Tag Pills (Reveals on hover) */
+.col-disciplines {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+@media (min-width: 981px) {
+    .col-disciplines {
+        opacity: 0.7;
+        transform: translateY(4px);
+    }
+    .fetho-portal-col:hover .col-disciplines {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.col-pill-tag {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #F4F6FC;
+    color: #1628F5;
+    border: 1px solid rgba(22, 40, 245, 0.1);
+}
+
+/* Column Action CTA Button */
+.col-action-wrap {
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+.fetho-col-cta {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-family: 'Aeonik', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-blue {
+    background: #1628F5;
+    color: #FFFFFF;
+    box-shadow: 0 10px 28px rgba(22, 40, 245, 0.3);
+}
+
+.cta-blue:hover {
+    background: #0D1AB8;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(22, 40, 245, 0.4);
+}
+
+.cta-cyan {
+    background: #0066FF;
+    color: #FFFFFF;
+    box-shadow: 0 10px 28px rgba(0, 102, 255, 0.3);
+}
+
+.cta-cyan:hover {
+    background: #004ecc;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(0, 102, 255, 0.4);
+}
+
+.cta-ink {
+    background: #0A0A12;
+    color: #FFFFFF;
+    box-shadow: 0 10px 28px rgba(10, 10, 18, 0.25);
+}
+
+.cta-ink:hover {
+    background: #1628F5;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(22, 40, 245, 0.35);
+}
+
+/* Top Navbar Ecosystem Switcher Trigger */
+.fetho-portal-trigger-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22, 40, 245, 0.08);
+    border: 1px solid rgba(22, 40, 245, 0.22);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #1628F5;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-right: 12px;
+}
+
+.fetho-portal-trigger-pill:hover {
+    background: #1628F5;
+    color: #FFFFFF;
+    border-color: #1628F5;
+    box-shadow: 0 8px 20px rgba(22, 40, 245, 0.3);
+}
+
+.fetho-portal-trigger-pill .portal-trigger-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1628F5;
+    transition: background 0.25s ease;
+}
+
+.fetho-portal-trigger-pill:hover .portal-trigger-dot {
+    background: #FFFFFF;
+}
+
+/* ================================================================
+   VERTICAL VIEWS (CAREER & LIFE + VENTURE LAB)
+   ================================================================ */
+.fetho-vertical-view {
+    width: 100%;
+    position: relative;
+    background: #FFFFFF;
+    color: #0A0A12;
+}
+
+.fetho-vertical-hero {
+    position: relative;
+    padding: clamp(120px, 15vw, 180px) 24px clamp(60px, 8vw, 100px);
+    background: radial-gradient(circle at 50% 10%, #FFFFFF 0%, #F5F7FD 100%);
+    border-bottom: 1px solid rgba(22, 40, 245, 0.08);
+    text-align: center;
+}
+
+.fetho-vertical-hero .fetho-badge-chip {
+    margin: 0 auto 24px;
+}
+
+.fetho-tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(40px, 6vw, 80px) 24px;
+}
+
+.fetho-track-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(22, 40, 245, 0.12);
+    border-radius: 24px;
+    padding: clamp(24px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 40px rgba(10, 10, 18, 0.04);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fetho-track-card:hover {
+    transform: translateY(-4px);
+    border-color: #1628F5;
+    box-shadow: 0 24px 50px rgba(22, 40, 245, 0.1);
+}
+
+.fetho-track-num {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1628F5;
+    letter-spacing: 0.16em;
+    margin-bottom: 12px;
+}
+
+.fetho-track-card h3 {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0A0A12;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+}
+
+.fetho-track-card p {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 14.5px;
+    color: #4A4C5A;
+    line-height: 1.6;
+    margin: 0 0 20px;
+}
+
+.fetho-track-outcome {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(22, 40, 245, 0.08);
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1628F5;
+    letter-spacing: 0.08em;
+}
+
+/* ================================================================
+   HEADER VERTICALS DROPDOWN (ECOSYSTEM NAVIGATOR)
+   ================================================================ */
+.fetho-nav-verticals-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.fetho-nav-verticals-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid rgba(22, 40, 245, 0.22);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #1628F5;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(22, 40, 245, 0.08);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fetho-nav-verticals-btn:hover,
+.fetho-nav-verticals-dropdown:hover .fetho-nav-verticals-btn,
+.fetho-nav-verticals-dropdown.open .fetho-nav-verticals-btn {
+    background: #1628F5;
+    color: #FFFFFF;
+    border-color: #1628F5;
+    box-shadow: 0 8px 24px rgba(22, 40, 245, 0.28);
+    transform: translateY(-1px);
+}
+
+.fetho-nav-verticals-btn .verticals-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1628F5;
+    box-shadow: 0 0 8px #1628F5;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fetho-nav-verticals-btn:hover .verticals-dot,
+.fetho-nav-verticals-dropdown:hover .verticals-dot,
+.fetho-nav-verticals-dropdown.open .verticals-dot {
+    background: #FFFFFF;
+    box-shadow: 0 0 10px #FFFFFF;
+}
+
+.fetho-nav-verticals-btn .verticals-chevron {
+    font-size: 9px;
+    transition: transform 0.25s ease;
+}
+
+.fetho-nav-verticals-dropdown:hover .verticals-chevron,
+.fetho-nav-verticals-dropdown.open .verticals-chevron {
+    transform: rotate(180deg);
+}
+
+.fetho-nav-verticals-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 320px;
+    background: #FFFFFF;
+    border: 1px solid rgba(22, 40, 245, 0.15);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 24px 60px rgba(10, 10, 18, 0.12), 0 4px 16px rgba(22, 40, 245, 0.06);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.98);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fetho-nav-verticals-dropdown:hover .fetho-nav-verticals-menu,
+.fetho-nav-verticals-dropdown.open .fetho-nav-verticals-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.verticals-menu-item {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.verticals-menu-item:hover {
+    background: #F4F6FC;
+    border-color: rgba(22, 40, 245, 0.12);
+    transform: translateX(4px);
+}
+
+.verticals-menu-item.active {
+    background: #EEF2FF;
+    border-color: rgba(22, 40, 245, 0.2);
+}
+
+.menu-item-tag {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #1628F5;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.menu-item-title {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0A0A12;
+    letter-spacing: -0.02em;
+}
+
+.menu-item-desc {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 12.5px;
+    color: #767888;
+    margin-top: 2px;
+}
+
+/* Page Smooth Seamless Transition Blur */
+body.page-transitioning {
+    opacity: 0 !important;
+    filter: blur(8px) !important;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    pointer-events: none !important;
+}
+
+/* ================================================================
+   FETHO PREV-PAGE BAR (top of page - scroll-up gesture indicator)
+   ================================================================ */
+#lusionPrevPageBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99998;
+    background: rgba(10, 10, 18, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(22, 40, 245, 0.18);
+    padding: 14px var(--lusion-grid-margin, 96px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    #lusionPrevPageBar {
+        padding: 14px 20px;
+    }
+}
+
+.lusion-prev-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.lusion-prev-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1628F5;
+    font-size: 20px;
+    transform: rotate(180deg);
+    flex-shrink: 0;
+}
+
+.lusion-prev-label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.lusion-prev-kicker {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: rgba(22, 40, 245, 0.7);
+    text-transform: uppercase;
+}
+
+.lusion-prev-title {
+    font-family: 'Aeonik', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
+}
+
+.lusion-prev-track {
+    flex: 1;
+    max-width: 120px;
+    height: 3px;
+    background: rgba(22, 40, 245, 0.2);
+    border-radius: 9999px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lusion-prev-bar {
+    position: absolute;
+    top: 0;
+    right: 0;          /* fills right-to-left for "going back" feel */
+    height: 100%;
+    width: 0%;
+    background: #1628F5;
+    border-radius: 9999px;
+    box-shadow: 0 0 10px rgba(22, 40, 245, 0.5);
+    transition: width 0.1s linear;
+}
+
+.lusion-prev-hint {
+    font-family: 'IBMPlexMono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* intent counter dots */
+.lusion-prev-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lusion-prev-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(22, 40, 245, 0.25);
+    border: 1px solid rgba(22, 40, 245, 0.4);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.lusion-prev-dot.filled {
+    background: #1628F5;
+    box-shadow: 0 0 8px rgba(22, 40, 245, 0.6);
+    transform: scale(1.2);
+}
+
+/* intent counter dots for next-page bar */
+.lusion-next-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 12px;
+}
+
+.lusion-next-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(22, 40, 245, 0.2);
+    border: 1px solid rgba(22, 40, 245, 0.35);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.lusion-next-dot.filled {
+    background: #1628F5;
+    box-shadow: 0 0 8px rgba(22, 40, 245, 0.6);
+    transform: scale(1.2);
+}
