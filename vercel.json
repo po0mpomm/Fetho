@@ -1,5 +1,15 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
+  "rewrites": [
+    {
+      "source": "/career-life",
+      "destination": "/career-life.html"
+    },
+    {
+      "source": "/venture-lab",
+      "destination": "/venture-lab.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
