@@ -7,7 +7,7 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const ROOT_DIR = __dirname;
 const FETHO_DIR = fs.existsSync(path.join(ROOT_DIR, 'fetho'))
   ? path.join(ROOT_DIR, 'fetho')
-  : path.join(ROOT_DIR, 'edge.studio');
+  : ROOT_DIR;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -77,19 +77,7 @@ function resolveFilePath(reqPath) {
     return { filePath: path.join(FETHO_DIR, 'index.html'), isHtml: true };
   }
   
-  // Check if starts with wp-content
-  if (cleanPath.startsWith('/wp-content/')) {
-    const p = path.join(FETHO_DIR, cleanPath.slice(1));
-    if (fs.existsSync(p)) return { filePath: p, isHtml: false };
-  }
-
-  // Check in assets folder
-  if (cleanPath.startsWith('/assets/')) {
-    const inFetho = path.join(FETHO_DIR, cleanPath.slice(1));
-    if (fs.existsSync(inFetho)) return { filePath: inFetho, isHtml: false };
-  }
-  
-  // Check in fetho folder
+  // Check in fetho folder (if exists) or root
   const inFetho = path.join(FETHO_DIR, cleanPath.slice(1));
   if (fs.existsSync(inFetho)) {
     const stat = fs.statSync(inFetho);
@@ -129,7 +117,6 @@ const server = http.createServer((req, res) => {
 
   const resolved = resolveFilePath(reqPath);
   if (!resolved) {
-    // If not found, fall back to index.html for root routes or return 404
     if (!path.extname(reqPath)) {
       const homeHtml = path.join(FETHO_DIR, 'index.html');
       if (fs.existsSync(homeHtml)) {

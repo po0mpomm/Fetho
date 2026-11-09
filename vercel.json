@@ -1,22 +1,5 @@
 {
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/fetho/index.html"
-    },
-    {
-      "source": "/career-life.html",
-      "destination": "/fetho/career-life.html"
-    },
-    {
-      "source": "/venture-lab.html",
-      "destination": "/fetho/venture-lab.html"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/fetho/:path*"
-    }
-  ],
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
