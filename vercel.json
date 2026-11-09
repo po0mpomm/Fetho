@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "public": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/fetho/index.html"
+    },
+    {
+      "source": "/career-life.html",
+      "destination": "/fetho/career-life.html"
+    },
+    {
+      "source": "/venture-lab.html",
+      "destination": "/fetho/venture-lab.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/fetho/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(glb|gltf|woff2|woff|png|jpg|webp|mp4)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
