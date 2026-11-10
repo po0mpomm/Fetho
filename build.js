@@ -39,3 +39,4 @@ for (const item of items) {
 }
 
 console.log('Build complete: all static assets prepared in public/');
+

@@ -572,17 +572,174 @@
             display: none !important;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
+        /* ================================================================
+           COMPREHENSIVE RESPONSIVE STYLES (Mobile, Tablet, 14", 17"+)
+           ================================================================ */
+        /* 17-inch & Ultra-wide displays */
+        @media (min-width: 1600px) {
+            .cl-container {
+                max-width: 1520px;
+            }
+            .lh-wordmark {
+                font-size: clamp(140px, 18vw, 320px);
+            }
+        }
+
+        /* 13-14 inch laptops (constrained viewport height ~700-850px) */
+        @media (max-height: 850px) and (min-width: 992px) {
+            .lh-frame1-bottom {
+                bottom: 1.5vh;
+            }
+            .lh-wordmark {
+                font-size: clamp(80px, 14vw, 190px);
+            }
+            .lh-split-typo {
+                bottom: 5vh;
+            }
+            .lh-split-left, .lh-split-right {
+                font-size: clamp(20px, 2.2vw, 36px);
+            }
+            .cl-section {
+                padding: 80px 5vw;
+            }
+            .cl-tracks-section, .cl-model-section, .cl-inquiry-section {
+                padding: 80px 5vw;
+            }
+        }
+
+        /* Tablets & small laptops (<= 1024px) */
+        @media (max-width: 1024px) {
+            .cl-vertical-badge {
+                display: none !important;
+            }
+            .cl-section {
+                padding: 80px 5vw;
+            }
+            .cl-tracks-section, .cl-model-section, .cl-inquiry-section {
+                padding: 80px 5vw;
+            }
+            .cl-tracks-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
             .cl-inquiry-inner {
                 grid-template-columns: 1fr;
-                padding: 48px 32px;
+                gap: 40px;
+                padding: 56px 40px;
+            }
+        }
+
+        /* Mobile & Small Tablets (<= 768px) */
+        @media (max-width: 768px) {
+            .lh-crosshairs {
+                padding: 0 4vw;
+                font-size: 11px;
+            }
+            .lh-frame1-bottom {
+                bottom: 3vh;
+                padding: 0 5vw;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .lh-wordmark {
+                font-size: clamp(42px, 14vw, 76px);
+                line-height: 0.92;
+                letter-spacing: 0.01em;
+            }
+            .lh-explore-hint {
+                font-size: 10px;
+                letter-spacing: 0.22em;
+                margin-bottom: 0;
+            }
+            .lh-split-typo {
+                bottom: 4vh;
+                padding: 0 5vw;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .lh-split-left,
+            .lh-split-right {
+                text-align: left;
+                font-size: clamp(16px, 4.8vw, 22px);
+                line-height: 1.16;
+                letter-spacing: -0.015em;
+            }
+            .cl-section {
+                padding: 60px 5vw;
+            }
+            .cl-section-h2 {
+                font-size: clamp(30px, 7.5vw, 44px);
+                margin-bottom: 16px;
+            }
+            .cl-section-lead {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 36px;
+            }
+            .cl-tracks-section,
+            .cl-model-section,
+            .cl-inquiry-section {
+                padding: 60px 5vw;
+            }
+            .cl-tracks-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .cl-track-card {
+                padding: 28px 24px;
+                border-radius: 18px;
             }
             .cl-stage {
-                grid-template-columns: 60px 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 28px 0;
             }
-            .cl-vertical-badge { display: none; }
+            .cl-stage-num {
+                padding-top: 0;
+            }
+            .cl-stage-title {
+                font-size: 22px;
+            }
+            .cl-stage-desc {
+                font-size: 14px;
+                line-height: 1.55;
+            }
+            .cl-inquiry-inner {
+                padding: 40px 24px;
+                border-radius: 24px;
+                gap: 32px;
+            }
+            .cl-inquiry-heading {
+                font-size: clamp(28px, 7vw, 38px);
+                margin-bottom: 12px;
+            }
+            .cl-inquiry-sub {
+                font-size: 14px;
+            }
+            .cl-form-btn {
+                width: 100%;
+                padding: 16px 24px;
+            }
+        }
+
+        /* Small Mobile Devices (<= 480px) */
+        @media (max-width: 480px) {
+            .lh-wordmark {
+                font-size: clamp(34px, 12.5vw, 54px);
+            }
+            .lh-split-left,
+            .lh-split-right {
+                font-size: 15px;
+            }
+            .cl-track-card {
+                padding: 24px 18px;
+            }
+            .cl-inquiry-inner {
+                padding: 32px 18px;
+                border-radius: 20px;
+            }
         }
     </style>
 </head>
@@ -1925,11 +2082,28 @@
             targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
         });
 
-        window.addEventListener('resize', function() {
-            camera.aspect = window.innerWidth / window.innerHeight;
+        function handleResize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const aspect = width / height;
+            camera.aspect = aspect;
+
+            // Responsive Adaptive FOV (Mobile, Tablet, 14" Laptop, 17" Desktop)
+            if (aspect < 0.6) {
+                camera.fov = 54;
+            } else if (aspect < 1.0) {
+                camera.fov = 48;
+            } else if (aspect < 1.4) {
+                camera.fov = 42;
+            } else {
+                camera.fov = 40;
+            }
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        }
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         // --- ANIMATION LOOP ---
         const clock = new THREE.Clock();

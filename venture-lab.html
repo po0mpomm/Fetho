@@ -583,9 +583,57 @@
             box-shadow: 0 12px 36px rgba(22,40,245,0.55);
         }
 
-        @media (max-width: 900px) {
-            .vl-intake-inner { grid-template-columns: 1fr; padding: 48px 32px; }
-            .vl-vertical-badge { display: none; }
+        /* ================================================================
+           COMPREHENSIVE RESPONSIVE STYLES (Mobile, Tablet, 14", 17"+)
+           ================================================================ */
+        /* 17-inch & Ultra-wide displays */
+        @media (min-width: 1600px) {
+            .vl-container { max-width: 1520px; }
+            .vl-hero-h1 { font-size: clamp(80px, 7vw, 130px); }
+        }
+
+        /* 13-14 inch laptops (viewport height ~700-850px) */
+        @media (max-height: 850px) and (min-width: 992px) {
+            .vl-hero { padding: 130px 5vw 70px; min-height: 90vh; }
+            .vl-hero-h1 { font-size: clamp(52px, 6vw, 88px); margin-bottom: 20px; }
+            .vl-hero-lead { margin-bottom: 32px; }
+            .vl-section { padding: 80px 5vw; }
+        }
+
+        /* Tablets & small laptops (<= 1024px) */
+        @media (max-width: 1024px) {
+            .vl-vertical-badge { display: none !important; }
+            .vl-section { padding: 80px 5vw; }
+            .vl-process-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .vl-boundary-inner { grid-template-columns: 1fr; gap: 36px; padding: 48px 36px; }
+            .vl-intake-inner { grid-template-columns: 1fr; padding: 56px 40px; gap: 40px; }
+        }
+
+        /* Mobile & Small Tablets (<= 768px) */
+        @media (max-width: 768px) {
+            .vl-hero { padding: 110px 5vw 50px; min-height: auto; }
+            .vl-hero-eyebrow { margin-bottom: 20px; font-size: 10px; padding: 6px 16px; }
+            .vl-hero-h1 { font-size: clamp(34px, 8.5vw, 52px); line-height: 0.98; margin-bottom: 20px; }
+            .vl-hero-lead { font-size: 15px; line-height: 1.6; margin-bottom: 32px; }
+            .vl-hero-ctas { flex-direction: column; width: 100%; gap: 12px; }
+            .vl-cta-primary, .vl-cta-ghost { width: 100%; justify-content: center; padding: 15px 24px; text-align: center; }
+            .vl-section { padding: 60px 5vw; }
+            .vl-section-h2 { font-size: clamp(28px, 7vw, 40px); margin-bottom: 16px; }
+            .vl-section-lead { font-size: 15px; margin-bottom: 32px; }
+            .vl-process-grid { grid-template-columns: 1fr; gap: 14px; }
+            .vl-process-card { padding: 26px 20px; border-radius: 18px; }
+            .vl-boundary-inner { padding: 32px 20px; border-radius: 20px; gap: 24px; }
+            .vl-intake-inner { padding: 36px 20px; border-radius: 22px; gap: 28px; }
+            .vl-intake-heading { font-size: clamp(26px, 6.5vw, 36px); margin-bottom: 12px; }
+            .vl-form-btn { width: 100%; padding: 16px 24px; }
+        }
+
+        /* Small Mobile Devices (<= 480px) */
+        @media (max-width: 480px) {
+            .vl-hero-h1 { font-size: clamp(30px, 9vw, 42px); }
+            .vl-process-card { padding: 22px 16px; }
+            .vl-boundary-inner { padding: 26px 16px; }
+            .vl-intake-inner { padding: 28px 16px; border-radius: 18px; }
         }
 
         /* Ensure header matches exact clean Fetho layout (drawer holds menu links) */
