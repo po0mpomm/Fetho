@@ -2267,6 +2267,7 @@ body.home .body-inner,
     pointer-events: auto;
     margin-top: auto;
     margin-bottom: auto;
+    transform: translateX(clamp(-42px, -2.8vw, -36px));
 }
 
 /* Badge Chip (Crisp Micro-Pill) */
@@ -2872,6 +2873,7 @@ body.home .body-inner,
     .active-spatial-hud {
         width: 100%;
         max-width: 100%;
+        transform: none !important;
     }
     .active-spatial-viewport {
         position: relative;
@@ -5677,6 +5679,7 @@ body.page-transitioning {
     .active-spatial-hud {
         width: 100% !important;
         max-width: 100% !important;
+        transform: none !important;
         gap: 8px !important;
         z-index: 10 !important;
         text-align: center !important;
