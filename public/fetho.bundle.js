@@ -45504,9 +45504,7 @@ void main() {
         transformPerspective: 1400,
         transformOrigin: "center center"
       });
-      card.style.pointerEvents = "none";
     });
-    let pillarsProgress = 0;
     const pillarsTl = gsap.timeline({
       scrollTrigger: {
         trigger: track,
@@ -45518,7 +45516,6 @@ void main() {
         scrub: 0.8,
         onUpdate: (self2) => {
           const p = self2.progress;
-          pillarsProgress = p;
           if (siteHeader) {
             if (p > 0.01 && p < 0.99) {
               siteHeader.classList.add("header-on-blue");
@@ -45531,22 +45528,6 @@ void main() {
               b.classList.add("active");
             } else {
               b.classList.remove("active");
-            }
-          });
-
-          // Disable hover/flip interactions while cards are stacked/overlapped
-          const isOverlappedOrFlipping = p < 0.70;
-          cards.forEach((card) => {
-            if (isOverlappedOrFlipping) {
-              if (card.style.pointerEvents !== "none") {
-                card.style.pointerEvents = "none";
-                gsap.killTweensOf(card);
-                gsap.set(card, { rotationX: 0, z: 0 });
-              }
-            } else {
-              if (card.style.pointerEvents !== "auto") {
-                card.style.pointerEvents = "auto";
-              }
             }
           });
         }
@@ -45649,7 +45630,6 @@ void main() {
     });
     cards.forEach((card, i) => {
       card.addEventListener("mousemove", (e) => {
-        if (pillarsProgress < 0.70) return;
         const rect = card.getBoundingClientRect();
         const relX = (e.clientX - rect.left) / rect.width - 0.5;
         const relY = (e.clientY - rect.top) / rect.height - 0.5;
@@ -45666,7 +45646,6 @@ void main() {
         });
       });
       card.addEventListener("mouseleave", () => {
-        if (pillarsProgress < 0.70) return;
         gsap.to(card, {
           rotationX: 0,
           rotationY: 0,
@@ -45680,7 +45659,6 @@ void main() {
     });
     badges.forEach((badge, i) => {
       badge.addEventListener("mouseenter", () => {
-        if (pillarsProgress < 0.70) return;
         if (cards[i]) {
           gsap.to(cards[i], {
             y: -18,
@@ -45692,7 +45670,6 @@ void main() {
         }
       });
       badge.addEventListener("mouseleave", () => {
-        if (pillarsProgress < 0.70) return;
         if (cards[i]) {
           gsap.to(cards[i], {
             y: 0,
