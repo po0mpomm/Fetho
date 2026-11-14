@@ -2258,8 +2258,8 @@ body.home .body-inner,
 .active-spatial-hud {
     position: relative;
     z-index: 10;
-    width: 42%;
-    max-width: 480px;
+    width: 44%;
+    max-width: 520px;
     min-width: 320px;
     display: flex;
     flex-direction: column;
