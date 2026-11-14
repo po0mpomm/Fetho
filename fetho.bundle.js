@@ -45530,6 +45530,16 @@ void main() {
               b.classList.remove("active");
             }
           });
+          if (p >= 0.70) {
+            stage.classList.add("cards-spread");
+          } else {
+            if (stage.classList.contains("cards-spread")) {
+              cards.forEach((card) => {
+                gsap.set(card, { rotationX: 0, z: 0 });
+              });
+            }
+            stage.classList.remove("cards-spread");
+          }
         }
       }
     });
@@ -45630,6 +45640,7 @@ void main() {
     });
     cards.forEach((card, i) => {
       card.addEventListener("mousemove", (e) => {
+        if (!stage.classList.contains("cards-spread")) return;
         const rect = card.getBoundingClientRect();
         const relX = (e.clientX - rect.left) / rect.width - 0.5;
         const relY = (e.clientY - rect.top) / rect.height - 0.5;
@@ -45646,6 +45657,7 @@ void main() {
         });
       });
       card.addEventListener("mouseleave", () => {
+        if (!stage.classList.contains("cards-spread")) return;
         gsap.to(card, {
           rotationX: 0,
           rotationY: 0,
@@ -45659,6 +45671,7 @@ void main() {
     });
     badges.forEach((badge, i) => {
       badge.addEventListener("mouseenter", () => {
+        if (!stage.classList.contains("cards-spread")) return;
         if (cards[i]) {
           gsap.to(cards[i], {
             y: -18,
@@ -45670,6 +45683,7 @@ void main() {
         }
       });
       badge.addEventListener("mouseleave", () => {
+        if (!stage.classList.contains("cards-spread")) return;
         if (cards[i]) {
           gsap.to(cards[i], {
             y: 0,

@@ -1842,10 +1842,15 @@ body.home .body-inner,
     -webkit-transform-style: preserve-3d !important;
     transform-style: preserve-3d !important;
     transform-origin: center center;
-    cursor: pointer;
-    pointer-events: auto;
+    cursor: default;
+    pointer-events: none;
     will-change: transform;
     border-radius: 20px;
+}
+
+.cards-spread .about-capability-card {
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 /* Card Front Face (Crisp Playing Card) */
