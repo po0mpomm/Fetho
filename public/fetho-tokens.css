@@ -617,8 +617,11 @@ header.header,
     left: 0;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
     box-sizing: border-box;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .lusion-badge-mono {
@@ -876,7 +879,7 @@ header.header,
     background-color: var(--lusion-bg, #F0F0FA);
     margin-top: -26vh;
     padding: 80px 0 160px 0;
-    z-index: 5;
+    z-index: 2;
     overflow: hidden;
 }
 
@@ -889,7 +892,7 @@ header.header,
     height: 50px;
     background: linear-gradient(to bottom, transparent, var(--lusion-bg, #F0F0FA));
     pointer-events: none;
-    z-index: 10;
+    z-index: 1;
 }
 
 .lusion-comp-crosshairs {
